@@ -1,0 +1,155 @@
+<style>
+  .preview-wrap { display: flex; gap: 20px; margin-top: 8px; }
+  .card { flex: 1; border: 2px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .2s, box-shadow .2s; background: var(--bg-secondary); }
+  .card:hover { border-color: #22c55e; box-shadow: 0 4px 16px rgba(34,197,94,.15); }
+  .card.selected { border-color: #22c55e; box-shadow: 0 4px 20px rgba(34,197,94,.25); }
+  .card-label { padding: 12px 14px; border-top: 1px solid var(--border); }
+  .card-label h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .card-label p { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
+  .letter { position: absolute; top: 8px; left: 8px; z-index: 2; width: 22px; height: 22px; background: #22c55e; color: white; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .m { font-family: -apple-system, sans-serif; font-size: 11px; }
+
+  /* === OPTION A: Full-screen slide (no sidebar in lesson) === */
+  .slide-shell { display: flex; height: 160px; background: #f8f8f8; }
+  .slide-sidebar { width: 70px; background: #1a1a1a; display: flex; flex-direction: column; padding: 8px 6px; gap: 3px; }
+  .slide-sidebar .logo { color: #22c55e; font-size: 9px; font-weight: 700; text-align: center; margin-bottom: 6px; }
+  .slide-sidebar .nav { font-size: 7px; color: #888; padding: 3px 5px; border-radius: 3px; }
+  .slide-sidebar .nav.active { background: #22c55e; color: white; }
+  .slide-main { flex: 1; display: flex; flex-direction: column; }
+  .slide-topbar { background: white; border-bottom: 1px solid #e5e7eb; padding: 5px 10px; display: flex; align-items: center; gap: 6px; }
+  .slide-topbar .back { font-size: 8px; color: #22c55e; }
+  .slide-topbar .title { font-size: 9px; font-weight: 600; }
+  .slide-topbar .steps { margin-left: auto; display: flex; gap: 3px; }
+  .slide-topbar .step { width: 16px; height: 4px; border-radius: 2px; background: #e5e7eb; }
+  .slide-topbar .step.done { background: #22c55e; }
+  .slide-topbar .step.active { background: #16a34a; }
+  .slide-content { flex: 1; background: white; display: flex; align-items: center; justify-content: center; padding: 10px; }
+  .slide-card { background: #1a1a1a; color: white; border-radius: 10px; padding: 14px; width: 100%; max-width: 260px; text-align: center; }
+  .slide-card .cat { font-size: 24px; margin-bottom: 6px; }
+  .slide-card h2 { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .slide-card p { font-size: 8px; color: #aaa; margin-bottom: 8px; line-height: 1.4; }
+  .slide-card .btn { background: #22c55e; color: white; border-radius: 5px; padding: 4px 12px; font-size: 8px; display: inline-block; }
+  .slide-footer { background: #fafafa; border-top: 1px solid #e5e7eb; padding: 5px 10px; display: flex; justify-content: space-between; align-items: center; }
+  .slide-footer span { font-size: 7px; color: #999; }
+  .slide-footer .arrows { display: flex; gap: 4px; }
+  .slide-footer .arr { background: #1a1a1a; color: white; border-radius: 4px; padding: 3px 7px; font-size: 9px; }
+  .slide-footer .arr.next { background: #22c55e; }
+
+  /* === OPTION B: Sidebar with lesson steps === */
+  .steps-shell { display: flex; height: 160px; }
+  .steps-left { width: 70px; background: #1a1a1a; display: flex; flex-direction: column; padding: 8px 6px; gap: 3px; }
+  .steps-left .logo { color: #22c55e; font-size: 9px; font-weight: 700; text-align: center; margin-bottom: 6px; }
+  .steps-left .nav { font-size: 7px; color: #888; padding: 3px 5px; border-radius: 3px; }
+  .steps-left .nav.active { background: #22c55e; color: white; }
+  .steps-mid { width: 90px; background: #f5f5f5; border-right: 1px solid #e5e7eb; padding: 8px 6px; }
+  .steps-mid .section-title { font-size: 7px; font-weight: 700; color: #333; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .step-item { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; cursor: pointer; }
+  .step-dot { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid #ccc; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 7px; }
+  .step-dot.done { background: #22c55e; border-color: #22c55e; color: white; }
+  .step-dot.active { border-color: #22c55e; background: white; }
+  .step-text { font-size: 7px; color: #555; line-height: 1.2; }
+  .step-text.active { color: #16a34a; font-weight: 600; }
+  .steps-right { flex: 1; background: white; display: flex; flex-direction: column; }
+  .steps-right-top { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; font-size: 9px; font-weight: 700; }
+  .steps-right-body { flex: 1; padding: 8px 10px; font-size: 8px; color: #555; line-height: 1.5; }
+  .tab-row { display: flex; gap: 3px; margin-bottom: 6px; }
+  .tab { background: #f0f0f0; border-radius: 12px; padding: 2px 7px; font-size: 7px; color: #666; cursor: pointer; }
+  .tab.active { background: #22c55e; color: white; }
+  .mini-person { display: flex; gap: 6px; align-items: center; }
+  .mini-avatar { width: 22px; height: 22px; border-radius: 50%; background: #ddd; flex-shrink: 0; }
+  .mini-info .name { font-size: 8px; font-weight: 600; }
+  .mini-info .role { font-size: 7px; color: #999; }
+</style>
+
+<h2>Вид урока изнутри</h2>
+<p class="subtitle">Как выглядит страница когда сотрудник проходит урок?</p>
+
+<div class="preview-wrap">
+
+  <!-- A: Fullscreen slide -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)" style="position:relative">
+    <div class="letter">A</div>
+    <div class="m">
+      <div class="slide-shell">
+        <div class="slide-sidebar">
+          <div class="logo">Unit</div>
+          <div class="nav active">🏠 Главная</div>
+          <div class="nav">📖 Курсы</div>
+          <div class="nav">👤 Профиль</div>
+        </div>
+        <div class="slide-main">
+          <div class="slide-topbar">
+            <span class="back">← Назад</span>
+            <span class="title">День 1: Знакомство с UnitPay</span>
+            <div class="steps">
+              <div class="step done"></div><div class="step done"></div><div class="step active"></div>
+              <div class="step"></div><div class="step"></div><div class="step"></div>
+            </div>
+          </div>
+          <div class="slide-content">
+            <div class="slide-card">
+              <div class="cat">🐱</div>
+              <h2>Добро пожаловать в UnitPay!</h2>
+              <p>Я котик Юнит — рад знакомству! В первые дни я буду рядом и помогу быстро освоиться.</p>
+              <div class="btn">Начать →</div>
+            </div>
+          </div>
+          <div class="slide-footer">
+            <span>Слайд 3 из 8</span>
+            <div class="arrows">
+              <div class="arr">←</div>
+              <div class="arr next">→</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-label">
+      <h3>A — Полноэкранный слайд</h3>
+      <p>Контент занимает весь экран. Переход стрелками. Как в Keynote / PDF — один слайд за раз.</p>
+    </div>
+  </div>
+
+  <!-- B: Steps sidebar + content -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)" style="position:relative">
+    <div class="letter">B</div>
+    <div class="m">
+      <div class="steps-shell">
+        <div class="steps-left">
+          <div class="logo">Unit</div>
+          <div class="nav active">🏠 Главная</div>
+          <div class="nav">📖 Курсы</div>
+          <div class="nav">👤 Профиль</div>
+        </div>
+        <div class="steps-mid">
+          <div class="section-title">День 1</div>
+          <div class="step-item"><div class="step-dot done">✓</div><span class="step-text">Приветствие</span></div>
+          <div class="step-item"><div class="step-dot done">✓</div><span class="step-text">Команда</span></div>
+          <div class="step-item"><div class="step-dot active"></div><span class="step-text active">Знакомство с UnitPay</span></div>
+          <div class="step-item"><div class="step-dot"></div><span class="step-text">Путь платежа</span></div>
+          <div class="step-item"><div class="step-dot"></div><span class="step-text">Эквайринг</span></div>
+          <div class="step-item"><div class="step-dot"></div><span class="step-text">Неттинг</span></div>
+        </div>
+        <div class="steps-right">
+          <div class="steps-right-top">Как устроена команда UnitPay</div>
+          <div class="steps-right-body">
+            <div class="tab-row">
+              <div class="tab active">Управление</div>
+              <div class="tab">Разработка</div>
+              <div class="tab">Менеджмент</div>
+            </div>
+            <div class="mini-person">
+              <div class="mini-avatar"></div>
+              <div class="mini-info"><div class="name">Дмитрий Козлов</div><div class="role">CEO — управляет продуктом</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-label">
+      <h3>B — Список шагов + контент</h3>
+      <p>Слева шаги урока, справа содержимое. Видно весь прогресс. Как у Udemy / Stepik.</p>
+    </div>
+  </div>
+
+</div>
