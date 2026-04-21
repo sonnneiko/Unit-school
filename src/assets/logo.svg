@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <!-- Cat ears -->
+  <path d="M6 16 L6 5 L15 13 Z" fill="#22c55e" rx="1"/>
+  <path d="M34 16 L34 5 L25 13 Z" fill="#22c55e"/>
+  <!-- Inner ear accent -->
+  <path d="M8 14 L8 8 L13 13 Z" fill="#16a34a"/>
+  <path d="M32 14 L32 8 L27 13 Z" fill="#16a34a"/>
+  <!-- U body -->
+  <path d="M7 13 L7 27 Q7 35 20 35 Q33 35 33 27 L33 13 L27 13 L27 27 Q27 29.5 20 29.5 Q13 29.5 13 27 L13 13 Z" fill="#22c55e"/>
+</svg>

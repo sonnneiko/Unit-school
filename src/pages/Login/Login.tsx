@@ -1,6 +1,8 @@
-import { useState, FormEvent } from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import logo from '../../assets/logo.svg'
 import styles from './Login.module.css'
 
 export function LoginPage() {
@@ -29,8 +31,8 @@ export function LoginPage() {
     <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.logo}>
-          <span className={styles.cat}>🐱</span>
-          <span className={styles.brand}>Unit School</span>
+          <img src={logo} alt="UnitSchool" className={styles.catImg} />
+          <span className={styles.brand}>UnitSchool</span>
         </div>
         <h1 className={styles.title}>Добро пожаловать!</h1>
         <p className={styles.subtitle}>Войдите в аккаунт чтобы начать обучение</p>
