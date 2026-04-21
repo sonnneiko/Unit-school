@@ -7,6 +7,7 @@ export interface User {
   role: 'user' | 'admin'
   progress: Record<string, number> // lessonId → currentSlideIndex (0-based)
   lastActive?: string // ISO date string, e.g. "2026-04-20"
+  photo?: string // base64 data URL from FileReader.readAsDataURL
 }
 
 export interface Lesson {
