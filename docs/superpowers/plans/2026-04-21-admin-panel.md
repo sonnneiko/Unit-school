@@ -511,41 +511,8 @@ git commit -m "feat: add LessonsContext with togglePublished"
 - Modify: `src/test/routes.test.tsx`
 - Modify: `src/test/LessonCard.test.tsx`
 - Modify: `src/test/SlideNav.test.tsx`
-- Create: `src/test/utils.tsx`
 
-- [ ] **Step 1: Create test helper**
-
-Create `src/test/utils.tsx` — a single `renderWithProviders` helper that wraps all three providers:
-
-```tsx
-import { render } from '@testing-library/react'
-import type { RenderOptions } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
-import { UsersProvider } from '../context/UsersContext'
-import { LessonsProvider } from '../context/LessonsContext'
-import { AuthProvider } from '../context/AuthContext'
-
-export function renderWithProviders(
-  ui: React.ReactElement,
-  options?: RenderOptions & { initialPath?: string }
-) {
-  const { initialPath = '/', ...rest } = options ?? {}
-  return render(
-    <UsersProvider>
-      <LessonsProvider>
-        <AuthProvider>
-          <MemoryRouter initialEntries={[initialPath]}>
-            {ui}
-          </MemoryRouter>
-        </AuthProvider>
-      </LessonsProvider>
-    </UsersProvider>,
-    rest
-  )
-}
-```
-
-- [ ] **Step 2: Refactor AuthContext to use UsersContext**
+- [ ] **Step 1: Refactor AuthContext to use UsersContext**
 
 Replace `src/context/AuthContext.tsx` with the following (key change: `login` reads from `useUsers()` instead of the frozen `mockUsers`/`mockPasswords` constants):
 
@@ -884,7 +851,7 @@ Expected: all passing.
 - [ ] **Step 8: Commit**
 
 ```bash
-git add src/context/AuthContext.tsx src/test/utils.tsx src/test/AuthContext.test.tsx src/test/Dashboard.test.tsx src/test/routes.test.tsx src/test/LessonCard.test.tsx src/test/SlideNav.test.tsx
+git add src/context/AuthContext.tsx src/test/AuthContext.test.tsx src/test/Dashboard.test.tsx src/test/routes.test.tsx src/test/LessonCard.test.tsx src/test/SlideNav.test.tsx
 git commit -m "feat: refactor AuthContext to read from UsersContext; update tests"
 ```
 
@@ -1332,18 +1299,18 @@ export function SettingsModal({ user, onClose }: Props) {
         <div className={styles.title}>Настройки пользователя</div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Email</label>
-          <input className={styles.input} value={email} onChange={e => setEmail(e.target.value)} />
+          <label className={styles.label} htmlFor="settings-email">Email</label>
+          <input id="settings-email" className={styles.input} value={email} onChange={e => setEmail(e.target.value)} />
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Новый пароль</label>
-          <input className={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Оставьте пустым, чтобы не менять" />
+          <label className={styles.label} htmlFor="settings-password">Новый пароль</label>
+          <input id="settings-password" className={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Оставьте пустым, чтобы не менять" />
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Роль</label>
-          <select className={styles.select} value={role} onChange={e => setRole(e.target.value as 'user' | 'admin')}>
+          <label className={styles.label} htmlFor="settings-role">Роль</label>
+          <select id="settings-role" className={styles.select} value={role} onChange={e => setRole(e.target.value as 'user' | 'admin')}>
             <option value="user">Сотрудник</option>
             <option value="admin">Администратор</option>
           </select>
@@ -2174,7 +2141,7 @@ describe('CoursesListPage', () => {
     const publishedBtn = screen.getByText('Опубликован')
     await userEvent.click(publishedBtn)
     expect(screen.queryByText('Опубликован')).not.toBeInTheDocument()
-    expect(screen.getByText('Скрыт')).toBeInTheDocument()
+    expect(screen.getAllByText('Скрыт').length).toBe(2)
   })
 })
 ```
@@ -2523,12 +2490,11 @@ import styles from './CourseDetailPage.module.css'
 
 function slideSummary(slide: Slide): string {
   const c = slide.content as Record<string, unknown>
-  if (typeof c.title === 'string') return c.title
+  if (Array.isArray(c.tabs)) return (c.tabs as Array<{label:string}>).map(t => t.label).join(', ')
+  if (Array.isArray(c.sections)) return (c.sections as Array<{title:string}>)[0]?.title ?? '—'
+  if (Array.isArray(c.nodes)) return (c.nodes as Array<{label:string}>)[0]?.label ?? '—'
   if (typeof c.heading === 'string') return c.heading
-  if (Array.isArray(c.tabs)) return `${(c.tabs as Array<{label:string}>).map(t => t.label).join(', ')}`
-  if (Array.isArray(c.sections)) return `${(c.sections as Array<{title:string}>)[0]?.title ?? ''}`
-  if (Array.isArray(c.nodes)) return `${(c.nodes as Array<{label:string}>)[0]?.label ?? ''}`
-  if (typeof c.message === 'string') return c.message
+  if (typeof c.title === 'string') return c.title
   return '—'
 }
 
