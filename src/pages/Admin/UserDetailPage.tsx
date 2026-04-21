@@ -1,16 +1,12 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
-import { useLessons } from '../../context/LessonsContext'
-import { calcProgress } from '../../components/slides/slideUtils'
-import { ProgressBar } from '../../components/ProgressBar/ProgressBar'
 import { SettingsModal } from '../../components/SettingsModal/SettingsModal'
 import styles from './UserDetailPage.module.css'
 
 export function UserDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { users } = useUsers()
-  const { lessons } = useLessons()
   const [showSettings, setShowSettings] = useState(false)
 
   const user = users.find(u => u.id === id)
@@ -23,8 +19,6 @@ export function UserDetailPage() {
       </div>
     )
   }
-
-  const publishedLessons = lessons.filter(l => l.published)
 
   return (
     <>
@@ -42,20 +36,6 @@ export function UserDetailPage() {
         </div>
         <button className={styles.gearBtn} onClick={() => setShowSettings(true)} aria-label="⚙">⚙</button>
       </div>
-
-      <div className={styles.sectionTitle}>Прогресс по курсам</div>
-      {publishedLessons.map(lesson => {
-        const slideIndex = user.progress[lesson.id] ?? 0
-        const percent = calcProgress(slideIndex, lesson.slides.length)
-        return (
-          <div key={lesson.id} className={styles.courseRow}>
-            <div className={styles.courseTitle}>{lesson.title}</div>
-            <div className={styles.progressWrap}>
-              <ProgressBar value={percent} />
-            </div>
-          </div>
-        )
-      })}
 
       {showSettings && (
         <SettingsModal user={user} onClose={() => setShowSettings(false)} />
