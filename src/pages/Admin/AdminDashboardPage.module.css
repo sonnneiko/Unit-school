@@ -1,0 +1,71 @@
+.page { padding: 40px 48px; max-width: 900px; }
+
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 32px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.statCard {
+  flex: 1;
+  background: var(--color-card-bg, #1e1e1e);
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius-md, 12px);
+  padding: 24px;
+}
+
+.statValue {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-brand);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding: 0 12px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 12px;
+  border-top: 1px solid #2a2a2a;
+  color: var(--color-text-primary);
+}
+
+.nameLink {
+  color: var(--color-brand);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nameLink:hover { text-decoration: underline; }
