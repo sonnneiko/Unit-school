@@ -1,15 +1,18 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
+import { UsersProvider } from '../context/UsersContext'
 import { AuthProvider } from '../context/AuthContext'
 import { PrivateRoute } from '../components/PrivateRoute'
 import { AdminRoute } from '../components/AdminRoute'
 
 function wrap(ui: React.ReactElement, initialPath = '/') {
   return render(
-    <AuthProvider>
-      <MemoryRouter initialEntries={[initialPath]}>{ui}</MemoryRouter>
-    </AuthProvider>
+    <UsersProvider>
+      <AuthProvider>
+        <MemoryRouter initialEntries={[initialPath]}>{ui}</MemoryRouter>
+      </AuthProvider>
+    </UsersProvider>
   )
 }
 

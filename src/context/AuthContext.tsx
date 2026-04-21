@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import type { ReactNode } from 'react'
 import type { User } from '../types'
-import { mockUsers, mockPasswords } from '../data/users'
+import { useUsers } from './UsersContext'
 
 const STORAGE_KEY = 'unit_school_user'
 
@@ -24,15 +24,16 @@ function loadUserFromStorage(): User | null {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const { users, passwords } = useUsers()
   const [user, setUser] = useState<User | null>(loadUserFromStorage)
 
   async function login(email: string, password: string) {
-    const expectedPassword = mockPasswords[email]
+    const found = users.find(u => u.email === email)
+    if (!found) throw new Error('Пользователь не найден')
+    const expectedPassword = passwords[found.id]
     if (!expectedPassword || expectedPassword !== password) {
       throw new Error('Неверный email или пароль')
     }
-    const found = mockUsers.find(u => u.email === email)
-    if (!found) throw new Error('Пользователь не найден')
     localStorage.setItem(STORAGE_KEY, JSON.stringify(found))
     setUser(found)
   }

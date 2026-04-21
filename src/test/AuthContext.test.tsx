@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { UsersProvider } from '../context/UsersContext'
 import { AuthProvider, useAuth } from '../context/AuthContext'
 
 function TestConsumer() {
@@ -18,41 +19,45 @@ function TestConsumer() {
   )
 }
 
+function wrap(ui: React.ReactElement) {
+  return render(<UsersProvider><AuthProvider>{ui}</AuthProvider></UsersProvider>)
+}
+
 beforeEach(() => { localStorage.clear() })
 
 describe('AuthContext', () => {
   it('starts with no user', () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     expect(screen.getByTestId('user').textContent).toBe('null')
   })
 
   it('logs in a regular user', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Login User'))
     expect(screen.getByTestId('user').textContent).toBe('user@unitpay.ru')
   })
 
   it('logs in an admin user', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Login Admin'))
     expect(screen.getByTestId('user').textContent).toBe('admin@unitpay.ru')
   })
 
   it('does not change user on bad credentials', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Bad Login'))
     expect(screen.getByTestId('user').textContent).toBe('null')
   })
 
   it('logs out and clears user', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Login User'))
     await userEvent.click(screen.getByText('Logout'))
     expect(screen.getByTestId('user').textContent).toBe('null')
   })
 
   it('persists session to localStorage on login', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Login User'))
     expect(localStorage.getItem('unit_school_user')).not.toBeNull()
   })
@@ -60,19 +65,19 @@ describe('AuthContext', () => {
   it('restores session from localStorage on mount', () => {
     const user = { id: 'user-1', name: 'Соня', email: 'user@unitpay.ru', role: 'user', progress: {} }
     localStorage.setItem('unit_school_user', JSON.stringify(user))
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     expect(screen.getByTestId('user').textContent).toBe('user@unitpay.ru')
   })
 
   it('updateProgress stores slideIndex for lessonId', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Login User'))
     await userEvent.click(screen.getByText('Update Progress'))
     expect(screen.getByTestId('progress').textContent).toBe('{"day-1":3}')
   })
 
   it('updateProgress persists to localStorage', async () => {
-    render(<AuthProvider><TestConsumer /></AuthProvider>)
+    wrap(<TestConsumer />)
     await userEvent.click(screen.getByText('Login User'))
     await userEvent.click(screen.getByText('Update Progress'))
     const stored = JSON.parse(localStorage.getItem('unit_school_user') ?? '{}')

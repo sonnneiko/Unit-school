@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import { UsersProvider } from '../context/UsersContext'
+import { LessonsProvider } from '../context/LessonsContext'
 import { AuthProvider } from '../context/AuthContext'
 import { DashboardPage } from '../pages/Dashboard/Dashboard'
 
@@ -11,11 +13,15 @@ function renderDashboard(user = {
 }) {
   localStorage.setItem('unit_school_user', JSON.stringify(user))
   return render(
-    <AuthProvider>
-      <MemoryRouter>
-        <DashboardPage />
-      </MemoryRouter>
-    </AuthProvider>
+    <UsersProvider>
+      <LessonsProvider>
+        <AuthProvider>
+          <MemoryRouter>
+            <DashboardPage />
+          </MemoryRouter>
+        </AuthProvider>
+      </LessonsProvider>
+    </UsersProvider>
   )
 }
 
@@ -37,7 +43,6 @@ describe('DashboardPage', () => {
 
   it('shows saved progress on Day 1', () => {
     renderDashboard({ id: 'user-1', name: 'Соня Алхазова', email: 'user@unitpay.ru', role: 'user', progress: { 'day-1': 4 } })
-    // Math.round(4/7*100) = 57
     expect(screen.getByText('57%')).toBeInTheDocument()
   })
 })
