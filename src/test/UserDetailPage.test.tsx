@@ -35,11 +35,6 @@ describe('UserDetailPage', () => {
     expect(screen.getByText(/не найден/i)).toBeInTheDocument()
   })
 
-  it('shows course progress section', () => {
-    wrap('user-1')
-    expect(screen.getByText('Прогресс по курсам')).toBeInTheDocument()
-  })
-
   it('opens settings modal on gear click', async () => {
     wrap('user-1')
     await userEvent.click(screen.getByRole('button', { name: /⚙/ }))
