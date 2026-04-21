@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { Lesson } from '../../types'
+import { calcProgress } from '../slides/slideUtils'
 import styles from './LessonCard.module.css'
 
 interface Props {
@@ -7,13 +8,8 @@ interface Props {
   progress: number // currentSlideIndex (0-based)
 }
 
-function calcPercent(slideIndex: number, totalSlides: number): number {
-  if (totalSlides <= 1) return 0
-  return Math.round((slideIndex / (totalSlides - 1)) * 100)
-}
-
 export function LessonCard({ lesson, progress }: Props) {
-  const percent = calcPercent(progress, lesson.slides.length)
+  const percent = calcProgress(progress, lesson.slides.length)
 
   if (!lesson.published) {
     return (
