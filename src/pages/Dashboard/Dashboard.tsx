@@ -1,10 +1,11 @@
 import { useAuth } from '../../context/AuthContext'
-import { mockLessons } from '../../data/lessons'
+import { useLessons } from '../../context/LessonsContext'
 import { LessonCard } from '../../components/LessonCard/LessonCard'
 import styles from './Dashboard.module.css'
 
 export function DashboardPage() {
   const { user } = useAuth()
+  const { lessons } = useLessons()
   const progress = user?.progress ?? {}
 
   return (
@@ -14,7 +15,7 @@ export function DashboardPage() {
         <p className={styles.subtitle}>Продолжай обучение — каждый шаг важен</p>
       </header>
       <section className={styles.grid}>
-        {mockLessons.map(lesson => (
+        {lessons.map(lesson => (
           <LessonCard
             key={lesson.id}
             lesson={lesson}
