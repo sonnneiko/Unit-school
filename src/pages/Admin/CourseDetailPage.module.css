@@ -1,0 +1,98 @@
+.header { margin-bottom: 28px; }
+
+.title { font-size: 24px; font-weight: 700; }
+
+.meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.statusOn {
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
+  border: 1px solid var(--color-brand);
+}
+
+.statusOff {
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  background: var(--color-locked-bg);
+  color: var(--color-locked);
+  border: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary);
+  margin: 28px 0 12px;
+}
+
+.slideItem {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+.slideType {
+  font-weight: 600;
+  min-width: 100px;
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.table th {
+  background: var(--color-sidebar-bg);
+  color: #fff;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.table td {
+  padding: 10px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table tr:last-child td { border-bottom: none; }
+
+.progressCell { min-width: 180px; }
+
+.notFound {
+  color: var(--color-text-secondary);
+  padding: 40px 0;
+}
+
+.backLink { color: var(--color-brand); text-decoration: none; }
