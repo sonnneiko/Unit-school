@@ -5,7 +5,9 @@ import { AuthProvider } from './context/AuthContext'
 import { PrivateRoute } from './components/PrivateRoute'
 import { AdminRoute } from './components/AdminRoute'
 import { AppLayout } from './components/AppLayout'
-import { AdminLayout } from './pages/Admin/AdminLayout'
+import { AdminAppLayout } from './components/AdminAppLayout/AdminAppLayout'
+import { AdminDashboardPage } from './pages/Admin/AdminDashboardPage'
+import { AdminProgressPage } from './pages/Admin/AdminProgressPage'
 import { LoginPage } from './pages/Login/Login'
 import { DashboardPage } from './pages/Dashboard/Dashboard'
 import { LessonPage } from './pages/Lesson/Lesson'
@@ -38,15 +40,17 @@ export default function App() {
                   <Route path="/courses" element={<PlaceholderPage title="Курсы" />} />
                   <Route path="/progress" element={<PlaceholderPage title="Прогресс" />} />
                   <Route path="/profile" element={<PlaceholderPage title="Профиль" />} />
-                  <Route element={<AdminRoute />}>
-                    <Route path="/admin" element={<AdminLayout />}>
-                      <Route index element={<Navigate to="/admin/users" replace />} />
-                      <Route path="users" element={<UsersListPage />} />
-                      <Route path="users/new" element={<NewUserPage />} />
-                      <Route path="users/:id" element={<UserDetailPage />} />
-                      <Route path="courses" element={<CoursesListPage />} />
-                      <Route path="courses/:id" element={<CourseDetailPage />} />
-                    </Route>
+                </Route>
+                <Route element={<AdminRoute />}>
+                  <Route element={<AdminAppLayout />}>
+                    <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+                    <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+                    <Route path="/admin/users" element={<UsersListPage />} />
+                    <Route path="/admin/users/new" element={<NewUserPage />} />
+                    <Route path="/admin/users/:id" element={<UserDetailPage />} />
+                    <Route path="/admin/courses" element={<CoursesListPage />} />
+                    <Route path="/admin/courses/:id" element={<CourseDetailPage />} />
+                    <Route path="/admin/progress" element={<AdminProgressPage />} />
                   </Route>
                 </Route>
               </Route>
