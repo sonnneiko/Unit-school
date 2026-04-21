@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import logo from '../../assets/logo.svg'
 import styles from './Sidebar.module.css'
 
 const NAV_ITEMS = [
@@ -22,8 +23,8 @@ export function Sidebar() {
     <aside className={styles.sidebar}>
       <div className={styles.top}>
         <div className={styles.logo}>
-          <span className={styles.cat}>🐱</span>
-          <span className={styles.logoText}>Unit School</span>
+          <img src={logo} alt="UnitSchool" className={styles.logoImg} />
+          <span className={styles.logoText}>UnitSchool</span>
         </div>
         <nav className={styles.nav}>
           {NAV_ITEMS.map(item => (
