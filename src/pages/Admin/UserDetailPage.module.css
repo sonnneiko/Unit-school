@@ -48,31 +48,6 @@
 }
 .gearBtn:hover { color: var(--color-text-primary); }
 
-.sectionTitle {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--color-text-secondary);
-  margin-bottom: 14px;
-}
-
-.courseRow {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.courseTitle {
-  font-size: 14px;
-  font-weight: 500;
-  width: 200px;
-  flex-shrink: 0;
-}
-
-.progressWrap { flex: 1; }
-
 .notFound {
   color: var(--color-text-secondary);
   padding: 40px 0;
