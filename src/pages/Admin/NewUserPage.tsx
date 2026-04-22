@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
+import type { User } from '../../types'
 import styles from './NewUserPage.module.css'
 
 export function NewUserPage() {
@@ -11,7 +12,7 @@ export function NewUserPage() {
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState<'user' | 'admin'>('user')
+  const [role, setRole] = useState<User['role']>('user')
   const [photo, setPhoto] = useState<string | undefined>()
 
   function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -27,6 +28,8 @@ export function NewUserPage() {
       {
         id: crypto.randomUUID(),
         name: `${firstName} ${lastName}`.trim(),
+        firstName,
+        lastName,
         email,
         role,
         progress: {},
@@ -68,9 +71,13 @@ export function NewUserPage() {
 
         <div className={styles.field}>
           <label className={styles.label} htmlFor="role">Роль</label>
-          <select id="role" className={styles.select} value={role} onChange={e => setRole(e.target.value as 'user' | 'admin')}>
+          <select id="role" className={styles.select} value={role} onChange={e => setRole(e.target.value as User['role'])}>
             <option value="user">Сотрудник</option>
-            <option value="admin">Администратор</option>
+            <option value="support">Саппорт</option>
+            <option value="security">Служба безопасности</option>
+            <option value="developer">Разработчик</option>
+            <option value="account_manager">Аккаунт менеджер</option>
+            <option value="manager">Менеджер</option>
           </select>
         </div>
 

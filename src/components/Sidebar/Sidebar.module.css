@@ -1,6 +1,7 @@
 .sidebar {
-  width: var(--color-sidebar-width);
-  background: var(--color-sidebar-bg);
+  width: var(--color-sidebar-width, 220px);
+  background: var(--adm-sidebar-bg, var(--color-sidebar-bg));
+  border-right: 1px solid var(--adm-sidebar-border, transparent);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -25,7 +26,7 @@
   font-family: 'IgraSans', sans-serif;
   font-size: 18px;
   font-weight: normal;
-  color: #fff;
+  color: var(--adm-text-primary, #fff);
   letter-spacing: -0.3px;
   line-height: 1;
 }
@@ -36,29 +37,36 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-radius: var(--radius-sm);
   font-size: 14px;
-  color: var(--color-sidebar-text);
+  color: var(--adm-nav-text, var(--color-sidebar-text));
   transition: background .15s, color .15s;
 }
 
 .navItem:hover {
-  background: var(--color-sidebar-hover-bg);
-  color: #fff;
+  background: var(--adm-nav-active-bg, var(--color-sidebar-hover-bg));
+  color: var(--adm-nav-active-text, #fff);
 }
 
 .navItem.active {
-  background: var(--color-sidebar-active-bg);
-  color: var(--color-sidebar-active-text);
+  background: var(--adm-nav-active-bg, var(--color-sidebar-active-bg));
+  color: var(--adm-nav-active-text, var(--color-sidebar-active-text));
   font-weight: 600;
 }
 
-.icon { font-size: 16px; width: 20px; text-align: center; }
+.icon {
+  font-size: 15px;
+  width: 20px;
+  text-align: center;
+  color: var(--adm-nav-icon, inherit);
+}
+
+.navItem.active .icon { color: var(--adm-nav-active-icon, inherit); }
 
 .bottom {
   padding: 16px 12px;
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid var(--adm-sidebar-border, #2a2a2a);
 }
 
 .userInfo { margin-bottom: 10px; }
@@ -66,12 +74,12 @@
 .userName {
   font-size: 13px;
   font-weight: 600;
-  color: #fff;
+  color: var(--adm-text-primary, #fff);
 }
 
 .userEmail {
   font-size: 11px;
-  color: var(--color-sidebar-text);
+  color: var(--adm-text-muted, var(--color-sidebar-text));
   margin-top: 2px;
 }
 
@@ -80,12 +88,12 @@
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   font-size: 13px;
-  color: var(--color-sidebar-text);
+  color: var(--adm-text-muted, var(--color-sidebar-text));
   text-align: left;
   transition: background .15s, color .15s;
 }
 
 .logoutBtn:hover {
-  background: var(--color-sidebar-hover-bg);
-  color: #fff;
+  background: var(--adm-nav-active-bg, var(--color-sidebar-hover-bg));
+  color: var(--adm-nav-active-text, #fff);
 }

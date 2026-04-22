@@ -1,70 +1,79 @@
-.page { padding: 40px 48px; max-width: 900px; }
+.page { padding: 28px 32px; max-width: 1000px; }
 
 .heading {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 32px;
+  color: var(--adm-text-primary);
+  margin-bottom: 20px;
 }
 
 .statsRow {
   display: flex;
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
 .statCard {
   flex: 1;
-  background: var(--color-card-bg, #1e1e1e);
-  border: 1px solid #2a2a2a;
-  border-radius: var(--radius-md, 12px);
-  padding: 24px;
+  background: var(--adm-card-bg);
+  border: 1px solid var(--adm-card-border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: var(--adm-card-shadow);
 }
 
 .statValue {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
-  color: var(--color-brand);
+  color: var(--adm-text-primary);
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .statLabel {
-  font-size: 13px;
-  color: var(--color-text-secondary);
+  font-size: 12px;
+  color: var(--adm-text-muted);
 }
 
 .sectionTitle {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: 16px;
+  color: var(--adm-text-primary);
+  margin-bottom: 10px;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  background: var(--adm-card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--adm-card-border);
   font-size: 14px;
 }
 
 .table th {
   text-align: left;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  color: var(--color-text-secondary);
-  padding: 0 12px 10px;
+  color: var(--adm-text-muted);
+  padding: 11px 16px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  background: var(--adm-table-header-bg);
+  border-bottom: 1px solid var(--adm-card-border);
 }
 
 .table td {
-  padding: 12px;
-  border-top: 1px solid #2a2a2a;
-  color: var(--color-text-primary);
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--adm-table-row-border);
+  color: var(--adm-text-secondary);
 }
 
+.table tr:last-child td { border-bottom: none; }
+
 .nameLink {
-  color: var(--color-brand);
+  color: var(--adm-text-primary);
   text-decoration: none;
   font-weight: 500;
 }

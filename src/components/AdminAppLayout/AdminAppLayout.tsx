@@ -4,9 +4,9 @@ import styles from '../AppLayout.module.css'
 
 export function AdminAppLayout() {
   return (
-    <div className={styles.layout}>
+    <div className={`${styles.layout} ${styles.adminLayout}`}>
       <AdminSidebar />
-      <main className={styles.main}>
+      <main className={styles.adminMain}>
         <Outlet />
       </main>
     </div>

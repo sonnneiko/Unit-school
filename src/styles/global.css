@@ -54,3 +54,31 @@ html, body, #root {
 
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+/* Admin panel theme — scoped to avoid affecting user-facing pages */
+.adminLayout {
+  --adm-sidebar-bg: #ffffff;
+  --adm-sidebar-border: #e5e7eb;
+  --adm-nav-active-bg: #f3f4f6;
+  --adm-nav-text: #6b7280;
+  --adm-nav-active-text: #111827;
+  --adm-nav-icon: #9ca3af;
+  --adm-nav-active-icon: #374151;
+  --adm-content-bg: #f9fafb;
+  --adm-card-bg: #ffffff;
+  --adm-card-border: #e5e7eb;
+  --adm-card-shadow: 0 1px 3px rgba(0,0,0,.05);
+  --adm-text-primary: #111827;
+  --adm-text-secondary: #374151;
+  --adm-text-muted: #9ca3af;
+  --adm-separator: #f3f4f6;
+  --adm-btn-bg: #111827;
+  --adm-btn-color: #ffffff;
+  --adm-progress-track: #e5e7eb;
+  --adm-progress-fill: #374151;
+  --adm-badge-bg: #f3f4f6;
+  --adm-badge-color: #6b7280;
+  --adm-badge-border: #e5e7eb;
+  --adm-table-header-bg: #fafafa;
+  --adm-table-row-border: #f3f4f6;
+}

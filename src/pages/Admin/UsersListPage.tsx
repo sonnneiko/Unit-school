@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
-import { SettingsModal } from '../../components/SettingsModal/SettingsModal'
-import type { User } from '../../types'
+import { roleLabel } from '../../utils/roleLabel'
 import styles from './UsersListPage.module.css'
 
 export function UsersListPage() {
   const { users } = useUsers()
-  const [editingUser, setEditingUser] = useState<User | null>(null)
 
   const employees = users.filter(u => u.role !== 'admin')
 
@@ -21,16 +18,22 @@ export function UsersListPage() {
         <table className={styles.table}>
           <thead>
             <tr>
+              <th></th>
               <th>Имя</th>
               <th>Email</th>
               <th>Роль</th>
               <th>Последняя активность</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
             {employees.map(user => (
               <tr key={user.id}>
+                <td className={styles.avatarCell}>
+                  {user.photo
+                    ? <img src={user.photo} alt={user.name} className={styles.avatar} />
+                    : <div className={styles.avatarPlaceholder}>👤</div>
+                  }
+                </td>
                 <td>
                   <Link to={`/admin/users/${user.id}`} className={styles.nameLink}>
                     {user.name}
@@ -39,19 +42,10 @@ export function UsersListPage() {
                 <td>{user.email}</td>
                 <td>
                   <span className={`${styles.badge} ${user.role === 'admin' ? styles.badgeAdmin : ''}`}>
-                    {user.role === 'admin' ? 'Администратор' : 'Сотрудник'}
+                    {roleLabel(user.role)}
                   </span>
                 </td>
                 <td>{user.lastActive ?? '—'}</td>
-                <td>
-                  <button
-                    className={styles.gearBtn}
-                    onClick={() => setEditingUser(user)}
-                    aria-label="⚙"
-                  >
-                    ⚙
-                  </button>
-                </td>
               </tr>
             ))}
           </tbody>
@@ -62,9 +56,6 @@ export function UsersListPage() {
         + Добавить сотрудника
       </Link>
 
-      {editingUser && (
-        <SettingsModal user={editingUser} onClose={() => setEditingUser(null)} />
-      )}
     </>
   )
 }
