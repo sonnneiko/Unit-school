@@ -9,7 +9,7 @@ import { DashboardPage } from '../pages/Dashboard/Dashboard'
 beforeEach(() => localStorage.clear())
 
 function renderDashboard(user = {
-  id: 'user-1', name: 'Соня Алхазова', email: 'user@unitpay.ru', role: 'user', progress: {}
+  id: 'user-1', name: 'Соня Алхазова', email: 'user@unitpay.ru', role: 'user', progress: {}, streak: 0
 }) {
   localStorage.setItem('unit_school_user', JSON.stringify(user))
   return render(
@@ -25,24 +25,46 @@ function renderDashboard(user = {
   )
 }
 
-describe('DashboardPage', () => {
-  it('shows greeting with first name', () => {
+describe('DashboardPage — empty state', () => {
+  it('shows cat banner greeting', () => {
     renderDashboard()
-    expect(screen.getByText(/Привет, Соня/)).toBeInTheDocument()
+    expect(screen.getByText(/Привет! Я Юнит/)).toBeInTheDocument()
   })
 
-  it('shows Day 1 lesson card', () => {
+  it('shows start button', () => {
     renderDashboard()
-    expect(screen.getByText('Знакомство с UnitPay')).toBeInTheDocument()
+    expect(screen.getByText('Начать обучение →')).toBeInTheDocument()
   })
 
-  it('shows Day 2 as locked', () => {
+  it('shows unpublished lesson as Скоро', () => {
     renderDashboard()
     expect(screen.getByText('Скоро')).toBeInTheDocument()
   })
+})
 
-  it('shows saved progress on Day 1', () => {
-    renderDashboard({ id: 'user-1', name: 'Соня Алхазова', email: 'user@unitpay.ru', role: 'user', progress: { 'day-1': 4 } })
-    expect(screen.getByText('57%')).toBeInTheDocument()
+describe('DashboardPage — in-progress state', () => {
+  const userInProgress = {
+    id: 'user-1', name: 'Соня Алхазова', email: 'user@unitpay.ru', role: 'user',
+    progress: { 'day-1': 2 }, streak: 1, lastStreakDate: '2026-04-23'
+  }
+
+  it('shows continue hero', () => {
+    renderDashboard(userInProgress)
+    expect(screen.getByText('Продолжи с места, где остановился')).toBeInTheDocument()
+  })
+
+  it('shows growth path', () => {
+    renderDashboard(userInProgress)
+    expect(screen.getByText('Твой путь развития')).toBeInTheDocument()
+  })
+
+  it('shows achievements section', () => {
+    renderDashboard(userInProgress)
+    expect(screen.getByText('Последние достижения')).toBeInTheDocument()
+  })
+
+  it('shows first_slide achievement when progress exists', () => {
+    renderDashboard(userInProgress)
+    expect(screen.getByText('Поставил лапку в UnitSchool')).toBeInTheDocument()
   })
 })
