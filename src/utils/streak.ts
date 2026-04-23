@@ -5,7 +5,9 @@ export function localToday(): string {
 }
 
 function localYesterday(): string {
-  return new Date(Date.now() - 86400000).toLocaleDateString('sv')
+  const d = new Date()
+  d.setDate(d.getDate() - 1)
+  return d.toLocaleDateString('sv')
 }
 
 export function updateStreak(user: User): Partial<User> {

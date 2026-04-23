@@ -11,7 +11,7 @@ export interface Achievement {
 export function computeAchievements(user: User, lessons: Lesson[]): Achievement[] {
   const result: Achievement[] = []
   const hasAnyProgress = Object.values(user.progress).some(v => v >= 1)
-  const anyComplete = lessons.some(l => isComplete(l, user))
+  const anyComplete = lessons.some(l => l.published && isComplete(l, user))
   const level = computeLevel(user, lessons)
 
   if (hasAnyProgress) {
@@ -24,7 +24,7 @@ export function computeAchievements(user: User, lessons: Lesson[]): Achievement[
     result.push({ key: 'streak_ongoing', name: `Лапка за лапкой · день ${user.streak}`, icon: '📅', unlockedAt: user.lastStreakDate })
   }
   if (level !== 'novice') {
-    result.push({ key: 'level_up', name: 'Открыл новый уровень', icon: '⬆️' })
+    result.push({ key: 'level_up', name: 'Открыл новый уровень', icon: '⬆️', unlockedAt: user.lastStreakDate })
   }
   if (level === 'middle' || level === 'senior') {
     result.push({ key: 'middle_am', name: 'Без паники, я аккаунт', icon: '💼' })
