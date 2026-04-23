@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
@@ -139,11 +138,7 @@ export function AdminDashboardPage() {
         <tbody>
           {recentEmployees.map(user => (
             <tr key={user.id}>
-              <td>
-                <Link to={`/admin/users/${user.id}`} className={styles.nameLink}>
-                  {user.name}
-                </Link>
-              </td>
+              <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.lastActive ?? '—'}</td>
             </tr>
