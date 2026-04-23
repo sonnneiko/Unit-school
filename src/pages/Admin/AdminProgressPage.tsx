@@ -23,48 +23,54 @@ export function AdminProgressPage() {
   return (
     <div className={styles.page}>
       <h1 className={styles.heading}>Прогресс</h1>
-      <div className={styles.cards}>
-        {employees.map(user => {
-          const progresses = publishedLessons.map(lesson => ({
-            lesson,
-            pct: calcProgress(user.progress[lesson.id] ?? 0, lesson.slides.length),
-          }))
-          const avg = progresses.length === 0 ? 0 : Math.round(
-            progresses.reduce((s, p) => s + p.pct, 0) / progresses.length
-          )
-          const initials = user.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Сотрудник</th>
+            <th>Пройдено курсов</th>
+            <th>Средний прогресс</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map(user => {
+            const completed = publishedLessons.filter(l =>
+              calcProgress(user.progress[l.id] ?? 0, l.slides.length) === 100
+            ).length
+            const avg = publishedLessons.length === 0 ? 0 : Math.round(
+              publishedLessons.reduce((s, l) =>
+                s + calcProgress(user.progress[l.id] ?? 0, l.slides.length), 0
+              ) / publishedLessons.length
+            )
+            const initials = user.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
 
-          return (
-            <div key={user.id} className={styles.card}>
-              <div className={styles.cardHeader}>
-                <div className={styles.headerLeft}>
+            return (
+              <tr key={user.id}>
+                <td className={styles.avatarCell}>
                   <div className={styles.avatar}>{initials}</div>
-                  <Link to={`/admin/users/${user.id}`} className={styles.nameLink}>
+                </td>
+                <td>
+                  <Link to={`/admin/progress/${user.id}`} className={styles.nameLink}>
                     {user.name}
                   </Link>
-                </div>
-                <span className={styles.avg}>Среднее: {avg}%</span>
-              </div>
-
-              {progresses.length === 0 ? (
-                <p className={styles.noCourses}>Нет активных курсов</p>
-              ) : (
-                <div className={styles.courseList}>
-                  {progresses.map(({ lesson, pct }) => (
-                    <div key={lesson.id} className={styles.courseRow}>
-                      <span className={styles.courseTitle}>{lesson.title}</span>
-                      <div className={styles.barBg}>
-                        <div className={styles.barFill} style={{ width: `${pct}%` }} />
-                      </div>
-                      <span className={styles.pct}>{pct}%</span>
+                </td>
+                <td className={styles.coursesCell}>
+                  <span className={styles.courseCount}>{completed}</span>
+                  <span className={styles.courseTotal}> из {publishedLessons.length}</span>
+                </td>
+                <td>
+                  <div className={styles.avgRow}>
+                    <div className={styles.barBg}>
+                      <div className={styles.barFill} style={{ width: `${avg}%` }} />
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )
-        })}
-      </div>
+                    <span className={styles.pct}>{avg}%</span>
+                  </div>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }

@@ -18,6 +18,7 @@ import { NewUserPage } from './pages/Admin/NewUserPage'
 import { UserDetailPage } from './pages/Admin/UserDetailPage'
 import { CoursesListPage } from './pages/Admin/CoursesListPage'
 import { CourseDetailPage } from './pages/Admin/CourseDetailPage'
+import { EmployeeProgressPage } from './pages/Admin/EmployeeProgressPage'
 import { useAuth } from './context/AuthContext'
 
 function LoginRoute() {
@@ -51,6 +52,7 @@ export default function App() {
                     <Route path="/admin/courses" element={<CoursesListPage />} />
                     <Route path="/admin/courses/:id" element={<CourseDetailPage />} />
                     <Route path="/admin/progress" element={<AdminProgressPage />} />
+                    <Route path="/admin/progress/:id" element={<EmployeeProgressPage />} />
                   </Route>
                 </Route>
               </Route>
