@@ -4,10 +4,15 @@ export interface User {
   id: string
   name: string
   email: string
-  role: 'user' | 'admin'
+  role: 'user' | 'admin' | 'support' | 'account_manager' | 'security' | 'developer' | 'manager'
   progress: Record<string, number> // lessonId → currentSlideIndex (0-based)
   lastActive?: string // ISO date string, e.g. "2026-04-20"
   photo?: string // base64 data URL from FileReader.readAsDataURL
+  firstName?: string
+  lastName?: string
+  patronymic?: string
+  phone?: string
+  birthDate?: string
 }
 
 export interface Lesson {

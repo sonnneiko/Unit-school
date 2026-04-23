@@ -12,10 +12,19 @@ export function SettingsModal({ user, onClose }: Props) {
   const { updateUser, updatePassword } = useUsers()
   const [email, setEmail] = useState(user.email)
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState<'user' | 'admin'>(user.role)
+  const [role, setRole] = useState<User['role']>(user.role)
+  const [photo, setPhoto] = useState<string | undefined>(user.photo)
+
+  function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = () => setPhoto(reader.result as string)
+    reader.readAsDataURL(file)
+  }
 
   function handleSave() {
-    updateUser(user.id, { email, role })
+    updateUser(user.id, { email, role, photo })
     if (password) updatePassword(user.id, password)
     onClose()
   }
@@ -24,6 +33,17 @@ export function SettingsModal({ user, onClose }: Props) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>Настройки пользователя</div>
+
+        <div className={styles.photoRow}>
+          {photo
+            ? <img src={photo} alt="avatar" className={styles.avatarPreview} />
+            : <div className={styles.avatarPlaceholder}>👤</div>
+          }
+          <label className={styles.photoLabel}>
+            Изменить фото
+            <input type="file" accept="image/*" onChange={handlePhotoChange} className={styles.photoInput} />
+          </label>
+        </div>
 
         <div className={styles.field}>
           <label className={styles.label} htmlFor="settings-email">Email</label>
@@ -37,9 +57,13 @@ export function SettingsModal({ user, onClose }: Props) {
 
         <div className={styles.field}>
           <label className={styles.label} htmlFor="settings-role">Роль</label>
-          <select id="settings-role" className={styles.select} value={role} onChange={e => setRole(e.target.value as 'user' | 'admin')}>
+          <select id="settings-role" className={styles.select} value={role} onChange={e => setRole(e.target.value as User['role'])}>
             <option value="user">Сотрудник</option>
-            <option value="admin">Администратор</option>
+            <option value="support">Саппорт</option>
+            <option value="security">Служба безопасности</option>
+            <option value="developer">Разработчик</option>
+            <option value="account_manager">Аккаунт менеджер</option>
+            <option value="manager">Менеджер</option>
           </select>
         </div>
 

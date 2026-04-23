@@ -18,4 +18,5 @@
   overflow-y: auto;
   min-height: 100vh;
   background: var(--adm-content-bg, #f9fafb);
+  padding: 28px 32px;
 }

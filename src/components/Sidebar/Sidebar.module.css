@@ -23,11 +23,11 @@
 .logoImg { width: 32px; height: 32px; object-fit: contain; display: block; }
 
 .logoText {
-  font-family: 'IgraSans', sans-serif;
-  font-size: 18px;
-  font-weight: normal;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
   color: var(--adm-text-primary, #fff);
-  letter-spacing: -0.3px;
+  letter-spacing: -0.5px;
   line-height: 1;
 }
 
