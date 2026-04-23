@@ -7,16 +7,13 @@
   flex: 1;
   overflow-y: auto;
   min-height: 100vh;
-}
-
-.adminLayout {
-  /* Marker class — CSS variables defined in global.css .adminLayout */
+  background: var(--usr-content-bg);
 }
 
 .adminMain {
   flex: 1;
   overflow-y: auto;
   min-height: 100vh;
-  background: var(--adm-content-bg, #f9fafb);
+  background: var(--adm-content-bg);
   padding: 28px 32px;
 }

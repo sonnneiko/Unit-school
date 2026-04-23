@@ -1,7 +1,7 @@
 .sidebar {
   width: 220px;
-  background: var(--usr-sidebar-bg);
-  border-right: 1px solid var(--usr-sidebar-border);
+  background: var(--adm-sidebar-bg);
+  border-right: 1px solid var(--adm-sidebar-border);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -24,7 +24,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: 20px;
   font-weight: 800;
-  color: var(--usr-text-primary);
+  color: var(--adm-text-primary);
   letter-spacing: -0.5px;
   line-height: 1;
 }
@@ -38,18 +38,18 @@
   padding: 8px 10px;
   border-radius: var(--radius-sm);
   font-size: 14px;
-  color: var(--usr-nav-text);
+  color: var(--adm-nav-text);
   transition: background .15s, color .15s;
 }
 
 .navItem:hover {
-  background: var(--usr-nav-active-bg);
-  color: var(--usr-nav-active-text);
+  background: var(--adm-nav-active-bg);
+  color: var(--adm-nav-active-text);
 }
 
 .navItem.active {
-  background: var(--usr-nav-active-bg);
-  color: var(--usr-nav-active-text);
+  background: var(--adm-nav-active-bg);
+  color: var(--adm-nav-active-text);
   font-weight: 600;
 }
 
@@ -57,14 +57,14 @@
   font-size: 15px;
   width: 20px;
   text-align: center;
-  color: var(--usr-nav-icon);
+  color: var(--adm-nav-icon);
 }
 
-.navItem.active .icon { color: var(--usr-nav-active-icon); }
+.navItem.active .icon { color: var(--adm-nav-active-icon); }
 
 .bottom {
   padding: 16px 12px;
-  border-top: 1px solid var(--usr-sidebar-border);
+  border-top: 1px solid var(--adm-sidebar-border);
 }
 
 .userInfo { margin-bottom: 10px; }
@@ -72,12 +72,12 @@
 .userName {
   font-size: 13px;
   font-weight: 600;
-  color: var(--usr-text-primary);
+  color: var(--adm-text-primary);
 }
 
 .userEmail {
   font-size: 11px;
-  color: var(--usr-text-muted);
+  color: var(--adm-text-muted);
   margin-top: 2px;
 }
 
@@ -86,12 +86,12 @@
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   font-size: 13px;
-  color: var(--usr-text-muted);
+  color: var(--adm-text-muted);
   text-align: left;
   transition: background .15s, color .15s;
 }
 
 .logoutBtn:hover {
-  background: var(--usr-nav-active-bg);
-  color: var(--usr-nav-active-text);
+  background: var(--adm-nav-active-bg);
+  color: var(--adm-nav-active-text);
 }

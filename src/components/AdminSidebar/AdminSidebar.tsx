@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import styles from '../Sidebar/Sidebar.module.css'
+import styles from './AdminSidebar.module.css'
 
 const NAV_ITEMS = [
   { to: '/admin/dashboard', label: 'Главная',     icon: '🏠' },

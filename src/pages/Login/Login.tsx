@@ -18,8 +18,8 @@ export function LoginPage() {
     setError('')
     setLoading(true)
     try {
-      await login(email, password)
-      navigate('/')
+      const role = await login(email, password)
+      navigate(role === 'admin' ? '/admin' : '/')
     } catch {
       setError('Неверный email или пароль')
     } finally {
