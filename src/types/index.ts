@@ -1,5 +1,7 @@
 // src/types/index.ts
 
+export type Level = 'novice' | 'junior' | 'middle' | 'senior'
+
 export interface User {
   id: string
   name: string
@@ -13,6 +15,9 @@ export interface User {
   patronymic?: string
   phone?: string
   birthDate?: string
+  level?: Level // admin override; absent = computed
+  streak: number // active days in a row; 0 = never or reset
+  lastStreakDate?: string // YYYY-MM-DD local date of last streak activity
 }
 
 export interface Lesson {
