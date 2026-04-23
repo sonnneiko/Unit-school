@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom'
+import {
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts'
 import { useUsers } from '../../context/UsersContext'
 import { useLessons } from '../../context/LessonsContext'
 import { calcProgress } from '../../components/slides/slideUtils'
@@ -29,6 +32,30 @@ export function AdminDashboardPage() {
     })
     .slice(0, 5)
 
+  // Chart data: avg progress per course
+  const courseProgressData = publishedLessons.map(lesson => ({
+    name: lesson.title.length > 12 ? lesson.title.slice(0, 12) + '…' : lesson.title,
+    value: employees.length === 0 ? 0 : Math.round(
+      employees.reduce((s, u) => s + calcProgress(u.progress[lesson.id] ?? 0, lesson.slides.length), 0)
+      / employees.length
+    ),
+  }))
+
+  // Chart data: per-employee overall progress (sorted by lastActive)
+  const activityData = [...employees]
+    .sort((a, b) => {
+      if (!a.lastActive) return 1
+      if (!b.lastActive) return -1
+      return b.lastActive.localeCompare(a.lastActive)
+    })
+    .map(user => ({
+      name: user.name.split(' ')[0],
+      value: publishedLessons.length === 0 ? 0 : Math.round(
+        publishedLessons.reduce((s, l) => s + calcProgress(user.progress[l.id] ?? 0, l.slides.length), 0)
+        / publishedLessons.length
+      ),
+    }))
+
   return (
     <div className={styles.page}>
       <h1 className={styles.heading}>Главная</h1>
@@ -45,6 +72,58 @@ export function AdminDashboardPage() {
         <div className={styles.statCard}>
           <div className={styles.statValue}>{avgProgress}%</div>
           <div className={styles.statLabel}>Средний прогресс</div>
+        </div>
+      </div>
+
+      <div className={styles.chartsRow}>
+        <div className={styles.chartCard}>
+          <div className={styles.chartCardLabel}>Прогресс по курсам</div>
+          <div className={styles.chartCardValue}>{avgProgress}%</div>
+          <div className={styles.chartWrap}>
+            <ResponsiveContainer width="100%" height={130}>
+              <AreaChart data={courseProgressData} margin={{ top: 8, right: 4, left: -28, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="gradGreen" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#22c55e" stopOpacity={0.3} />
+                    <stop offset="100%" stopColor="#22c55e" stopOpacity={0.03} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid vertical={false} stroke="#f3f4f6" />
+                <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} tickFormatter={v => `${v}%`} />
+                <Tooltip
+                  contentStyle={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, fontSize: 12 }}
+                  formatter={(v: number) => [`${v}%`, 'Прогресс']}
+                />
+                <Area type="monotone" dataKey="value" stroke="#22c55e" strokeWidth={2} fill="url(#gradGreen)" dot={{ r: 3, fill: '#22c55e', strokeWidth: 0 }} activeDot={{ r: 4 }} />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className={styles.chartCard}>
+          <div className={styles.chartCardLabel}>Активность сотрудников</div>
+          <div className={styles.chartCardValue}>{activityData.filter(d => d.value > 0).length} из {employees.length}</div>
+          <div className={styles.chartWrap}>
+            <ResponsiveContainer width="100%" height={130}>
+              <AreaChart data={activityData} margin={{ top: 8, right: 4, left: -28, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="gradAmber" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#fbbf24" stopOpacity={0.3} />
+                    <stop offset="100%" stopColor="#fbbf24" stopOpacity={0.03} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid vertical={false} stroke="#f3f4f6" />
+                <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} tickFormatter={v => `${v}%`} />
+                <Tooltip
+                  contentStyle={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, fontSize: 12 }}
+                  formatter={(v: number) => [`${v}%`, 'Прогресс']}
+                />
+                <Area type="monotone" dataKey="value" stroke="#fbbf24" strokeWidth={2} fill="url(#gradAmber)" dot={{ r: 3, fill: '#fbbf24', strokeWidth: 0 }} activeDot={{ r: 4 }} />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
 
