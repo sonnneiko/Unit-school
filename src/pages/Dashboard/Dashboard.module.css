@@ -1,20 +1,242 @@
-.page { padding: 40px 48px; max-width: 1000px; }
-
-.header { margin-bottom: 36px; }
-
-.greeting {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 6px;
+.page {
+  padding: 32px 40px;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.subtitle {
+/* ── Hero banner (shared between empty + in-progress) ── */
+.hero {
+  background: var(--usr-card-bg);
+  border: 1px solid var(--usr-card-border);
+  border-left: 4px solid #597ef7;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: stretch;
+  min-height: 148px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContent {
+  padding: 22px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.heroTitle {
   font-size: 15px;
-  color: var(--color-text-secondary);
+  font-weight: 700;
+  color: var(--usr-text-primary);
+  line-height: 1.3;
 }
 
+.heroSub {
+  font-size: 12px;
+  color: var(--usr-text-muted);
+  line-height: 1.5;
+}
+
+.heroCat {
+  width: 150px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.heroCat img {
+  position: absolute;
+  bottom: -18px;
+  right: 4px;
+  height: 185px;
+  width: auto;
+  mix-blend-mode: multiply;
+}
+
+/* ── Level badge + hint row ── */
+.levelRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.levelBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #eef1fe;
+  border: 1px solid #c7d2fe;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #3d5bd9;
+  font-weight: 600;
+}
+
+.levelHint {
+  font-size: 11px;
+  color: var(--usr-text-muted);
+}
+
+/* ── Continue row (lesson + button) ── */
+.continueRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.continueInfo {
+  flex: 1;
+}
+
+.continueTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--usr-text-secondary);
+  margin-bottom: 5px;
+}
+
+.progressMeta {
+  font-size: 10px;
+  color: var(--usr-text-muted);
+  margin-top: 3px;
+}
+
+/* ── Congrats state ── */
+.congrats {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--usr-text-primary);
+}
+
+.congratsSub {
+  font-size: 12px;
+  color: var(--usr-text-muted);
+}
+
+/* ── Two-column grid ── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Generic card ── */
+.card {
+  background: var(--usr-card-bg);
+  border: 1px solid var(--usr-card-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+}
+
+.cardLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--usr-text-muted);
+  margin-bottom: 10px;
+}
+
+/* ── Course rows ── */
+.courseRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--usr-badge-bg);
+  gap: 8px;
+}
+
+.courseRow:last-child {
+  border-bottom: none;
+}
+
+.courseName {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--usr-text-primary);
+  margin-bottom: 3px;
+}
+
+.courseRowLocked {
+  opacity: 0.45;
+}
+
+/* ── Badges ── */
+.badgeBlue {
+  background: #eef1fe;
+  color: #3d5bd9;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeGray {
+  background: var(--usr-badge-bg);
+  color: var(--usr-text-muted);
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeGreen {
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── CTA button ── */
+.btn {
+  background: #597ef7;
+  color: #fff;
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ── Empty achievements ── */
+.emptyAchievements {
+  font-size: 12px;
+  color: var(--usr-text-muted);
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* ── Progress bar (inline, not using ProgressBar component) ── */
+.bar {
+  height: 4px;
+  background: var(--usr-card-border);
+  border-radius: 2px;
+}
+
+.barFill {
+  height: 4px;
+  background: #597ef7;
+  border-radius: 2px;
 }
