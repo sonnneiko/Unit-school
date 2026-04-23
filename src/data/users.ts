@@ -8,6 +8,7 @@ export const mockUsers: User[] = [
     role: 'user',
     progress: {},
     lastActive: '2026-04-20',
+    streak: 0,
   },
   {
     id: 'admin-1',
@@ -16,6 +17,7 @@ export const mockUsers: User[] = [
     role: 'admin',
     progress: {},
     lastActive: '2026-04-20',
+    streak: 0,
   },
   {
     id: 'mock-1',
@@ -26,6 +28,7 @@ export const mockUsers: User[] = [
     role: 'manager',
     progress: { 'day-1': 7 },
     lastActive: '2026-04-22',
+    streak: 0,
   },
   {
     id: 'mock-2',
@@ -36,6 +39,7 @@ export const mockUsers: User[] = [
     role: 'account_manager',
     progress: { 'day-1': 7 },
     lastActive: '2026-04-21',
+    streak: 0,
   },
   {
     id: 'mock-3',
@@ -46,6 +50,7 @@ export const mockUsers: User[] = [
     role: 'developer',
     progress: { 'day-1': 3 },
     lastActive: '2026-04-20',
+    streak: 0,
   },
   {
     id: 'mock-4',
@@ -56,6 +61,7 @@ export const mockUsers: User[] = [
     role: 'developer',
     progress: { 'day-1': 4 },
     lastActive: '2026-04-19',
+    streak: 0,
   },
   {
     id: 'mock-5',
@@ -66,6 +72,7 @@ export const mockUsers: User[] = [
     role: 'support',
     progress: {},
     lastActive: '2026-04-18',
+    streak: 0,
   },
   {
     id: 'mock-6',
@@ -76,6 +83,7 @@ export const mockUsers: User[] = [
     role: 'security',
     progress: {},
     lastActive: '2026-04-17',
+    streak: 0,
   },
 ]
 
