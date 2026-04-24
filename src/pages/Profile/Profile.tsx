@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
+import { useLessons } from '../../context/LessonsContext'
+import { computeLevel, LEVEL_LABELS, LEVEL_EMOJI } from '../../utils/level'
 import styles from './Profile.module.css'
 
 const ROLE_LABELS: Record<string, string> = {
@@ -7,7 +9,7 @@ const ROLE_LABELS: Record<string, string> = {
   admin: 'Администратор',
   manager: 'Менеджер',
   support: 'Поддержка',
-  account_manager: 'Аккаунт-менеджер',
+  account_manager: 'Аккаунт менеджер',
   security: 'Безопасность',
   developer: 'Разработчик',
 }
@@ -29,6 +31,7 @@ function parseName(user: { name: string; firstName?: string; lastName?: string; 
 
 export function ProfilePage() {
   const { user, updateProfile } = useAuth()
+  const { lessons } = useLessons()
   const [editing, setEditing] = useState(false)
 
   const parsed = user ? parseName(user) : { firstName: '', lastName: '', patronymic: '' }
@@ -85,6 +88,9 @@ export function ProfilePage() {
   }
 
   const initials = getInitials(user)
+  const level = computeLevel(user, lessons)
+  const levelLabel = LEVEL_LABELS[level]
+  const levelEmoji = LEVEL_EMOJI[level]
   const roleLabel = ROLE_LABELS[user.role] ?? user.role
   const displayName = [
     user.firstName ?? user.name.split(' ')[0],
@@ -105,7 +111,7 @@ export function ProfilePage() {
             }
           </div>
           <div className={styles.avatarName}>{displayName}</div>
-          <div className={styles.avatarRole}>{roleLabel}</div>
+          <div className={styles.avatarRole}>{levelEmoji} {levelLabel}</div>
           {editing && (
             <label className={styles.photoBtn}>
               Сменить фото
@@ -197,11 +203,21 @@ export function ProfilePage() {
           </div>
 
           <div className={styles.sectionTitle}>Должность</div>
-          <div className={styles.field}>
-            <div className={styles.label}>
-              Роль{editing && <span className={styles.lockIcon}>🔒</span>}
+          <div className={styles.row2}>
+            <div className={styles.field}>
+              <div className={styles.label}>
+                Должность{editing && <span className={styles.lockIcon}>🔒</span>}
+              </div>
+              <div className={`${styles.value} ${editing ? styles.valueLocked : ''}`}>{roleLabel}</div>
             </div>
-            <div className={`${styles.value} ${editing ? styles.valueLocked : ''}`}>{roleLabel}</div>
+            <div className={styles.field}>
+              <div className={styles.label}>
+                Уровень{editing && <span className={styles.lockIcon}>🔒</span>}
+              </div>
+              <div className={`${styles.value} ${editing ? styles.valueLocked : ''}`}>
+                {levelEmoji} {levelLabel}
+              </div>
+            </div>
           </div>
 
           <div className={styles.divider} />

@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
+import { useLessons } from '../../context/LessonsContext'
 import { roleLabel } from '../../utils/roleLabel'
+import { computeLevel, LEVEL_LABELS, LEVEL_EMOJI } from '../../utils/level'
 import styles from './UsersListPage.module.css'
 
 export function UsersListPage() {
   const { users } = useUsers()
+  const { lessons } = useLessons()
 
   const employees = users.filter(u => u.role !== 'admin')
 
@@ -21,12 +24,15 @@ export function UsersListPage() {
               <th></th>
               <th>Имя</th>
               <th>Email</th>
-              <th>Роль</th>
+              <th>Должность</th>
+              <th>Уровень</th>
               <th>Последняя активность</th>
             </tr>
           </thead>
           <tbody>
-            {employees.map(user => (
+            {employees.map(user => {
+              const level = computeLevel(user, lessons)
+              return (
               <tr key={user.id}>
                 <td className={styles.avatarCell}>
                   {user.photo
@@ -41,13 +47,19 @@ export function UsersListPage() {
                 </td>
                 <td>{user.email}</td>
                 <td>
-                  <span className={`${styles.badge} ${user.role === 'admin' ? styles.badgeAdmin : ''}`}>
+                  <span className={styles.badge}>
                     {roleLabel(user.role)}
+                  </span>
+                </td>
+                <td>
+                  <span className={styles.badge}>
+                    {LEVEL_EMOJI[level]} {LEVEL_LABELS[level]}
                   </span>
                 </td>
                 <td>{user.lastActive ?? '—'}</td>
               </tr>
-            ))}
+            )})}
+
           </tbody>
         </table>
       )}

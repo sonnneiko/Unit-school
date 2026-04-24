@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
+import { useLessons } from '../../context/LessonsContext'
 import { roleLabel } from '../../utils/roleLabel'
+import { computeLevel, LEVEL_LABELS, LEVEL_EMOJI } from '../../utils/level'
 import type { User } from '../../types'
 import styles from './UserDetailPage.module.css'
 
 export function UserDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { users, updateUser, updatePassword } = useUsers()
+  const { lessons } = useLessons()
   const [editing, setEditing] = useState(false)
 
   const user = users.find(u => u.id === id)
@@ -57,6 +60,7 @@ export function UserDetailPage() {
     setEditing(false)
   }
 
+  const level = computeLevel(user, lessons)
   const photo = editing ? form.photo : user.photo
   const firstName = editing ? (form.firstName ?? '') : (user.firstName ?? user.name.split(' ')[0] ?? '')
   const lastName = editing ? (form.lastName ?? '') : (user.lastName ?? user.name.split(' ')[1] ?? '')
@@ -137,21 +141,27 @@ export function UserDetailPage() {
             }
           </div>
 
-          <div className={styles.field}>
-            <label className={styles.label}>Роль</label>
-            {editing
-              ? (
-                <select className={styles.input} value={role} onChange={e => setForm(f => ({ ...f, role: e.target.value as User['role'] }))}>
-                  <option value="user">Сотрудник</option>
-                  <option value="support">Саппорт</option>
-                  <option value="security">Служба безопасности</option>
-                  <option value="developer">Разработчик</option>
-                  <option value="account_manager">Аккаунт менеджер</option>
-                  <option value="manager">Менеджер</option>
-                </select>
-              )
-              : <div className={styles.value}>{roleLabel(role)}</div>
-            }
+          <div className={styles.row3}>
+            <div className={styles.field}>
+              <label className={styles.label}>Роль</label>
+              {editing
+                ? (
+                  <select className={styles.input} value={role} onChange={e => setForm(f => ({ ...f, role: e.target.value as User['role'] }))}>
+                    <option value="user">Сотрудник</option>
+                    <option value="support">Саппорт</option>
+                    <option value="security">Служба безопасности</option>
+                    <option value="developer">Разработчик</option>
+                    <option value="account_manager">Аккаунт менеджер</option>
+                    <option value="manager">Менеджер</option>
+                  </select>
+                )
+                : <div className={styles.value}>{roleLabel(role)}</div>
+              }
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Уровень</label>
+              <div className={styles.value}>{LEVEL_EMOJI[level]} {LEVEL_LABELS[level]}</div>
+            </div>
           </div>
 
           {editing && (
