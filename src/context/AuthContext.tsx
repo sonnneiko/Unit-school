@@ -11,6 +11,7 @@ interface AuthContextValue {
   login: (email: string, password: string) => Promise<string>
   logout: () => void
   updateProgress: (lessonId: string, slideIndex: number) => void
+  updateProfile: (patch: Partial<Pick<User, 'firstName' | 'lastName' | 'patronymic' | 'birthDate' | 'phone' | 'telegram'>>) => void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -28,7 +29,7 @@ function loadUserFromStorage(): User | null {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { users, passwords } = useUsers()
+  const { users, passwords, updateUser } = useUsers()
   const [user, setUser] = useState<User | null>(loadUserFromStorage)
 
   async function login(email: string, password: string): Promise<string> {
@@ -62,8 +63,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  function updateProfile(patch: Partial<Pick<User, 'firstName' | 'lastName' | 'patronymic' | 'birthDate' | 'phone' | 'telegram'>>) {
+    setUser(prev => {
+      if (!prev) return prev
+      const name = [patch.firstName ?? prev.firstName, patch.lastName ?? prev.lastName]
+        .filter(Boolean).join(' ') || prev.name
+      const updated = { ...prev, ...patch, name }
+      updateUser(prev.id, updated)
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+      return updated
+    })
+  }
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateProgress }}>
+    <AuthContext.Provider value={{ user, login, logout, updateProgress, updateProfile }}>
       {children}
     </AuthContext.Provider>
   )

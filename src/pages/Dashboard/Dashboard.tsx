@@ -49,18 +49,35 @@ export function DashboardPage() {
     return <span className={styles.badgeBlue}>В процессе</span>
   }
 
+  function journeySteps() {
+    let activeIdx = lessons.findIndex(l => l.published && !isComplete(l, user!))
+    if (activeIdx === -1) activeIdx = lessons.length
+    let start = Math.max(0, activeIdx - 1)
+    if (start + 3 > lessons.length) start = Math.max(0, lessons.length - 3)
+    return lessons.slice(start, start + 3).map((l, rel) => {
+      const abs = start + rel
+      const done = l.published && isComplete(l, user!)
+      const active = abs === activeIdx
+      return { lesson: l, status: done ? 'done' as const : active ? 'active' as const : 'locked' as const }
+    })
+  }
+
   // ── EMPTY STATE ──
   if (!hasProgress) {
+    const steps = journeySteps()
     return (
       <div className={styles.page}>
         <div className={styles.hero}>
           <div className={styles.heroContent}>
             <div className={styles.heroTitle}>Привет! Я Юнит — твой гид в мире UnitPay 🐾</div>
             <div className={styles.heroSub}>Начни своё обучение в UnitSchool</div>
+            <div className={styles.heroDesc}>
+              Познакомься с командой, разберись в платежах и стань настоящим специалистом UnitPay.
+            </div>
             <button
               className={styles.btn}
-              style={{ marginTop: 6, alignSelf: 'flex-start' }}
-              onClick={() => firstPublished && navigate(`/lesson/${firstPublished.id}`)}
+              style={{ marginTop: 4, alignSelf: 'flex-start' }}
+              onClick={() => navigate('/courses')}
             >
               Начать обучение →
             </button>
@@ -70,26 +87,49 @@ export function DashboardPage() {
           </div>
         </div>
 
-        <div className={styles.card}>
-          <div className={styles.cardLabel}>С чего начать</div>
-          {publishedLessons.map(lesson => (
-            <div key={lesson.id} className={styles.courseRow}>
-              <span className={styles.courseName}>{lesson.title}</span>
-              <span
-                className={styles.badgeBlue}
-                style={{ cursor: 'pointer' }}
-                onClick={() => navigate(`/lesson/${lesson.id}`)}
-              >
-                Начать
-              </span>
+        <GrowthPath user={user} lessons={lessons} />
+
+        <div className={styles.grid2}>
+          <div className={styles.card}>
+            <div className={styles.cardLabel}>Твой маршрут</div>
+            <div className={styles.journey}>
+              {steps.map((step, i) => (
+                <div key={step.lesson.id} className={styles.journeyStep}>
+                  <div className={styles.journeyLeft}>
+                    <div className={`${styles.stepNum} ${
+                      step.status === 'done' ? styles.stepNumDone
+                      : step.status === 'active' ? styles.stepNumActive
+                      : styles.stepNumLocked
+                    }`}>
+                      {step.status === 'done' ? '✓' : i + 1}
+                    </div>
+                    {i < steps.length - 1 && <div className={styles.stepConnector} />}
+                  </div>
+                  <div className={styles.journeyBody}>
+                    <div className={step.status === 'locked' ? styles.journeyTitleLocked : styles.journeyTitle}>
+                      {step.lesson.title}
+                    </div>
+                    {step.status === 'active' && step.lesson.published && (
+                      <button className={styles.btnSmall} onClick={() => navigate(`/lesson/${step.lesson.id}`)}>
+                        Начать →
+                      </button>
+                    )}
+                    {step.status === 'locked' && (
+                      <span className={styles.badgeGray}>{step.lesson.published ? 'Следующий' : 'Скоро'}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-          {unpublishedLessons.map(lesson => (
-            <div key={lesson.id} className={`${styles.courseRow} ${styles.courseRowLocked}`}>
-              <span className={styles.courseName}>{lesson.title}</span>
-              <span className={styles.badgeGray}>Скоро</span>
+          </div>
+
+          <div className={styles.card}>
+            <div className={styles.cardLabel}>Достижения</div>
+            <div className={styles.emptyAchievementsWrap}>
+              <div className={styles.emptyAchievementsIcon}>🐾</div>
+              <div className={styles.emptyAchievementsText}>Пока пусто — начни первый урок и получи свою первую награду!</div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     )
@@ -98,6 +138,16 @@ export function DashboardPage() {
   // ── IN PROGRESS STATE ──
   const completedCount = publishedLessons.filter(l => isComplete(l, user)).length
   const coursesToNextLevel = nextLevel ? Math.max(0, LEVEL_THRESHOLDS[nextLevel] - completedCount) : 0
+
+  const ALL_ACHIEVEMENT_DEFS = [
+    { key: 'first_slide', name: 'Поставил лапку в UnitSchool', icon: '🐾' },
+    { key: 'first_course', name: 'Курс покорён', icon: '📘' },
+    { key: 'streak_ongoing', name: 'Лапка за лапкой', icon: '📅' },
+    { key: 'level_up', name: 'Открыл новый уровень', icon: '⬆️' },
+    { key: 'middle_am', name: 'Без паники, я аккаунт', icon: '💼' },
+  ]
+  const unlockedKeys = new Set(achievements.map(a => a.key))
+  const lockedDefs = ALL_ACHIEVEMENT_DEFS.filter(a => !unlockedKeys.has(a.key))
 
   return (
     <div className={styles.page}>
@@ -118,8 +168,8 @@ export function DashboardPage() {
 
           {allComplete ? (
             <>
-              <div className={styles.congrats}>Ты прошёл все доступные курсы! 🎉</div>
-              <div className={styles.congratsSub}>Новые курсы скоро появятся</div>
+              <div className={styles.heroTitle}>Ты прошёл все доступные курсы! 🎉</div>
+              <div className={styles.heroSub}>Новые курсы скоро появятся — следи за обновлениями</div>
             </>
           ) : continueLesson ? (
             <>
@@ -157,6 +207,11 @@ export function DashboardPage() {
             </>
           )}
         </div>
+        {allComplete && (
+          <div className={styles.heroCat}>
+            <img src={catImg} alt="Юнит" />
+          </div>
+        )}
       </div>
 
       {/* Growth path */}
@@ -165,7 +220,7 @@ export function DashboardPage() {
       {/* Courses + Achievements */}
       <div className={styles.grid}>
         <div className={styles.card}>
-          <div className={styles.cardLabel}>Курсы</div>
+          <div className={styles.cardLabel}>Обучение</div>
           {publishedLessons.map(lesson => (
             <div key={lesson.id} className={styles.courseRow}>
               <div style={{ flex: 1 }}>
@@ -182,21 +237,43 @@ export function DashboardPage() {
               {courseBadge(lesson)}
             </div>
           ))}
-          {unpublishedLessons.map(lesson => (
-            <div key={lesson.id} className={`${styles.courseRow} ${styles.courseRowLocked}`}>
-              <span className={styles.courseName}>{lesson.title}</span>
-              <span className={styles.badgeGray}>Скоро</span>
-            </div>
-          ))}
         </div>
 
         <div className={styles.card}>
-          <div className={styles.cardLabel}>Последние достижения</div>
-          {achievements.length === 0 ? (
-            <div className={styles.emptyAchievements}>Пока нет достижений — начни обучение!</div>
-          ) : (
-            achievements.map(a => <AchievementBadge key={a.key} achievement={a} />)
-          )}
+          <div className={styles.cardLabel}>Уровень</div>
+          <div className={styles.levelCardRow}>
+            <div>
+              <div className={styles.levelCardBadge}>
+                {LEVEL_EMOJI[level]} {LEVEL_LABELS[level]}
+              </div>
+              {nextLevel ? (
+                <>
+                  <div className={styles.bar} style={{ marginTop: 10 }}>
+                    <div
+                      className={styles.barFill}
+                      style={{ width: `${Math.round((completedCount / LEVEL_THRESHOLDS[nextLevel]) * 100)}%` }}
+                    />
+                  </div>
+                  <div className={styles.levelNextHint} style={{ marginTop: 6 }}>
+                    {completedCount} / {LEVEL_THRESHOLDS[nextLevel]} курсов · ещё {coursesToNextLevel} до {LEVEL_LABELS[nextLevel]}
+                  </div>
+                </>
+              ) : (
+                <div className={styles.levelMaxHint}>Максимальный уровень достигнут 🏆</div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.card}>
+          <div className={styles.cardLabel}>Достижения</div>
+          {achievements.map(a => <AchievementBadge key={a.key} achievement={a} />)}
+          {lockedDefs.map(a => (
+            <div key={a.key} className={styles.achievementLocked}>
+              <div className={styles.achievementLockedIcon}>{a.icon}</div>
+              <div className={styles.achievementLockedName}>{a.name}</div>
+            </div>
+          ))}
         </div>
       </div>
 

@@ -18,6 +18,7 @@ export interface User {
   level?: Level // admin override; absent = computed
   streak: number // active days in a row; 0 = never or reset
   lastStreakDate?: string // YYYY-MM-DD local date of last streak activity
+  telegram?: string
 }
 
 export interface Lesson {

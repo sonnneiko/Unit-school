@@ -4,7 +4,7 @@ import styles from './Sidebar.module.css'
 
 const NAV_ITEMS = [
   { to: '/', label: 'Главная', icon: '🏠', end: true },
-  { to: '/courses', label: 'Курсы', icon: '📖', end: false },
+  { to: '/courses', label: 'Обучение', icon: '📖', end: false },
   { to: '/progress', label: 'Прогресс', icon: '📊', end: false },
   { to: '/profile', label: 'Профиль', icon: '👤', end: false },
 ]

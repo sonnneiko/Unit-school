@@ -13,6 +13,7 @@ import { DashboardPage } from './pages/Dashboard/Dashboard'
 import { LessonPage } from './pages/Lesson/Lesson'
 import { NotFoundPage } from './pages/NotFound/NotFound'
 import { PlaceholderPage } from './pages/Placeholder/Placeholder'
+import { ProfilePage } from './pages/Profile/Profile'
 import { UsersListPage } from './pages/Admin/UsersListPage'
 import { NewUserPage } from './pages/Admin/NewUserPage'
 import { UserDetailPage } from './pages/Admin/UserDetailPage'
@@ -40,7 +41,7 @@ export default function App() {
                   <Route path="/lesson/:id" element={<LessonPage />} />
                   <Route path="/courses" element={<PlaceholderPage title="Курсы" />} />
                   <Route path="/progress" element={<PlaceholderPage title="Прогресс" />} />
-                  <Route path="/profile" element={<PlaceholderPage title="Профиль" />} />
+                  <Route path="/profile" element={<ProfilePage />} />
                 </Route>
                 <Route element={<AdminRoute />}>
                   <Route element={<AdminAppLayout />}>

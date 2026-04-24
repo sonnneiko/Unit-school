@@ -31,7 +31,6 @@ export function GrowthPath({ user, lessons }: Props) {
                 <span className={`${styles.stepSub} ${isDone ? styles.stepSubDone : isCurrent ? styles.stepSubCurrent : styles.stepSubNext}`}>
                   {isDone && 'пройдено'}
                   {isCurrent && 'сейчас'}
-                  {!isDone && !isCurrent && `нужно ${threshold} курса`}
                 </span>
               </div>
             </React.Fragment>
