@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useLessons } from '../../context/LessonsContext'
 import { computeLevel, isComplete, LEVEL_LABELS, LEVEL_ORDER, LEVEL_THRESHOLDS } from '../../utils/level'
@@ -6,35 +7,31 @@ import { mockUsers } from '../../data/users'
 import styles from './ProgressPage.module.css'
 
 const ALL_ACHIEVEMENTS = [
-  { key: 'first_slide',    name: 'Поставил лапку в UnitSchool', icon: '🐾' },
-  { key: 'first_course',   name: 'Курс покорён',                icon: '📘' },
-  { key: 'streak_ongoing', name: 'Лапка за лапкой',             icon: '📅' },
-  { key: 'level_up',       name: 'Открыл новый уровень',        icon: '⬆️' },
-  { key: 'middle_am',      name: 'Без паники, я аккаунт',       icon: '💼' },
-  { key: 'all_courses',    name: 'Мастер обучения',             icon: '🏆' },
-  { key: 'streak_7',       name: '7 дней подряд',               icon: '🔥' },
-  { key: 'streak_30',      name: 'Месяц не сдаётся',            icon: '⚡' },
+  { key: 'first_slide',    name: 'Поставил лапку в UnitSchool', icon: '🐾', unlock: 'Открой первый слайд любого курса',           got: 'Ты открыл свой первый слайд!' },
+  { key: 'first_course',   name: 'Курс покорён',                icon: '📘', unlock: 'Пройди любой курс полностью',                got: 'Ты завершил первый курс — так держать!' },
+  { key: 'streak_ongoing', name: 'Лапка за лапкой',             icon: '📅', unlock: 'Начни стрик — учись хотя бы день подряд',    got: 'Ты начал свою серию дней!' },
+  { key: 'level_up',       name: 'Открыл новый уровень',        icon: '⬆️', unlock: 'Набери достаточно курсов для следующего уровня', got: 'Ты перешёл на новый уровень!' },
+  { key: 'middle_am',      name: 'Без паники, я аккаунт',       icon: '💼', unlock: 'Достигни уровня Middle AM',                  got: 'Ты стал Middle AM!' },
+  { key: 'all_courses',    name: 'Мастер обучения',             icon: '🏆', unlock: 'Пройди все доступные курсы',                 got: 'Ты прошёл абсолютно все курсы!' },
+  { key: 'streak_7',       name: '7 дней подряд',               icon: '🔥', unlock: 'Учись 7 дней подряд без перерыва',           got: 'Ты учился целую неделю без перерыва!' },
+  { key: 'streak_30',      name: 'Месяц не сдаётся',            icon: '⚡', unlock: 'Учись 30 дней подряд без перерыва',          got: 'Ты учился целый месяц без перерыва!' },
 ]
 
-const DAY_LABELS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+const HEAT_COLORS = ['#f3f4f6', '#bbf7d0', '#4ade80', '#16a34a'] as const
 
-function buildHeatmap(streak: number): boolean[] {
-  const days = new Array(21).fill(false)
+function buildHeatmap(streak: number): number[] {
+  const days = new Array(21).fill(0)
   const active = Math.min(streak, 21)
   for (let i = 0; i < active; i++) {
-    days[20 - i] = true
+    const pos = 20 - i
+    days[pos] = (i % 3) === 0 ? 3 : (i % 3) === 1 ? 1 : 2
   }
   return days
 }
 
-function buildActivityData(streak: number): number[] {
-  const base = [20, 55, 80, 40, 100, 15, 60]
-  if (streak === 0) return new Array(7).fill(0)
-  const active = Math.min(streak, 7)
-  return base.map((v, i) => (i >= 7 - active ? v : 0))
-}
 
 export function ProgressPage() {
+  const [selectedAch, setSelectedAch] = useState<string | null>(null)
   const { user } = useAuth()
   const { lessons } = useLessons()
   if (!user) return null
@@ -49,8 +46,6 @@ export function ProgressPage() {
   const dashGap = CIRC - dashFill
 
   const heatmap = buildHeatmap(user.streak)
-  const activityData = buildActivityData(user.streak)
-  const maxActivity = Math.max(...activityData, 1)
 
   const level = computeLevel(user, lessons)
   const levelIdx = LEVEL_ORDER.indexOf(level)
@@ -109,43 +104,32 @@ export function ProgressPage() {
 
         <div className={`${styles.card} ${styles.streakCard}`}>
           <div className={styles.cardLabel}>Стрик</div>
-          <div className={styles.streakTop}>
-            <span className={styles.streakFlame}>🔥</span>
-            <div>
-              <span className={styles.streakNum}>{user.streak}</span>
-              <div className={styles.streakLbl}>дней подряд</div>
-            </div>
-          </div>
-          <div className={styles.heatmapLabel}>Последние 3 недели</div>
-          <div className={styles.heatmap}>
-            {heatmap.map((active, i) => (
-              <div key={i} className={`${styles.heatCell} ${active ? styles.heatActive : ''}`} />
-            ))}
-          </div>
-          <div className={styles.heatLegend}>
-            <span className={styles.heatDotEmpty} /> нет
-            <span className={styles.heatDotActive} /> был
-          </div>
-        </div>
-      </div>
-
-      {/* ACTIVITY BAR CHART */}
-      <div className={styles.card}>
-        <div className={styles.cardLabel}>Активность за неделю</div>
-        <div className={styles.barChart}>
-          {activityData.map((val, i) => (
-            <div key={i} className={styles.barCol}>
-              <div className={styles.barTrack}>
-                <div
-                  className={styles.barFill}
-                  style={{ height: `${(val / maxActivity) * 100}%` }}
-                />
+          <div className={styles.streakInner}>
+            <div className={styles.streakLeft}>
+              <div className={styles.streakTop}>
+                <span className={styles.streakFlame}>🔥</span>
+                <div>
+                  <span className={styles.streakNum}>{user.streak}</span>
+                  <div className={styles.streakLbl}>дней подряд</div>
+                </div>
               </div>
-              <span className={`${styles.barLabel} ${i === activityData.length - 1 ? styles.barLabelToday : ''}`}>
-                {DAY_LABELS[i]}
-              </span>
             </div>
-          ))}
+            <div className={styles.streakRight}>
+              <div className={styles.heatmapLabel}>Последние 3 недели</div>
+              <div className={styles.heatmap}>
+                {heatmap.map((level, i) => (
+                  <div key={i} className={styles.heatCell} style={level > 0 ? { background: HEAT_COLORS[level] } : undefined} />
+                ))}
+              </div>
+              <div className={styles.heatLegend}>
+                <span className={styles.heatDotEmpty} /> меньше
+                {([1, 2, 3] as const).map(l => (
+                  <span key={l} className={styles.heatDotGrad} style={{ background: HEAT_COLORS[l] }} />
+                ))}
+                больше
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -153,7 +137,7 @@ export function ProgressPage() {
       <div className={styles.card}>
         <div className={styles.cardLabel}>Путь развития</div>
         <div className={styles.pathRow}>
-          {LEVEL_ORDER.filter(l => l !== 'novice').map((lvl, i) => {
+          {LEVEL_ORDER.map((lvl, i) => {
             const absIdx = LEVEL_ORDER.indexOf(lvl)
             const isDone = absIdx < levelIdx
             const isCurrent = absIdx === levelIdx
@@ -182,13 +166,31 @@ export function ProgressPage() {
           {ALL_ACHIEVEMENTS.map(a => {
             const unlocked = unlockedKeys.has(a.key)
             return (
-              <div key={a.key} className={`${styles.achItem} ${unlocked ? '' : styles.achLocked}`}>
+              <div
+                key={a.key}
+                className={`${styles.achItem} ${unlocked ? '' : styles.achLocked}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => setSelectedAch(selectedAch === a.key ? null : a.key)}
+              >
                 <div className={styles.achIcon}>{a.icon}</div>
                 <span className={styles.achName}>{a.name}</span>
               </div>
             )
           })}
         </div>
+        {selectedAch && (() => {
+          const ach = ALL_ACHIEVEMENTS.find(a => a.key === selectedAch)!
+          const unlocked = unlockedKeys.has(selectedAch)
+          return (
+            <div className={styles.achTooltip}>
+              <span className={styles.achTooltipIcon}>{ach.icon}</span>
+              <div>
+                <div className={styles.achTooltipName}>{ach.name}</div>
+                <div className={styles.achTooltipHint}>{unlocked ? ach.got : `Как получить: ${ach.unlock}`}</div>
+              </div>
+            </div>
+          )
+        })()}
       </div>
 
       {/* PEER COMPARISON */}

@@ -1,5 +1,4 @@
 .page {
-  max-width: 720px;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -32,7 +31,7 @@
 /* ── TOP ROW ── */
 .topRow {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
@@ -76,7 +75,24 @@
 .streakCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+}
+
+.streakInner {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  align-items: flex-start;
+}
+
+.streakLeft {
+  flex-shrink: 0;
+}
+
+.streakRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .streakTop {
@@ -114,17 +130,13 @@
 .heatmap {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 3px;
 }
 
 .heatCell {
   aspect-ratio: 1;
-  border-radius: 4px;
+  border-radius: 3px;
   background: #f3f4f6;
-}
-
-.heatActive {
-  background: #22c55e;
 }
 
 .heatLegend {
@@ -136,7 +148,7 @@
 }
 
 .heatDotEmpty,
-.heatDotActive {
+.heatDotGrad {
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -147,51 +159,8 @@
   background: #f3f4f6;
 }
 
-.heatDotActive {
-  background: #22c55e;
-  margin-left: 6px;
-}
-
-/* ── BAR CHART ── */
-.barChart {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 80px;
-}
-
-.barCol {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  height: 100%;
-}
-
-.barTrack {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-}
-
-.barFill {
-  width: 100%;
-  min-height: 3px;
-  background: #c7d2fe;
-  border-radius: 4px 4px 0 0;
-}
-
-.barLabel {
-  font-size: 9px;
-  color: var(--usr-text-muted, #9ca3af);
-  white-space: nowrap;
-}
-
-.barLabelToday {
-  color: #597ef7;
-  font-weight: 700;
+.heatDotGrad {
+  /* background set inline */
 }
 
 /* ── GROWTH PATH ── */
@@ -307,6 +276,34 @@
   color: var(--usr-text-muted, #9ca3af);
   text-align: center;
   line-height: 1.3;
+}
+
+.achTooltip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 4px;
+}
+
+.achTooltipIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.achTooltipName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--usr-text-primary, #111827);
+}
+
+.achTooltipHint {
+  font-size: 11px;
+  color: var(--usr-text-muted, #6b7280);
+  margin-top: 2px;
 }
 
 /* ── PEERS ── */
