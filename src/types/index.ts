@@ -34,6 +34,7 @@ export type SlideType = 'welcome' | 'tabs' | 'info' | 'diagram' | 'cheatsheet' |
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
+  hasInternalNav?: boolean
   content: WelcomeContent | TabsContent | InfoContent | DiagramContent | CheatsheetContent | FinishContent
 }
 
@@ -41,6 +42,7 @@ export interface WelcomeContent {
   title: string
   subtitle: string
   ctaLabel: string
+  bullets?: string[]
 }
 
 export interface TeamMember {
@@ -85,4 +87,11 @@ export interface FinishContent {
   title: string
   message: string
   nextLessonId: string | null
+}
+
+export interface Topic {
+  id: string
+  icon: string
+  title: string
+  lessonId: string
 }
