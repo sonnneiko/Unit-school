@@ -12,7 +12,7 @@ import { LoginPage } from './pages/Login/Login'
 import { DashboardPage } from './pages/Dashboard/Dashboard'
 import { LessonPage } from './pages/Lesson/Lesson'
 import { NotFoundPage } from './pages/NotFound/NotFound'
-import { PlaceholderPage } from './pages/Placeholder/Placeholder'
+import { CoursesPage } from './pages/Courses/CoursesPage'
 import { ProgressPage } from './pages/Progress/ProgressPage'
 import { ProfilePage } from './pages/Profile/Profile'
 import { UsersListPage } from './pages/Admin/UsersListPage'
@@ -40,7 +40,7 @@ export default function App() {
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<DashboardPage />} />
                   <Route path="/lesson/:id" element={<LessonPage />} />
-                  <Route path="/courses" element={<PlaceholderPage title="Курсы" />} />
+                  <Route path="/courses" element={<CoursesPage />} />
                   <Route path="/progress" element={<ProgressPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
                 </Route>
