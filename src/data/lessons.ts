@@ -617,7 +617,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'ampm',
               name: 'Взаимодействие Аккаунтинг | PM',
-              avatarGradient: 'linear-gradient(140deg, #00b894, #0984e3)',
+              avatarGradient: '#4CAF50',
               avatarText: 'В',
               preview: 'София: окей, сделаем',
               cardId: 'ampm',
@@ -673,7 +673,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'ampm',
               name: 'Взаимодействие Аккаунтинг | PM',
-              avatarGradient: 'linear-gradient(140deg, #00b894, #0984e3)',
+              avatarGradient: '#4CAF50',
               avatarText: 'В',
               description: 'Чат для совместной работы с менеджерами проектов и техническими специалистами. Здесь обсуждаются задачи, которые требуют участия нескольких отделов.',
               tag: 'Межотдельный',
