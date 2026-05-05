@@ -615,10 +615,10 @@
 }
 
 .welcomeCat {
-  height: 70%;
+  height: 80%;
   width: auto;
   display: block;
-  transform: translateY(55px);
+  transform: translateY(10px);
 }
 
 /* FeatureSlide — two-column with cat */
