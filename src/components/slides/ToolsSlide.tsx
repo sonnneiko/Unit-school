@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { PlayCircle } from 'lucide-react'
 import type { ToolsContent, ToolItem } from '../../types'
 import styles from './slides.module.css'
 
@@ -30,22 +31,30 @@ export function ToolsSlide({ content, onNext }: Props) {
         ))}
       </div>
 
-      <div className={styles.toolsDetailWrapper}>
-        {activeTool && (
-          <div key={activeTool.id} className={`${styles.toolsDetail} ${styles.toolsDetailContent}`}>
-            <h2 className={styles.toolsDetailTitle}>{activeTool.title}</h2>
-            <p className={styles.toolsDetailDesc}>{activeTool.description}</p>
-          </div>
-        )}
+      {activeTool && (
+        <div key={activeTool.id} className={`${styles.toolsDetail} ${styles.toolsDetailContent}`}>
+          <h2 className={styles.toolsDetailTitle}>{activeTool.title}</h2>
+          <p className={styles.toolsDetailDesc}>{activeTool.description}</p>
 
-        {onNext && (
-          <div className={styles.toolsFooter}>
+          {activeTool.ctaLabel ? (
             <button className={styles.toolsNextBtn} onClick={onNext}>
-              Посмотреть чаты →
+              {activeTool.ctaLabel}
             </button>
-          </div>
-        )}
-      </div>
+          ) : activeTool.videoUrl ? (
+            <iframe
+              src={activeTool.videoUrl}
+              className={styles.toolsVideoIframe}
+              allowFullScreen
+              title={activeTool.title}
+            />
+          ) : (
+            <div className={styles.toolsVideoPlaceholder}>
+              <PlayCircle size={48} />
+              <span>Видео скоро появится</span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

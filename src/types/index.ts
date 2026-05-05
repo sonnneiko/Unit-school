@@ -214,9 +214,10 @@ export interface ToolItem {
   id: string
   title: string
   gradient: string
-  logo: string       // путь к логотипу, напр. /logos/omnidesk.png
+  logo: string
   description: string
-  videoUrl?: string  // embed URL (YouTube/Loom), опционально
+  videoUrl?: string
+  ctaLabel?: string  // если задан — показывается кнопка вместо видео
 }
 
 export interface ToolsContent {

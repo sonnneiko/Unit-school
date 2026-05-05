@@ -580,6 +580,7 @@ export const mockLessons: Lesson[] = [
               gradient: 'linear-gradient(135deg, #2AABEE, #0984e3)',
               logo: '/logos/telegram.png',
               description: 'Взаимодействие с командой, партнёрами и поставщиками.',
+              ctaLabel: 'Посмотреть рабочие чаты →',
             },
           ],
         },
