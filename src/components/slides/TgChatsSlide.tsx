@@ -11,9 +11,14 @@ function Avatar({
 }: Pick<TgChatItem, 'avatarImage' | 'avatarGradient' | 'avatarEmoji' | 'avatarText'> & { className: string }) {
   if (avatarImage) {
     return (
-      <div className={className} style={{ background: '#333' }}>
-        <img src={avatarImage} alt="" className={styles.tgAvatarImg} />
-      </div>
+      <div
+        className={className}
+        style={{
+          backgroundImage: `url(${avatarImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
     )
   }
   return (

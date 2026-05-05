@@ -597,7 +597,6 @@ export const mockLessons: Lesson[] = [
         id: 's1',
         type: 'tgchats',
         content: {
-          downloadUrl: '/chats-guide.pdf',
           footerNote: 'Это не все чаты — но основные, нужные на данном этапе. При добавлении в новые чаты тебе расскажут, для чего они.',
           chats: [
             {
