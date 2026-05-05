@@ -2076,6 +2076,13 @@
   justify-content: center;
   flex-shrink: 0;
   color: white;
+  padding: 4px;
+}
+
+.toolCardLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .toolCardTitle {

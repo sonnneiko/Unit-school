@@ -213,8 +213,8 @@ export interface EntitiesContent {
 export interface ToolItem {
   id: string
   title: string
-  gradient: string   // полная CSS строка: "linear-gradient(135deg, #AAA, #BBB)"
-  icon: string       // имя иконки из lucide-react
+  gradient: string
+  logo: string       // путь к логотипу, напр. /logos/omnidesk.png
   description: string
   videoUrl?: string  // embed URL (YouTube/Loom), опционально
 }

@@ -1,16 +1,10 @@
 import { useState } from 'react'
-import * as LucideIcons from 'lucide-react'
+import { PlayCircle } from 'lucide-react'
 import type { ToolsContent, ToolItem } from '../../types'
 import styles from './slides.module.css'
 
 interface Props {
   content: ToolsContent
-}
-
-function ToolIcon({ name }: { name: string }) {
-  const Icon = (LucideIcons as Record<string, React.ComponentType<{ size?: number; color?: string }>>)[name]
-  if (!Icon) return null
-  return <Icon size={20} color="white" />
 }
 
 export function ToolsSlide({ content }: Props) {
@@ -29,7 +23,7 @@ export function ToolsSlide({ content }: Props) {
             onClick={() => setActiveId(tool.id)}
           >
             <div className={styles.toolCardIcon}>
-              <ToolIcon name={tool.icon} />
+              <img src={tool.logo} alt={tool.title} className={styles.toolCardLogo} />
             </div>
             <span className={styles.toolCardTitle}>{tool.title}</span>
           </div>
@@ -49,7 +43,7 @@ export function ToolsSlide({ content }: Props) {
             />
           ) : (
             <div className={styles.toolsVideoPlaceholder}>
-              <LucideIcons.PlayCircle size={48} />
+              <PlayCircle size={48} />
               <span>Видео скоро появится</span>
             </div>
           )}
