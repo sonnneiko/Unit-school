@@ -1,4 +1,4 @@
-import unitCat from '../../assets/unit-cat/Unitpay Cat 1.png'
+import defaultCat from '../../assets/unit-cat/Unitpay Cat 1.png'
 import type { WelcomeContent } from '../../types'
 import styles from './slides.module.css'
 
@@ -8,6 +8,8 @@ interface Props {
 }
 
 export function WelcomeSlide({ content, onNext }: Props) {
+  const catImage = content.image ?? defaultCat
+
   return (
     <div className={styles.welcomeFull}>
       <div className={styles.welcomeLeft}>
@@ -16,7 +18,11 @@ export function WelcomeSlide({ content, onNext }: Props) {
         {content.bullets && content.bullets.length > 0 && (
           <ul className={styles.welcomeBullets}>
             {content.bullets.map((bullet, i) => (
-              <li key={i} className={styles.welcomeBulletItem}>
+              <li
+                key={i}
+                className={styles.welcomeBulletItem}
+                style={{ animationDelay: `${i * 150}ms` }}
+              >
                 <span className={styles.welcomeBulletDot} />
                 {bullet}
               </li>
@@ -28,7 +34,7 @@ export function WelcomeSlide({ content, onNext }: Props) {
         </button>
       </div>
       <div className={styles.welcomeRight}>
-        <img src={unitCat} alt="Котик Юнит" className={styles.welcomeCat} />
+        <img src={catImage} alt={content.title} className={styles.welcomeCat} />
       </div>
     </div>
   )
