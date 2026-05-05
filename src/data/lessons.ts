@@ -611,8 +611,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'sb',
               name: 'Взаимодействие с СБ ✈️',
-              avatarGradient: 'linear-gradient(140deg, #9b59b6, #c39bd3)',
-              avatarEmoji: '🐈',
+              avatarImage: '/team/взаимодействие%20с%20сб.jpg',
               preview: 'София: может улучшим шаблон?',
               cardId: 'sb',
             },
@@ -627,14 +626,14 @@ export const mockLessons: Lesson[] = [
             {
               id: 'alerts',
               name: 'Unitpay Alerts ✈️',
-              avatarImage: '/team/Юнитпей алертс.jpg',
+              avatarImage: '/team/Юнитпей%20алертс.jpg',
               preview: '🟢 Трафик восстановлен.',
               cardId: 'alerts',
             },
             {
               id: 'partners',
               name: 'Действия партнёров ✈️',
-              avatarImage: '/team/действия партнеров.jpg',
+              avatarImage: '/team/действия%20партнеров.jpg',
               preview: 'UnitBot: Регистрация нового...',
               badge: 444,
               cardId: 'triggers',
@@ -668,8 +667,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'sb',
               name: 'Взаимодействие с СБ',
-              avatarGradient: 'linear-gradient(140deg, #9b59b6, #c39bd3)',
-              avatarEmoji: '🐈',
+              avatarImage: '/team/взаимодействие%20с%20сб.jpg',
               description: 'Чат для взаимодействия со службой безопасности. Сюда пишешь, когда нужна приоритетная проверка мерчанта, согласование проекта или есть вопросы по безопасности.',
               tag: 'Межотдельный',
             },
@@ -684,7 +682,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'alerts',
               name: 'Unitpay Alerts',
-              avatarImage: '/team/Юнитпей алертс.jpg',
+              avatarImage: '/team/Юнитпей%20алертс.jpg',
               description: 'Автоматические оповещения о проблемах с доступностью сервисов UnitPay и об их восстановлении. Канал для наших мерчантов.',
               tag: 'Оповещения сервиса',
             },
