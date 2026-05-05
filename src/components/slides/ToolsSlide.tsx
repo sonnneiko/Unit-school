@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { PlayCircle } from 'lucide-react'
 import type { ToolsContent, ToolItem } from '../../types'
 import styles from './slides.module.css'
 
 interface Props {
   content: ToolsContent
+  onNext?: () => void
 }
 
-export function ToolsSlide({ content }: Props) {
+export function ToolsSlide({ content, onNext }: Props) {
   const [activeId, setActiveId] = useState<string>(content.tools[0]?.id ?? '')
 
   const activeTool: ToolItem | undefined = content.tools.find(t => t.id === activeId)
@@ -30,25 +30,22 @@ export function ToolsSlide({ content }: Props) {
         ))}
       </div>
 
-      {activeTool && (
-        <div key={activeTool.id} className={`${styles.toolsDetail} ${styles.toolsDetailContent}`}>
-          <h2 className={styles.toolsDetailTitle}>{activeTool.title}</h2>
-          <p className={styles.toolsDetailDesc}>{activeTool.description}</p>
-          {activeTool.videoUrl ? (
-            <iframe
-              src={activeTool.videoUrl}
-              className={styles.toolsVideoIframe}
-              allowFullScreen
-              title={activeTool.title}
-            />
-          ) : (
-            <div className={styles.toolsVideoPlaceholder}>
-              <PlayCircle size={48} />
-              <span>Видео скоро появится</span>
-            </div>
-          )}
-        </div>
-      )}
+      <div className={styles.toolsDetailWrapper}>
+        {activeTool && (
+          <div key={activeTool.id} className={`${styles.toolsDetail} ${styles.toolsDetailContent}`}>
+            <h2 className={styles.toolsDetailTitle}>{activeTool.title}</h2>
+            <p className={styles.toolsDetailDesc}>{activeTool.description}</p>
+          </div>
+        )}
+
+        {onNext && (
+          <div className={styles.toolsFooter}>
+            <button className={styles.toolsNextBtn} onClick={onNext}>
+              Посмотреть чаты →
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

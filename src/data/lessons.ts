@@ -550,6 +550,7 @@ export const mockLessons: Lesson[] = [
       {
         id: 's1',
         type: 'tools',
+        hasInternalNav: true,
         content: {
           tools: [
             {

@@ -58,7 +58,7 @@ export function Slide({ slide, onNext, nextLesson, onLastTab, initialTab }: Prop
     case 'finish':
       return <FinishSlide content={slide.content as FinishContent} nextLesson={nextLesson} />
     case 'tools':
-      return <ToolsSlide content={slide.content as ToolsContent} />
+      return <ToolsSlide content={slide.content as ToolsContent} onNext={onNext} />
     case 'tgchats':
       return <TgChatsSlide content={slide.content as TgChatsContent} />
     default:
