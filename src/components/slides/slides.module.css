@@ -573,8 +573,8 @@
 }
 
 .welcomeFullSubtitle {
-  font-size: 17px;
-  color: var(--color-text-secondary);
+  font-size: 19px;
+  color: var(--color-text-primary);
   line-height: 1.6;
   margin: 0;
 }

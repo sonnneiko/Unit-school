@@ -1,5 +1,5 @@
 import type { Lesson } from '../types'
-import accountingCat from '../assets/unit-cat/Аккаунтинг.png'
+import accountingCat from '../assets/unit-cat/Супергерои.png'
 
 export const mockLessons: Lesson[] = [
   // ── Команда ──────────────────────────────────────────────
@@ -524,6 +524,7 @@ export const mockLessons: Lesson[] = [
       {
         id: 's1',
         type: 'welcome',
+        hasInternalNav: true,
         content: {
           title: 'Аккаунтинг',
           subtitle: 'Аккаунт-менеджер — это связующее звено между UnitPay и мерчантами. Именно они от лица UnitPay общаются с партнёрами, помогают им и сопровождают в работе с нашим сервисом.',
