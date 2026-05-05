@@ -609,7 +609,7 @@ export const mockLessons: Lesson[] = [
             },
             {
               id: 'sb',
-              name: 'Взаимодействие с СБ ✈️',
+              name: 'Взаимодействие с СБ',
               avatarImage: '/team/sb.jpg',
               preview: 'София: может улучшим шаблон?',
               cardId: 'sb',
@@ -631,7 +631,7 @@ export const mockLessons: Lesson[] = [
             },
             {
               id: 'partners',
-              name: 'Действия партнёров ✈️',
+              name: 'Действия партнёров',
               avatarImage: '/team/partner-actions.jpg',
               preview: 'UnitBot: Регистрация нового...',
               badge: 444,
