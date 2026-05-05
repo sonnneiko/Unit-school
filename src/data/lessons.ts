@@ -601,7 +601,7 @@ export const mockLessons: Lesson[] = [
           chats: [
             {
               id: 'accounting',
-              name: 'Аккаунтинг ✈️',
+              name: 'Аккаунтинг 💅',
               avatarImage: '/team/аккаунтинг.jpg',
               preview: 'София: GIF',
               badge: 1209,
@@ -610,13 +610,13 @@ export const mockLessons: Lesson[] = [
             {
               id: 'sb',
               name: 'Взаимодействие с СБ ✈️',
-              avatarImage: '/team/взаимодействие%20с%20сб.jpg',
+              avatarImage: '/team/sb.jpg',
               preview: 'София: может улучшим шаблон?',
               cardId: 'sb',
             },
             {
               id: 'ampm',
-              name: 'Взаимодействие Аккаунтинг | PM ✈️',
+              name: 'Взаимодействие Аккаунтинг | PM',
               avatarGradient: 'linear-gradient(140deg, #00b894, #0984e3)',
               avatarText: 'PM',
               preview: 'София: окей, сделаем',
@@ -624,22 +624,22 @@ export const mockLessons: Lesson[] = [
             },
             {
               id: 'alerts',
-              name: 'Unitpay Alerts ✈️',
-              avatarImage: '/team/Юнитпей%20алертс.jpg',
+              name: 'Unitpay Alerts',
+              avatarImage: '/team/unitpay-alerts.jpg',
               preview: '🟢 Трафик восстановлен.',
               cardId: 'alerts',
             },
             {
               id: 'partners',
               name: 'Действия партнёров ✈️',
-              avatarImage: '/team/действия%20партнеров.jpg',
+              avatarImage: '/team/partner-actions.jpg',
               preview: 'UnitBot: Регистрация нового...',
               badge: 444,
               cardId: 'triggers',
             },
             {
               id: 'urlica',
-              name: 'Юрлица Triggers ✈️',
+              name: '❗️Юрлица Triggers',
               avatarGradient: 'linear-gradient(140deg, #e84393, #fd79a8)',
               avatarEmoji: '❗',
               preview: 'UnitBot: [Снижение оборота]',
@@ -666,7 +666,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'sb',
               name: 'Взаимодействие с СБ',
-              avatarImage: '/team/взаимодействие%20с%20сб.jpg',
+              avatarImage: '/team/sb.jpg',
               description: 'Чат для взаимодействия со службой безопасности. Сюда пишешь, когда нужна приоритетная проверка мерчанта, согласование проекта или есть вопросы по безопасности.',
               tag: 'Межотдельный',
             },
@@ -681,7 +681,7 @@ export const mockLessons: Lesson[] = [
             {
               id: 'alerts',
               name: 'Unitpay Alerts',
-              avatarImage: '/team/Юнитпей%20алертс.jpg',
+              avatarImage: '/team/unitpay-alerts.jpg',
               description: 'Автоматические оповещения о проблемах с доступностью сервисов UnitPay и об их восстановлении. Канал для наших мерчантов.',
               tag: 'Оповещения сервиса',
             },
