@@ -1,0 +1,16 @@
+{"type":"server-started","port":60129,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:60129","screen_dir":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/structure-question.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/structure-question.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/structure-question.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/structure-question.html"}
+{"source":"user-event","type":"click","text":"A\n    \n      Плоский список тем\n      Каждый урок = одна тема. Убираем «День 1», называем по содержанию: «Основы UnitPay», «Аккаунтинг», «Работа с мерчантами»…\n      Просто, линейно, без лишней вложенности","choice":"a","id":null,"timestamp":1777037359297}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/ab-comparison.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/ab-comparison.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/ab-comparison.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/ab-comparison.html"}
+{"source":"user-event","type":"click","text":"B — Разделы → уроки\n    \n    \n\n      Обучение\n      3 раздела · 8 уроков\n\n      \n      \n        Основы платежей\n        \n          ✅\n          Основы UnitPay\n          Готово\n        \n        \n          📘\n          \n            Путь платежа\n            \n          \n        \n      \n\n      \n      \n        Аккаунтинг\n        \n          🔒\n          Аккаунтинг: основы\n          Скоро\n        \n        \n          🔒\n          Продвинутый аккаунтинг\n          Скоро\n        \n      \n\n      \n      \n        Работа с клиентами\n        \n          🔒\n          Работа с мерчантами\n          Скоро","choice":"b","id":null,"timestamp":1777037434446}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/sections-grouping.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/sections-grouping.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/sections-grouping.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/92781-1777037069/sections-grouping.html"}
+{"type":"server-stopped","reason":"idle timeout"}

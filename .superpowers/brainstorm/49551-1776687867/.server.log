@@ -1,0 +1,16 @@
+{"type":"server-started","port":55842,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:55842","screen_dir":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/platform-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/platform-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/platform-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/platform-layout.html"}
+{"source":"user-event","type":"click","text":"A\n    \n      \n        \n          🐱\n          Главная\n          Обучение\n          Прогресс\n          Профиль\n        \n        \n          День 1Знакомство с UnitPay\n          День 2Аккаунтинг\n          День 3Безопасность\n          ТемаЭквайринг\n        \n      \n    \n    \n      A — Тёмный сайдбар\n      Навигация слева, контент справа. Строго, как у корпоративных платформ (Confluence, Jira).","choice":"a","id":null,"timestamp":1776688445274}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/lesson-view.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/lesson-view.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/lesson-view.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/lesson-view.html"}
+{"source":"user-event","type":"click","text":"A\n    \n      \n        \n          Unit\n          🏠 Главная\n          📖 Курсы\n          👤 Профиль\n        \n        \n          \n            ← Назад\n            День 1: Знакомство с UnitPay\n            \n              \n              \n            \n          \n          \n            \n              🐱\n              Добро пожаловать в UnitPay!\n              Я котик Юнит — рад знакомству! В первые дни я буду рядом и помогу быстро освоиться.\n              Начать →\n            \n          \n          \n            Слайд 3 из 8\n            \n              ←\n              →\n            \n          \n        \n      \n    \n    \n      A — Полноэкранный слайд\n      Контент занимает весь экран. Переход стрелками. Как в Keynote / PDF — один слайд за раз.","choice":"a","id":null,"timestamp":1776688558095}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/waiting.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/waiting.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/waiting.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/49551-1776687867/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

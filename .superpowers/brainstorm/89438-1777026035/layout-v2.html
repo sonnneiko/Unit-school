@@ -1,0 +1,300 @@
+<h2>Структура страницы «Прогресс»</h2>
+<p class="subtitle">Выбери общую раскладку страницы</p>
+
+<style>
+.mock-page { font-family: -apple-system, sans-serif; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; background: #f8fafc; }
+.mock-topbar { background: white; border-bottom: 1px solid #e5e7eb; padding: 8px 14px; font-size: 10px; font-weight: 700; color: #374151; }
+.mock-inner { padding: 12px; }
+
+/* Donut chart */
+.donut-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.donut-label { position: absolute; text-align: center; }
+.donut-num { font-size: 13px; font-weight: 800; color: #111827; line-height: 1; }
+.donut-sub { font-size: 7px; color: #6b7280; margin-top: 1px; }
+
+/* stat chips */
+.chip { border-radius: 8px; padding: 7px 10px; font-size: 9px; }
+.chip-val { font-size: 14px; font-weight: 800; color: #111827; }
+.chip-lbl { color: #6b7280; margin-top: 1px; }
+
+/* path row */
+.path-step { display: flex; align-items: center; gap: 3px; }
+.step-dot { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; flex-shrink: 0; }
+.step-line { flex: 1; height: 2px; }
+.step-lbl { font-size: 7px; white-space: nowrap; font-weight: 600; }
+
+/* achievement grid */
+.ach-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+/* peer bar */
+.peer-row { margin-bottom: 4px; }
+.peer-label { font-size: 7px; color: #6b7280; margin-bottom: 2px; }
+.peer-bar { height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+.peer-fill { height: 100%; border-radius: 3px; }
+</style>
+
+<div class="cards" style="grid-template-columns: repeat(3,1fr);">
+
+  <!-- OPTION A: Compact grid -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;">
+      <div class="mock-page">
+        <div class="mock-topbar">Прогресс</div>
+        <div class="mock-inner" style="display:flex;flex-direction:column;gap:8px;">
+
+          <!-- Row 1: donut + streak side by side -->
+          <div style="display:flex;gap:8px;">
+            <!-- Donut card -->
+            <div style="flex:1;background:white;border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px;border:1px solid #e5e7eb;">
+              <div class="donut-wrap">
+                <svg width="56" height="56" viewBox="0 0 56 56">
+                  <circle cx="28" cy="28" r="22" fill="none" stroke="#e5e7eb" stroke-width="6"/>
+                  <circle cx="28" cy="28" r="22" fill="none" stroke="#597ef7" stroke-width="6"
+                    stroke-dasharray="83 55" stroke-linecap="round"
+                    transform="rotate(-90 28 28)"/>
+                </svg>
+                <div class="donut-label">
+                  <div class="donut-num">3/5</div>
+                  <div class="donut-sub">курсов</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:8px;font-weight:700;color:#111827;">Middle AM</div>
+                <div style="font-size:7px;color:#6b7280;margin-top:1px;">4 ч 30 мин обучения</div>
+              </div>
+            </div>
+            <!-- Streak chip -->
+            <div style="background:#fef3c7;border-radius:8px;padding:10px;text-align:center;border:1px solid #fde68a;min-width:60px;">
+              <div style="font-size:20px;">🔥</div>
+              <div style="font-size:14px;font-weight:800;color:#92400e;">15</div>
+              <div style="font-size:7px;color:#92400e;">дней</div>
+            </div>
+          </div>
+
+          <!-- Row 2: path -->
+          <div style="background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+            <div style="font-size:8px;font-weight:700;color:#6b7280;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;">Путь развития</div>
+            <div class="path-step">
+              <div class="step-dot" style="background:#22c55e;color:white;">✓</div>
+              <div style="font-size:7px;font-weight:600;color:#22c55e;white-space:nowrap;">Junior AM</div>
+              <div class="step-line" style="background:#22c55e;"></div>
+              <div class="step-dot" style="background:#597ef7;color:white;font-size:6px;">80%</div>
+              <div style="font-size:7px;font-weight:600;color:#597ef7;white-space:nowrap;">Middle AM</div>
+              <div class="step-line" style="background:#e5e7eb;"></div>
+              <div class="step-dot" style="background:#e5e7eb;color:#9ca3af;">·</div>
+              <div style="font-size:7px;color:#9ca3af;white-space:nowrap;">Senior AM</div>
+              <div class="step-line" style="background:#e5e7eb;"></div>
+              <div class="step-dot" style="background:#e5e7eb;color:#9ca3af;">·</div>
+              <div style="font-size:7px;color:#9ca3af;white-space:nowrap;">Lead AM</div>
+            </div>
+          </div>
+
+          <!-- Row 3: achievements + peers -->
+          <div style="display:flex;gap:8px;">
+            <div style="flex:3;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Достижения</div>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <div class="ach-icon" style="background:#fef3c7;">🏆</div>
+                <div class="ach-icon" style="background:#dcfce7;">📗</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">🌟</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">🎯</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">⚡</div>
+              </div>
+            </div>
+            <div style="flex:2;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Коллеги</div>
+              <div class="peer-row">
+                <div class="peer-label">Я</div>
+                <div class="peer-bar"><div class="peer-fill" style="width:60%;background:#597ef7;"></div></div>
+              </div>
+              <div class="peer-row">
+                <div class="peer-label">Среднее</div>
+                <div class="peer-bar"><div class="peer-fill" style="width:38%;background:#d1d5db;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Компактная сетка</h3>
+      <p>Сводка + стрик вверху, путь развития, достижения и сравнение — всё без скролла.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B: Hero + sections -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;">
+      <div class="mock-page">
+        <div class="mock-topbar">Прогресс</div>
+        <div class="mock-inner" style="display:flex;flex-direction:column;gap:8px;">
+
+          <!-- Hero -->
+          <div style="background:linear-gradient(135deg,#597ef7 0%,#818cf8 100%);border-radius:10px;padding:12px;display:flex;align-items:center;gap:12px;">
+            <div class="donut-wrap">
+              <svg width="64" height="64" viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="7"/>
+                <circle cx="32" cy="32" r="26" fill="none" stroke="white" stroke-width="7"
+                  stroke-dasharray="98 65" stroke-linecap="round"
+                  transform="rotate(-90 32 32)"/>
+              </svg>
+              <div class="donut-label">
+                <div style="font-size:13px;font-weight:800;color:white;line-height:1;">3/5</div>
+                <div style="font-size:7px;color:rgba(255,255,255,.8);">курсов</div>
+              </div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:11px;font-weight:800;color:white;">Middle AM</div>
+              <div style="font-size:8px;color:rgba(255,255,255,.8);margin-top:2px;">4 ч 30 мин обучения</div>
+              <div style="margin-top:6px;height:4px;background:rgba(255,255,255,.25);border-radius:3px;">
+                <div style="width:80%;height:100%;background:white;border-radius:3px;"></div>
+              </div>
+              <div style="font-size:7px;color:rgba(255,255,255,.7);margin-top:2px;">До Senior AM: 80%</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:22px;">🔥</div>
+              <div style="font-size:13px;font-weight:800;color:white;">15</div>
+              <div style="font-size:7px;color:rgba(255,255,255,.8);">дней</div>
+            </div>
+          </div>
+
+          <!-- Path -->
+          <div style="background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+            <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;">Путь развития</div>
+            <div class="path-step">
+              <div class="step-dot" style="background:#22c55e;color:white;">✓</div>
+              <div style="font-size:7px;font-weight:600;color:#22c55e;white-space:nowrap;">Junior AM</div>
+              <div class="step-line" style="background:#22c55e;"></div>
+              <div class="step-dot" style="background:#597ef7;color:white;font-size:6px;">80%</div>
+              <div style="font-size:7px;font-weight:600;color:#597ef7;white-space:nowrap;">Middle AM</div>
+              <div class="step-line" style="background:#e5e7eb;"></div>
+              <div class="step-dot" style="background:#e5e7eb;color:#9ca3af;">·</div>
+              <div style="font-size:7px;color:#9ca3af;white-space:nowrap;">Senior AM</div>
+              <div class="step-line" style="background:#e5e7eb;"></div>
+              <div class="step-dot" style="background:#e5e7eb;color:#9ca3af;">·</div>
+              <div style="font-size:7px;color:#9ca3af;white-space:nowrap;">Lead AM</div>
+            </div>
+          </div>
+
+          <!-- Achievements + peers -->
+          <div style="display:flex;gap:8px;">
+            <div style="flex:3;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Достижения</div>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <div class="ach-icon" style="background:#fef3c7;">🏆</div>
+                <div class="ach-icon" style="background:#dcfce7;">📗</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">🌟</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">🎯</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">⚡</div>
+              </div>
+            </div>
+            <div style="flex:2;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;">Коллеги</div>
+              <div style="font-size:8px;color:#22c55e;font-weight:700;margin-bottom:4px;">Ты в топ 30% 🎉</div>
+              <div class="peer-bar"><div class="peer-fill" style="width:70%;background:#597ef7;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Hero с градиентом</h3>
+      <p>Яркий hero-блок с кольцом прогресса и стриком, ниже — путь, достижения, сравнение.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C: Two donuts -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;">
+      <div class="mock-page">
+        <div class="mock-topbar">Прогресс</div>
+        <div class="mock-inner" style="display:flex;flex-direction:column;gap:8px;">
+
+          <!-- Two donuts side by side -->
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;text-align:center;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Курсы</div>
+              <div class="donut-wrap" style="display:flex;justify-content:center;">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="23" fill="none" stroke="#e5e7eb" stroke-width="7"/>
+                  <circle cx="30" cy="30" r="23" fill="none" stroke="#597ef7" stroke-width="7"
+                    stroke-dasharray="87 57" stroke-linecap="round"
+                    transform="rotate(-90 30 30)"/>
+                </svg>
+                <div class="donut-label">
+                  <div class="donut-num" style="font-size:14px;">3/5</div>
+                  <div class="donut-sub">готово</div>
+                </div>
+              </div>
+              <div style="font-size:7px;color:#6b7280;margin-top:4px;">60% завершено</div>
+            </div>
+            <div style="flex:1;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;text-align:center;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">До уровня</div>
+              <div class="donut-wrap" style="display:flex;justify-content:center;">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="23" fill="none" stroke="#e5e7eb" stroke-width="7"/>
+                  <circle cx="30" cy="30" r="23" fill="none" stroke="#22c55e" stroke-width="7"
+                    stroke-dasharray="115 30" stroke-linecap="round"
+                    transform="rotate(-90 30 30)"/>
+                </svg>
+                <div class="donut-label">
+                  <div class="donut-num" style="font-size:14px;">80%</div>
+                  <div class="donut-sub">Middle</div>
+                </div>
+              </div>
+              <div style="font-size:7px;color:#6b7280;margin-top:4px;">Senior AM следующий</div>
+            </div>
+            <div style="background:#fef3c7;border-radius:8px;padding:10px;border:1px solid #fde68a;text-align:center;min-width:52px;">
+              <div style="font-size:8px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Стрик</div>
+              <div style="font-size:22px;margin:4px 0;">🔥</div>
+              <div style="font-size:16px;font-weight:800;color:#92400e;">15</div>
+              <div style="font-size:7px;color:#a16207;">дней подряд</div>
+            </div>
+          </div>
+
+          <!-- Path -->
+          <div style="background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+            <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;">Путь развития</div>
+            <div class="path-step">
+              <div class="step-dot" style="background:#22c55e;color:white;">✓</div>
+              <div style="font-size:7px;font-weight:600;color:#22c55e;white-space:nowrap;">Junior AM</div>
+              <div class="step-line" style="background:#22c55e;"></div>
+              <div class="step-dot" style="background:#597ef7;color:white;font-size:6px;">80%</div>
+              <div style="font-size:7px;font-weight:600;color:#597ef7;white-space:nowrap;">Middle AM</div>
+              <div class="step-line" style="background:#e5e7eb;"></div>
+              <div class="step-dot" style="background:#e5e7eb;color:#9ca3af;">·</div>
+              <div style="font-size:7px;color:#9ca3af;white-space:nowrap;">Senior AM</div>
+              <div class="step-line" style="background:#e5e7eb;"></div>
+              <div class="step-dot" style="background:#e5e7eb;color:#9ca3af;">·</div>
+              <div style="font-size:7px;color:#9ca3af;white-space:nowrap;">Lead AM</div>
+            </div>
+          </div>
+
+          <!-- Achievements + peers -->
+          <div style="display:flex;gap:8px;">
+            <div style="flex:3;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">Достижения</div>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <div class="ach-icon" style="background:#fef3c7;">🏆</div>
+                <div class="ach-icon" style="background:#dcfce7;">📗</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">🌟</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">🎯</div>
+                <div class="ach-icon" style="background:#f3f4f6;opacity:.3;">⚡</div>
+              </div>
+            </div>
+            <div style="flex:2;background:white;border-radius:8px;padding:10px;border:1px solid #e5e7eb;">
+              <div style="font-size:8px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;">Коллеги</div>
+              <div style="font-size:8px;color:#22c55e;font-weight:700;margin-bottom:4px;">Топ 30% 🎉</div>
+              <div class="peer-bar"><div class="peer-fill" style="width:70%;background:#597ef7;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Два кольца</h3>
+      <p>Два кольцевых графика вверху: % завершённых курсов и % до следующего уровня. Стрик рядом.</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,103 @@
+<h2>Как показать чаты Telegram?</h2>
+<p class="subtitle">Слайд с описанием чатов команды + кнопка скачать файл</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="tg-ui" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1c2733; border-radius:8px; overflow:hidden; height:180px; padding:0; display:flex; flex-direction:column;">
+      <div style="background:#17212b; padding:8px 12px; display:flex; gap:12px; align-items:center; border-bottom:1px solid #0d1117;">
+        <span style="color:#aaa;font-size:11px;">Все чаты</span>
+        <span style="color:#3390ec;font-size:11px;font-weight:600; border-bottom:2px solid #3390ec;padding-bottom:2px;">Рабочие</span>
+      </div>
+      <div style="flex:1;overflow:hidden;">
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid #1a2535;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#e17055;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;flex-shrink:0;">АМ</div>
+          <div style="flex:1;">
+            <div style="color:white;font-size:11px;font-weight:600;">Аккаунтинг</div>
+            <div style="color:#6c8998;font-size:10px;">Общий чат отдела AM</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid #1a2535;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#6c5ce7;display:flex;align-items:center;justify-content:center;font-size:10px;color:white;flex-shrink:0;">СБ</div>
+          <div style="flex:1;">
+            <div style="color:white;font-size:11px;font-weight:600;">Взаимодействие с СБ</div>
+            <div style="color:#6c8998;font-size:10px;">Вопросы к службе безопасности</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#00b894;display:flex;align-items:center;justify-content:center;font-size:9px;color:white;flex-shrink:0;">UP</div>
+          <div style="flex:1;">
+            <div style="color:white;font-size:11px;font-weight:600;">Unitpay Alerts</div>
+            <div style="color:#6c8998;font-size:10px;">Статус сервисов</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Telegram-интерфейс</h3>
+      <p>Слайд оформлен как список чатов в Telegram. Тёмная тема, аватарки, описания. Сразу понятно новичку.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="cards-colored" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8f9fa;border-radius:8px;height:180px;padding:10px;display:flex;flex-direction:column;gap:6px;">
+      <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:2px;">Чаты команды</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1;">
+        <div style="background:linear-gradient(135deg,#a29bfe,#6c5ce7);border-radius:6px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;">
+          <span style="font-size:10px;font-weight:700;color:white;">Аккаунтинг</span>
+          <span style="font-size:9px;color:rgba(255,255,255,0.8);">Общий чат отдела</span>
+        </div>
+        <div style="background:linear-gradient(135deg,#fd79a8,#e84393);border-radius:6px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;">
+          <span style="font-size:10px;font-weight:700;color:white;">Взаимодействие с СБ</span>
+          <span style="font-size:9px;color:rgba(255,255,255,0.8);">Служба безопасности</span>
+        </div>
+        <div style="background:linear-gradient(135deg,#55efc4,#00b894);border-radius:6px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;">
+          <span style="font-size:10px;font-weight:700;color:white;">Unitpay Alerts</span>
+          <span style="font-size:9px;color:rgba(255,255,255,0.8);">Статус сервисов</span>
+        </div>
+        <div style="background:linear-gradient(135deg,#74b9ff,#0984e3);border-radius:6px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;">
+          <span style="font-size:10px;font-weight:700;color:white;">Триггеры</span>
+          <span style="font-size:9px;color:rgba(255,255,255,0.8);">Действия партнёров</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Цветные карточки</h3>
+      <p>Как слайд «Инструменты» — каждый чат своя карточка с градиентом. Консистентно с остальным дизайном урока.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="split-tg" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f0f4f8;border-radius:8px;height:180px;padding:10px;display:flex;gap:8px;">
+      <div style="background:#1c2733;border-radius:6px;width:45%;padding:8px;display:flex;flex-direction:column;gap:4px;">
+        <div style="color:#6c8998;font-size:9px;margin-bottom:2px;">Telegram</div>
+        <div style="background:#17212b;border-radius:4px;padding:5px 7px;display:flex;align-items:center;gap:5px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#e17055;flex-shrink:0;"></div>
+          <span style="color:white;font-size:9px;">Аккаунтинг</span>
+        </div>
+        <div style="background:#253545;border-radius:4px;padding:5px 7px;display:flex;align-items:center;gap:5px;border:1px solid #3390ec;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#6c5ce7;flex-shrink:0;"></div>
+          <span style="color:white;font-size:9px;">Взаимодействие с СБ</span>
+        </div>
+        <div style="background:#17212b;border-radius:4px;padding:5px 7px;display:flex;align-items:center;gap:5px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#00b894;flex-shrink:0;"></div>
+          <span style="color:white;font-size:9px;">Unitpay Alerts</span>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;">
+        <div style="background:white;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.1);">
+          <div style="font-size:10px;font-weight:700;color:#333;">Взаимодействие с СБ</div>
+          <div style="font-size:9px;color:#666;margin-top:2px;">Здесь задаёшь вопросы службе безопасности по мерчантам.</div>
+        </div>
+        <div style="background:#3390ec;border-radius:6px;padding:6px 8px;display:flex;align-items:center;gap:6px;cursor:pointer;">
+          <span style="font-size:9px;color:white;">↓ Скачать список всех чатов</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — TG-список + описание</h3>
+      <p>Слева список чатов как в Telegram, справа — описание выбранного. Клик по чату показывает детали. Интерактивно.</p>
+    </div>
+  </div>
+
+</div>

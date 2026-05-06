@@ -1,0 +1,15 @@
+{"type":"server-started","port":61557,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:61557","screen_dir":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/layout.html"}
+{"source":"user-event","type":"click","text":"A — Карточки с прогрессом\n      Тот же список, но каждая карточка получает иконку, прогресс-бар и статус (не начато / в процессе / завершено).\n      \n        Предпросмотр\n        \n          \n            📘\n            \n              Основы UnitPay\n              9 тем\n              \n            \n            В процессе\n          \n          \n            🔒\n            \n              Аккаунтинг\n              4 темы\n            \n            Заблокировано","choice":"a","id":null,"timestamp":1777366700635}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/12169-1777366639/levels-v2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

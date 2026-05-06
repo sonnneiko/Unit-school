@@ -1,0 +1,95 @@
+<h2>Как открывать детали инструмента?</h2>
+<p class="subtitle">Клик по карточке — и дальше что?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="split" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f6fa;border-radius:8px;height:190px;padding:10px;display:flex;gap:8px;overflow:hidden;">
+      <!-- left: tool cards -->
+      <div style="display:flex;flex-direction:column;gap:6px;width:42%;">
+        <div style="background:linear-gradient(135deg,#6BCB77,#4CAF50);border-radius:8px;padding:10px;flex:1;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+          <span style="font-size:18px;">⚙️</span>
+          <span style="color:white;font-weight:700;font-size:12px;">Adminка UnitPay</span>
+        </div>
+        <div style="background:linear-gradient(135deg,#9B59B6,#6c5ce7);border-radius:8px;padding:10px;flex:1;display:flex;align-items:center;gap:8px;border:2px solid white;box-shadow:0 0 0 2px #6c5ce7;">
+          <span style="font-size:18px;">💬</span>
+          <span style="color:white;font-weight:700;font-size:12px;">Omnidesk ← выбран</span>
+        </div>
+        <div style="background:linear-gradient(135deg,#F4A800,#e67e22);border-radius:8px;padding:10px;flex:1;display:flex;align-items:center;gap:8px;opacity:0.7;">
+          <span style="font-size:18px;">📋</span>
+          <span style="color:white;font-weight:700;font-size:12px;">Teamly</span>
+        </div>
+        <div style="background:linear-gradient(135deg,#2AABEE,#0984e3);border-radius:8px;padding:10px;flex:1;display:flex;align-items:center;gap:8px;opacity:0.7;">
+          <span style="font-size:18px;">✈️</span>
+          <span style="color:white;font-weight:700;font-size:12px;">Telegram</span>
+        </div>
+      </div>
+      <!-- right: detail -->
+      <div style="flex:1;background:white;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-weight:700;font-size:13px;color:#333;">Omnidesk</div>
+        <div style="background:#eee;border-radius:6px;flex:1;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:24px;">▶</span>
+        </div>
+        <div style="font-size:10px;color:#888;">Инструмент для работы с мерчантами и плательщиками</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Панель слева + детали справа</h3>
+      <p>Как слайд с чатами. Карточки инструментов слева, справа видео или объяснение. Консистентно с дизайном урока.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="modal" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f6fa;border-radius:8px;height:190px;padding:10px;position:relative;overflow:hidden;">
+      <!-- background cards grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;height:100%;filter:blur(1px) brightness(0.7);">
+        <div style="background:linear-gradient(135deg,#6BCB77,#4CAF50);border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-weight:700;font-size:11px;">Adminка UnitPay</span></div>
+        <div style="background:linear-gradient(135deg,#9B59B6,#6c5ce7);border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-weight:700;font-size:11px;">Omnidesk</span></div>
+        <div style="background:linear-gradient(135deg,#F4A800,#e67e22);border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-weight:700;font-size:11px;">Teamly</span></div>
+        <div style="background:linear-gradient(135deg,#2AABEE,#0984e3);border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-weight:700;font-size:11px;">Telegram</span></div>
+      </div>
+      <!-- modal overlay -->
+      <div style="position:absolute;inset:8px;background:white;border-radius:10px;padding:10px;box-shadow:0 8px 32px rgba(0,0,0,0.25);display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:700;font-size:13px;">Omnidesk</span>
+          <span style="color:#999;font-size:16px;cursor:pointer;">✕</span>
+        </div>
+        <div style="background:#eee;border-radius:6px;flex:1;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:22px;">▶</span>
+        </div>
+        <div style="font-size:10px;color:#888;">Нажми ✕ чтобы вернуться к списку</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Модальное окно</h3>
+      <p>Карточки в сетке 2×2. Клик открывает модалку поверх с видео и описанием. Эффектно, но закрывать нужно вручную.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="expand" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f6fa;border-radius:8px;height:190px;padding:10px;display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#6BCB77,#4CAF50);border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px;height:36px;flex-shrink:0;">
+        <span style="font-size:14px;">⚙️</span>
+        <span style="color:white;font-weight:700;font-size:11px;">Adminка UnitPay</span>
+        <span style="color:rgba(255,255,255,0.7);margin-left:auto;font-size:11px;">↓</span>
+      </div>
+      <!-- expanded card -->
+      <div style="background:white;border-radius:8px;padding:10px;flex:1;display:flex;gap:8px;border:2px solid #6BCB77;overflow:hidden;">
+        <div style="background:#eee;border-radius:6px;width:45%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-size:20px;">▶</span>
+        </div>
+        <div style="font-size:10px;color:#555;line-height:1.4;">Главный инструмент. Здесь всё: проекты, транзакции, настройки мерчантов.</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#9B59B6,#6c5ce7);border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px;height:36px;flex-shrink:0;opacity:0.75;">
+        <span style="font-size:14px;">💬</span>
+        <span style="color:white;font-weight:700;font-size:11px;">Omnidesk</span>
+        <span style="color:rgba(255,255,255,0.7);margin-left:auto;font-size:11px;">↓</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Раскрывающиеся карточки</h3>
+      <p>Список инструментов, клик разворачивает карточку внизу с видео и описанием. Всё на одном экране, без переключения.</p>
+    </div>
+  </div>
+
+</div>

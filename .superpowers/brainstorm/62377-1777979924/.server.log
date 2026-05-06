@@ -1,0 +1,33 @@
+{"type":"server-started","port":54945,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:54945","screen_dir":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-layout.html"}
+{"source":"user-event","type":"click","text":"Все чаты\n        Рабочие\n      \n      \n        \n          АМ\n          \n            Аккаунтинг\n            Общий чат отдела AM\n          \n        \n        \n          СБ\n          \n            Взаимодействие с СБ\n            Вопросы к службе безопасности\n          \n        \n        \n          UP\n          \n            Unitpay Alerts\n            Статус сервисов\n          \n        \n      \n    \n    \n      A — Telegram-интерфейс\n      Слайд оформлен как список чатов в Telegram. Тёмная тема, аватарки, описания. Сразу понятно новичку.","choice":"tg-ui","id":null,"timestamp":1777980019735}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v2.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v3.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v3.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v3.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v3.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v4.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v4.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v4.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/chats-fullscreen-v4.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/tools-interaction.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/tools-interaction.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/tools-interaction.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/tools-interaction.html"}
+{"source":"user-event","type":"click","text":"⚙️\n          Adminка UnitPay\n        \n        \n          💬\n          Omnidesk ← выбран\n        \n        \n          📋\n          Teamly\n        \n        \n          ✈️\n          Telegram\n        \n      \n      \n      \n        Omnidesk\n        \n          ▶\n        \n        Инструмент для работы с мерчантами и плательщиками\n      \n    \n    \n      A — Панель слева + детали справа\n      Как слайд с чатами. Карточки инструментов слева, справа видео или объяснение. Консистентно с дизайном урока.","choice":"split","id":null,"timestamp":1777981061265}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/waiting-2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/62377-1777979924/waiting-2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

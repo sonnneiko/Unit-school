@@ -1,0 +1,250 @@
+<h2>Как должна работать кнопка «Изменить»?</h2>
+<p class="subtitle">Выгляд профиля в стиле UnitSchool одинаковый — вопрос в поведении редактирования</p>
+
+<style>
+  .pf {
+    font-family: Manrope, sans-serif;
+    font-size: 13px;
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 20px;
+    color: #111827;
+    max-width: 520px;
+  }
+  .pf-inner {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+  }
+  .pf-left {
+    width: 140px;
+    flex-shrink: 0;
+    background: #f9fafb;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 10px;
+  }
+  .pf-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #597ef7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 24px;
+  }
+  .pf-avatar-name { font-weight: 700; font-size: 13px; text-align: center; color: #111827; }
+  .pf-avatar-role { font-size: 11px; color: #9ca3af; text-align: center; }
+  .pf-upload-btn {
+    font-size: 11px;
+    color: #597ef7;
+    background: none;
+    border: 1px solid #597ef7;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .pf-right { flex: 1; padding: 20px; }
+  .pf-title { font-size: 13px; font-weight: 700; color: #374151; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #f3f4f6; }
+  .pf-field { margin-bottom: 12px; }
+  .pf-field-label { font-size: 10px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .pf-field-value {
+    font-size: 13px;
+    color: #111827;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 7px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .pf-field-value.editable {
+    background: #fff;
+    border-color: #597ef7;
+    outline: none;
+  }
+  .pf-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pf-row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .pf-btn-row { margin-top: 14px; display: flex; gap: 8px; }
+  .pf-btn-primary {
+    background: #597ef7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: Manrope, sans-serif;
+  }
+  .pf-btn-secondary {
+    background: #fff;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: Manrope, sans-serif;
+  }
+  .pf-readonly { color: #6b7280; }
+  .pf-progress-mini {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    border-left: 4px solid #22c55e;
+  }
+  .pf-bar-track { background: #e5e7eb; border-radius: 4px; height: 5px; margin-top: 6px; }
+  .pf-bar-fill { background: #22c55e; height: 5px; border-radius: 4px; width: 45%; }
+  .pf-edit-icon { font-size: 14px; cursor: pointer; color: #9ca3af; margin-left: auto; }
+</style>
+
+<div class="cards">
+
+  <!-- Option A: Read-only → click Изменить → fields become editable -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pf">
+        <div style="font-size:17px;font-weight:800;color:#111827;margin-bottom:14px;">Профиль</div>
+        <div class="pf-inner">
+          <div class="pf-left">
+            <div class="pf-avatar">СА</div>
+            <div class="pf-avatar-name">Соня Алхазова</div>
+            <div class="pf-avatar-role">Сотрудник</div>
+          </div>
+          <div class="pf-right">
+            <div class="pf-title">Данные пользователя</div>
+            <div class="pf-field">
+              <div class="pf-field-label">Логин (E-mail)</div>
+              <div class="pf-field-value pf-readonly">user@unitpay.ru</div>
+            </div>
+            <div class="pf-row3">
+              <div class="pf-field">
+                <div class="pf-field-label">Имя</div>
+                <div class="pf-field-value pf-readonly">Соня</div>
+              </div>
+              <div class="pf-field">
+                <div class="pf-field-label">Фамилия</div>
+                <div class="pf-field-value pf-readonly">Алхазова</div>
+              </div>
+              <div class="pf-field">
+                <div class="pf-field-label">Отчество</div>
+                <div class="pf-field-value pf-readonly" style="color:#d1d5db;">—</div>
+              </div>
+            </div>
+            <div class="pf-row2">
+              <div class="pf-field">
+                <div class="pf-field-label">Дата рождения</div>
+                <div class="pf-field-value pf-readonly" style="color:#d1d5db;">—</div>
+              </div>
+              <div class="pf-field">
+                <div class="pf-field-label">Телефон</div>
+                <div class="pf-field-value pf-readonly" style="color:#d1d5db;">—</div>
+              </div>
+            </div>
+            <div class="pf-field">
+              <div class="pf-field-label">Роль</div>
+              <div class="pf-field-value pf-readonly">Сотрудник</div>
+            </div>
+            <div class="pf-btn-row">
+              <button class="pf-btn-primary">Изменить</button>
+            </div>
+          </div>
+        </div>
+        <div class="pf-progress-mini">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:12px;font-weight:600;">Знакомство с UnitPay</div>
+            <div style="font-size:11px;color:#22c55e;font-weight:700;">45%</div>
+          </div>
+          <div class="pf-bar-track"><div class="pf-bar-fill"></div></div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:4px;">Слайд 4 из 8</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Просмотр → режим редактирования</h3>
+      <p>По умолчанию всё read-only. Кнопка «Изменить» включает поля — они становятся активными. Появляется «Сохранить» и «Отмена».</p>
+    </div>
+  </div>
+
+  <!-- Option B: Always editable form, just Save button -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="pf">
+        <div style="font-size:17px;font-weight:800;color:#111827;margin-bottom:14px;">Профиль</div>
+        <div class="pf-inner">
+          <div class="pf-left">
+            <div class="pf-avatar">СА</div>
+            <div class="pf-avatar-name">Соня Алхазова</div>
+            <div class="pf-avatar-role">Сотрудник</div>
+            <button class="pf-upload-btn">Сменить фото</button>
+          </div>
+          <div class="pf-right">
+            <div class="pf-title">Данные пользователя</div>
+            <div class="pf-field">
+              <div class="pf-field-label">Логин (E-mail)</div>
+              <div class="pf-field-value pf-readonly">user@unitpay.ru</div>
+            </div>
+            <div class="pf-row3">
+              <div class="pf-field">
+                <div class="pf-field-label">Имя</div>
+                <input class="pf-field-value editable" value="Соня" readonly />
+              </div>
+              <div class="pf-field">
+                <div class="pf-field-label">Фамилия</div>
+                <input class="pf-field-value editable" value="Алхазова" readonly />
+              </div>
+              <div class="pf-field">
+                <div class="pf-field-label">Отчество</div>
+                <input class="pf-field-value editable" placeholder="—" readonly />
+              </div>
+            </div>
+            <div class="pf-row2">
+              <div class="pf-field">
+                <div class="pf-field-label">Дата рождения</div>
+                <input class="pf-field-value editable" placeholder="—" readonly />
+              </div>
+              <div class="pf-field">
+                <div class="pf-field-label">Телефон</div>
+                <input class="pf-field-value editable" placeholder="—" readonly />
+              </div>
+            </div>
+            <div class="pf-field">
+              <div class="pf-field-label">Роль</div>
+              <div class="pf-field-value pf-readonly">Сотрудник</div>
+            </div>
+            <div class="pf-btn-row">
+              <button class="pf-btn-primary">Сохранить</button>
+            </div>
+          </div>
+        </div>
+        <div class="pf-progress-mini">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:12px;font-weight:600;">Знакомство с UnitPay</div>
+            <div style="font-size:11px;color:#22c55e;font-weight:700;">45%</div>
+          </div>
+          <div class="pf-bar-track"><div class="pf-bar-fill"></div></div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:4px;">Слайд 4 из 8</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Всегда форма + «Сохранить»</h3>
+      <p>Поля всегда активны для ввода. Кнопка «Сохранить» — просто сохраняет. Проще и быстрее, но выглядит как «форма», а не «профиль».</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,157 @@
+<h2>Структура страницы «Прогресс»</h2>
+<p class="subtitle">Как расположить блоки на странице? Выбери подход.</p>
+
+<div class="cards">
+
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f9fafb;border-radius:8px;">
+      <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:8px;text-transform:uppercase;">Вариант A — Колонки</div>
+      <!-- Row 1: summary + streak side by side -->
+      <div style="display:flex;gap:6px;margin-bottom:6px;">
+        <div style="flex:1;background:#e0e7ff;border-radius:6px;padding:10px;text-align:center;">
+          <div style="font-size:18px;">⭕</div>
+          <div style="font-size:9px;color:#3730a3;font-weight:600;">Сводка</div>
+          <div style="font-size:8px;color:#6b7280;">3 из 5 курсов</div>
+        </div>
+        <div style="flex:1;background:#fef3c7;border-radius:6px;padding:10px;text-align:center;">
+          <div style="font-size:18px;">🔥</div>
+          <div style="font-size:9px;color:#92400e;font-weight:600;">Стрик</div>
+          <div style="font-size:8px;color:#6b7280;">15 дней</div>
+        </div>
+      </div>
+      <!-- Row 2: path full width -->
+      <div style="background:#dcfce7;border-radius:6px;padding:10px;margin-bottom:6px;">
+        <div style="font-size:9px;color:#166534;font-weight:600;">Путь развития</div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;">
+          <span style="font-size:8px;background:#22c55e;color:white;border-radius:4px;padding:2px 5px;">✓ Junior</span>
+          <span style="font-size:8px;background:#22c55e;color:white;border-radius:4px;padding:2px 5px;">→ Middle</span>
+          <span style="font-size:8px;background:#e5e7eb;color:#9ca3af;border-radius:4px;padding:2px 5px;">Senior</span>
+          <span style="font-size:8px;background:#e5e7eb;color:#9ca3af;border-radius:4px;padding:2px 5px;">Lead</span>
+        </div>
+      </div>
+      <!-- Row 3: achievements + peers -->
+      <div style="display:flex;gap:6px;">
+        <div style="flex:2;background:#f3f4f6;border-radius:6px;padding:8px;">
+          <div style="font-size:9px;font-weight:600;color:#374151;">Достижения</div>
+          <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
+            <span style="font-size:14px;">🏆</span><span style="font-size:14px;">📗</span><span style="font-size:14px;opacity:.3;">🌟</span><span style="font-size:14px;opacity:.3;">🎯</span>
+          </div>
+        </div>
+        <div style="flex:2;background:#f3f4f6;border-radius:6px;padding:8px;">
+          <div style="font-size:9px;font-weight:600;color:#374151;">Коллеги</div>
+          <div style="margin-top:4px;">
+            <div style="font-size:8px;color:#6b7280;margin-bottom:2px;">Я</div>
+            <div style="height:5px;background:#e5e7eb;border-radius:3px;"><div style="width:60%;height:100%;background:#597ef7;border-radius:3px;"></div></div>
+            <div style="font-size:8px;color:#6b7280;margin-top:3px;margin-bottom:2px;">Команда</div>
+            <div style="height:5px;background:#e5e7eb;border-radius:3px;"><div style="width:40%;height:100%;background:#d1d5db;border-radius:3px;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>А — Компактная сетка</h3>
+      <p>Все блоки в сетке: сводка + стрик вверху бок о бок, путь развития во всю ширину, достижения и сравнение внизу. Всё видно без скролла.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f9fafb;border-radius:8px;">
+      <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:8px;text-transform:uppercase;">Вариант B — Секции</div>
+      <!-- Hero summary -->
+      <div style="background:linear-gradient(135deg,#597ef7,#818cf8);border-radius:6px;padding:12px;margin-bottom:6px;display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px;">⭕</div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:white;">3 из 5 курсов · 4 ч 30 мин</div>
+          <div style="font-size:8px;color:rgba(255,255,255,.8);">Уровень: Middle AM</div>
+        </div>
+        <div style="margin-left:auto;text-align:center;">
+          <div style="font-size:18px;">🔥</div>
+          <div style="font-size:9px;color:white;font-weight:600;">15 дней</div>
+        </div>
+      </div>
+      <!-- Path -->
+      <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:10px;margin-bottom:6px;">
+        <div style="font-size:9px;font-weight:600;color:#374151;margin-bottom:6px;">ПУТЬ РАЗВИТИЯ</div>
+        <div style="display:flex;align-items:center;gap:3px;">
+          <div style="font-size:8px;background:#22c55e;color:white;border-radius:4px;padding:3px 6px;">✓ Junior AM</div>
+          <div style="flex:1;height:2px;background:#22c55e;"></div>
+          <div style="font-size:8px;background:#597ef7;color:white;border-radius:4px;padding:3px 6px;">Middle AM 80%</div>
+          <div style="flex:1;height:2px;background:#e5e7eb;"></div>
+          <div style="font-size:8px;background:#f3f4f6;color:#9ca3af;border-radius:4px;padding:3px 6px;">Senior AM</div>
+          <div style="flex:1;height:2px;background:#e5e7eb;"></div>
+          <div style="font-size:8px;background:#f3f4f6;color:#9ca3af;border-radius:4px;padding:3px 6px;">Lead AM</div>
+        </div>
+      </div>
+      <!-- Achievements + compare -->
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;background:white;border:1px solid #e5e7eb;border-radius:6px;padding:8px;">
+          <div style="font-size:8px;font-weight:600;color:#374151;margin-bottom:4px;">ДОСТИЖЕНИЯ</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;">
+            <span style="font-size:16px;text-align:center;">🏆</span>
+            <span style="font-size:16px;text-align:center;">📗</span>
+            <span style="font-size:16px;text-align:center;opacity:.25;">🌟</span>
+            <span style="font-size:16px;text-align:center;opacity:.25;">🎯</span>
+          </div>
+        </div>
+        <div style="flex:1;background:white;border:1px solid #e5e7eb;border-radius:6px;padding:8px;">
+          <div style="font-size:8px;font-weight:600;color:#374151;margin-bottom:4px;">VS КОЛЛЕГИ</div>
+          <div style="font-size:8px;color:#22c55e;font-weight:600;">Ты в топ 30%</div>
+          <div style="height:5px;background:#e5e7eb;border-radius:3px;margin-top:4px;"><div style="width:70%;height:100%;background:#597ef7;border-radius:3px;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Hero + карточки</h3>
+      <p>Яркий hero-блок вверху с ключевыми цифрами и стриком, ниже — путь развития, затем достижения и сравнение в ряд. Акцент на главных метриках.</p>
+    </div>
+  </div>
+
+  <!-- Option C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f9fafb;border-radius:8px;">
+      <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:8px;text-transform:uppercase;">Вариант C — Левая панель</div>
+      <div style="display:flex;gap:8px;">
+        <!-- Left sidebar -->
+        <div style="width:80px;flex-shrink:0;display:flex;flex-direction:column;gap:5px;">
+          <div style="background:#597ef7;border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:16px;">⭕</div>
+            <div style="font-size:8px;color:white;font-weight:600;">3/5</div>
+            <div style="font-size:7px;color:rgba(255,255,255,.8);">курсов</div>
+          </div>
+          <div style="background:#fef3c7;border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:16px;">🔥</div>
+            <div style="font-size:8px;color:#92400e;font-weight:600;">15 дн.</div>
+          </div>
+          <div style="background:#f3f4f6;border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:8px;color:#374151;font-weight:600;">4ч 30м</div>
+            <div style="font-size:7px;color:#6b7280;">обучения</div>
+          </div>
+        </div>
+        <!-- Right content -->
+        <div style="flex:1;display:flex;flex-direction:column;gap:5px;">
+          <div style="background:#dcfce7;border-radius:6px;padding:8px;">
+            <div style="font-size:8px;font-weight:600;color:#166534;margin-bottom:4px;">ПУТЬ</div>
+            <div style="font-size:8px;color:#374151;">Junior ✓ → <strong>Middle 80%</strong> → Senior → Lead</div>
+          </div>
+          <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:8px;flex:1;">
+            <div style="font-size:8px;font-weight:600;color:#374151;margin-bottom:4px;">ДОСТИЖЕНИЯ</div>
+            <div style="display:flex;gap:3px;flex-wrap:wrap;">
+              <span style="font-size:13px;">🏆</span><span style="font-size:13px;">📗</span><span style="font-size:13px;opacity:.25;">🌟</span><span style="font-size:13px;opacity:.25;">🎯</span><span style="font-size:13px;opacity:.25;">🔥</span><span style="font-size:13px;opacity:.25;">⚡</span>
+            </div>
+          </div>
+          <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:8px;">
+            <div style="font-size:8px;font-weight:600;color:#374151;margin-bottom:3px;">СРЕДИ КОЛЛЕГ</div>
+            <div style="height:5px;background:#e5e7eb;border-radius:3px;"><div style="width:70%;height:100%;background:#597ef7;border-radius:3px;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Боковая панель со статистикой</h3>
+      <p>Узкая левая колонка с ключевыми цифрами (курсы, стрик, время), правая часть — путь, достижения, сравнение. Всё компактно, статистика всегда на виду.</p>
+    </div>
+  </div>
+
+</div>

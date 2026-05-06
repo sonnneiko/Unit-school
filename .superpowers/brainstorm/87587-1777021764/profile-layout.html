@@ -1,0 +1,191 @@
+<h2>Какая компоновка страницы «Профиль» подходит лучше?</h2>
+<p class="subtitle">Выбери вариант — можно кликнуть для выделения</p>
+
+<style>
+  .mock-profile {
+    font-family: Manrope, sans-serif;
+    font-size: 13px;
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    color: #111827;
+  }
+  .mp-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+  .mp-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #597ef7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .mp-name { font-weight: 700; font-size: 15px; }
+  .mp-sub { color: #6b7280; font-size: 12px; margin-top: 2px; }
+  .mp-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+  .mp-label { color: #9ca3af; font-size: 11px; min-width: 110px; }
+  .mp-value { color: #374151; font-size: 12px; }
+  .mp-bar-track { background: #e5e7eb; border-radius: 4px; height: 6px; flex: 1; }
+  .mp-bar-fill { background: #22c55e; height: 6px; border-radius: 4px; width: 45%; }
+  .mp-section-title { font-size: 11px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .mp-badge { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 20px; font-size: 11px; color: #374151; padding: 2px 10px; display: inline-block; }
+  .mp-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mp-left-panel { width: 130px; flex-shrink: 0; }
+  .mp-left-panel .mp-avatar { width: 60px; height: 60px; font-size: 22px; margin: 0 auto 8px; }
+  .mp-flex { display: flex; gap: 10px; }
+  .mp-accent { border-left: 4px solid #597ef7; }
+  .mp-stat { text-align: center; padding: 8px; }
+  .mp-stat-num { font-size: 18px; font-weight: 800; color: #597ef7; }
+  .mp-stat-label { font-size: 10px; color: #9ca3af; margin-top: 2px; }
+</style>
+
+<div class="cards">
+
+  <!-- Option A: Single column stacked -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mock-profile">
+        <!-- Hero card with accent -->
+        <div class="mp-card mp-accent" style="display:flex;align-items:center;gap:14px;">
+          <div class="mp-avatar">СА</div>
+          <div>
+            <div class="mp-name">Соня Алхазова</div>
+            <div class="mp-sub">Junior Account Manager</div>
+            <div style="margin-top:6px;">
+              <span class="mp-badge">🟢 В обучении</span>
+            </div>
+          </div>
+        </div>
+        <!-- Info card -->
+        <div class="mp-card">
+          <div class="mp-section-title">Контакты</div>
+          <div class="mp-row"><span class="mp-label">Email</span><span class="mp-value">user@unitpay.ru</span></div>
+          <div class="mp-row"><span class="mp-label">Дата начала</span><span class="mp-value">01.03.2026</span></div>
+        </div>
+        <!-- Progress card -->
+        <div class="mp-card">
+          <div class="mp-section-title">Прогресс</div>
+          <div class="mp-row" style="margin-bottom:4px;">
+            <span class="mp-value" style="flex:1">Знакомство с UnitPay</span>
+            <span style="color:#22c55e;font-weight:700;font-size:12px;">45%</span>
+          </div>
+          <div class="mp-bar-track"><div class="mp-bar-fill"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Одна колонка</h3>
+      <p>Карточки стопкой: шапка → контакты → прогресс. Просто, предсказуемо, похоже на мобильный вид.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Two-column sidebar + main -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mock-profile">
+        <div class="mp-flex">
+          <!-- Left panel -->
+          <div class="mp-left-panel">
+            <div class="mp-card" style="text-align:center;">
+              <div class="mp-avatar" style="width:60px;height:60px;font-size:22px;margin:0 auto 8px;">СА</div>
+              <div class="mp-name" style="font-size:13px;">Соня Алхазова</div>
+              <div class="mp-sub">Junior AM</div>
+              <div style="margin-top:6px;"><span class="mp-badge">🟢 В обучении</span></div>
+            </div>
+            <div class="mp-card">
+              <div class="mp-row" style="flex-direction:column;align-items:flex-start;gap:2px;">
+                <span class="mp-label">Email</span>
+                <span class="mp-value" style="word-break:break-all;">user@unitpay.ru</span>
+              </div>
+              <div class="mp-row" style="flex-direction:column;align-items:flex-start;gap:2px;margin-top:6px;">
+                <span class="mp-label">Дата начала</span>
+                <span class="mp-value">01.03.2026</span>
+              </div>
+            </div>
+          </div>
+          <!-- Right main -->
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+            <div class="mp-card mp-accent">
+              <div class="mp-section-title">Текущий курс</div>
+              <div class="mp-name" style="font-size:13px;margin-bottom:6px;">Знакомство с UnitPay</div>
+              <div class="mp-bar-track"><div class="mp-bar-fill"></div></div>
+              <div style="text-align:right;color:#22c55e;font-size:11px;margin-top:4px;">45%</div>
+            </div>
+            <div class="mp-grid2">
+              <div class="mp-card" style="padding:10px;">
+                <div class="mp-stat">
+                  <div class="mp-stat-num">1</div>
+                  <div class="mp-stat-label">Курс начат</div>
+                </div>
+              </div>
+              <div class="mp-card" style="padding:10px;">
+                <div class="mp-stat">
+                  <div class="mp-stat-num">🔥0</div>
+                  <div class="mp-stat-label">Стрик дней</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Боковая панель + основная</h3>
+      <p>Аватар и контакты слева, прогресс и статистика справа. Больше информации с первого взгляда.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Big header + grid -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mock-profile">
+        <!-- Wide hero -->
+        <div class="mp-card mp-accent" style="display:flex;align-items:center;gap:14px;margin-bottom:10px;">
+          <div class="mp-avatar" style="width:56px;height:56px;font-size:20px;">СА</div>
+          <div style="flex:1;">
+            <div class="mp-name">Соня Алхазова</div>
+            <div class="mp-sub">Junior Account Manager · user@unitpay.ru</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:11px;color:#9ca3af;">Дата начала</div>
+            <div style="font-size:12px;font-weight:600;">01.03.2026</div>
+          </div>
+        </div>
+        <!-- 3-column grid below -->
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;">
+          <div class="mp-card">
+            <div class="mp-section-title">Текущий курс</div>
+            <div style="font-weight:600;font-size:12px;margin-bottom:6px;">Знакомство с UnitPay</div>
+            <div class="mp-bar-track"><div class="mp-bar-fill"></div></div>
+            <div style="color:#22c55e;font-size:11px;margin-top:4px;">Слайд 4 из 8 · 45%</div>
+          </div>
+          <div class="mp-card" style="text-align:center;">
+            <div class="mp-section-title" style="text-align:center;">Уровень</div>
+            <div style="font-size:20px;">🌱</div>
+            <div style="font-size:11px;font-weight:600;color:#374151;">Новичок</div>
+          </div>
+          <div class="mp-card" style="text-align:center;">
+            <div class="mp-section-title" style="text-align:center;">Стрик</div>
+            <div style="font-size:20px;">🔥</div>
+            <div style="font-size:11px;font-weight:600;color:#374151;">0 дней</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Шапка + сетка</h3>
+      <p>Вся ключевая инфо в широкой шапке, ниже компактная сетка с прогрессом и статистикой. Похоже на дашборд.</p>
+    </div>
+  </div>
+
+</div>

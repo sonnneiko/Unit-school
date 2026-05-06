@@ -1,0 +1,134 @@
+<h2>Нулевое состояние — что видит новый пользователь?</h2>
+<p class="subtitle">Выбери вариант hero-блока для тех, кто ещё не начал обучение</p>
+
+<style>
+:root {
+  --brand: #597ef7;
+  --brand-light: #eef1fe;
+  --brand-text: #3d5bd9;
+}
+.dash-mock {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 16px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+}
+.dm-hero { background:#fff; border:1px solid #e5e7eb; border-radius:10px; }
+.dm-cta { background:var(--brand); color:#fff; border-radius:8px; padding:9px 18px; font-size:12px; font-weight:600; display:inline-block; }
+.dm-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:14px; margin-top:10px; }
+.dm-card-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#9ca3af; margin-bottom:8px; }
+.dm-course-row { display:flex; align-items:center; justify-content:space-between; padding:6px 0; border-bottom:1px solid #f3f4f6; }
+.dm-course-row:last-child { border-bottom:none; }
+.dm-badge-new { background:var(--brand-light); color:var(--brand-text); font-size:9px; padding:2px 7px; border-radius:8px; font-weight:600; }
+.dm-badge-soon { background:#f3f4f6; color:#6b7280; font-size:9px; padding:2px 7px; border-radius:8px; }
+</style>
+
+<div class="cards">
+
+  <!-- OPTION A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dash-mock">
+        <div class="dm-hero" style="border-left:4px solid var(--brand); padding:16px 20px; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:11px; color:var(--brand); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Первый шаг</div>
+          <div style="font-size:15px; font-weight:700; color:#111827;">Начни своё обучение в UnitSchool</div>
+          <div style="font-size:12px; color:#6b7280;">Первый курс уже ждёт — знакомство с UnitPay, команда и как всё устроено</div>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:4px;">
+            <div class="dm-cta">Начать обучение →</div>
+            <div style="font-size:11px; color:#9ca3af;">День 1 · 8 слайдов · ~10 мин</div>
+          </div>
+        </div>
+        <div class="dm-card">
+          <div class="dm-card-label">Доступные курсы</div>
+          <div class="dm-course-row">
+            <div style="font-size:12px; font-weight:600; color:#111827;">День 1 — Знакомство с UnitPay</div>
+            <span class="dm-badge-new">Доступен</span>
+          </div>
+          <div class="dm-course-row" style="opacity:0.45;">
+            <div style="font-size:12px; color:#6b7280;">День 2 — Аккаунтинг</div>
+            <span class="dm-badge-soon">Скоро</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Призыв начать, без кота</h3>
+      <p>Чёткий CTA, акцент на первый курс. Строго и понятно.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dash-mock">
+        <div class="dm-hero" style="overflow:hidden; display:flex; align-items:stretch;">
+          <div style="padding:18px 20px; flex:1; display:flex; flex-direction:column; gap:10px; justify-content:center;">
+            <div style="font-size:15px; font-weight:700; color:#111827; line-height:1.3;">Привет! Я Юнит — твой гид в мире UnitPay 🐾</div>
+            <div style="font-size:12px; color:#6b7280; line-height:1.5;">Здесь ты найдёшь всё что нужно знать, чтобы стать настоящим аккаунт-менеджером. Начнём?</div>
+            <div style="margin-top:4px;">
+              <div class="dm-cta">Поставить лапку →</div>
+            </div>
+          </div>
+          <div style="width:110px; flex-shrink:0; background:#eef1fe; display:flex; align-items:flex-end; overflow:hidden;">
+            <img src="cat-welcome.png" style="width:100%; object-fit:contain; object-position:bottom;" alt="Юнит" />
+          </div>
+        </div>
+        <div class="dm-card">
+          <div class="dm-card-label">С чего начать</div>
+          <div class="dm-course-row">
+            <div style="font-size:12px; font-weight:600; color:#111827;">День 1 — Знакомство с UnitPay</div>
+            <span class="dm-badge-new">Начать</span>
+          </div>
+          <div class="dm-course-row" style="opacity:0.45;">
+            <div style="font-size:12px; color:#6b7280;">День 2 — Аккаунтинг</div>
+            <span class="dm-badge-soon">Скоро</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Котик Юнит приветствует</h3>
+      <p>Тёплый баннер с котом, фирменный текст. "Поставить лапку" = начать первый курс.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dash-mock">
+        <div class="dm-hero" style="padding:16px 20px; display:grid; grid-template-columns:1fr 72px; gap:12px; align-items:center;">
+          <div>
+            <div style="font-size:11px; color:#9ca3af; margin-bottom:6px;">Привет, Соня!</div>
+            <div style="font-size:14px; font-weight:700; color:#111827; margin-bottom:8px;">Твоё обучение ещё не началось</div>
+            <div style="font-size:11px; color:#6b7280; margin-bottom:10px;">Открой первый курс и сделай шаг к Junior AM</div>
+            <div class="dm-cta" style="font-size:11px; padding:7px 14px;">Начать обучение →</div>
+          </div>
+          <img src="cat-like.png" style="width:72px; object-fit:contain;" alt="Юнит" />
+        </div>
+        <div class="dm-card">
+          <div class="dm-card-label">Доступные курсы</div>
+          <div class="dm-course-row">
+            <div>
+              <div style="font-size:12px; font-weight:600; color:#111827; margin-bottom:2px;">День 1 — Знакомство с UnitPay</div>
+              <div style="font-size:10px; color:#9ca3af;">8 слайдов · ~10 мин</div>
+            </div>
+            <div class="dm-cta" style="padding:5px 12px; font-size:11px;">Начать</div>
+          </div>
+          <div class="dm-course-row" style="opacity:0.45;">
+            <div>
+              <div style="font-size:12px; color:#6b7280; margin-bottom:2px;">День 2 — Аккаунтинг</div>
+              <div style="font-size:10px; color:#9ca3af;">Откроется после Дня 1</div>
+            </div>
+            <span class="dm-badge-soon">Скоро</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Компактный котик + курсы</h3>
+      <p>Маленький кот сбоку, акцент на список курсов с кнопкой "Начать" прямо в строке.</p>
+    </div>
+  </div>
+
+</div>

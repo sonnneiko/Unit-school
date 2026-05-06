@@ -1,0 +1,62 @@
+<h2>Какой стиль анимации для слайдов аккаунтинга?</h2>
+<p class="subtitle">Выбери стиль, который лучше всего подходит для образовательного контента</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="fade" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display:flex; align-items:center; justify-content:center; height:140px; border-radius:8px; overflow:hidden; position:relative;">
+      <div style="display:flex; gap:12px;">
+        <div style="background:white; border-radius:8px; padding:12px 20px; font-size:13px; color:#333; opacity:0.3; transform:scale(0.9);">Слайд 1</div>
+        <div style="background:white; border-radius:8px; padding:12px 20px; font-size:13px; color:#333; opacity:1; box-shadow:0 4px 20px rgba(0,0,0,0.2);">Слайд 2</div>
+        <div style="background:white; border-radius:8px; padding:12px 20px; font-size:13px; color:#333; opacity:0.3; transform:scale(0.9);">Слайд 3</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Плавное появление (Fade)</h3>
+      <p>Слайды плавно появляются и исчезают. Спокойно, элегантно, без отвлечений. Хорошо работает с текстом.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="slide" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); display:flex; align-items:center; justify-content:center; height:140px; border-radius:8px; overflow:hidden; position:relative;">
+      <div style="display:flex; gap:0; position:relative; width:200px;">
+        <div style="background:white; border-radius:8px; padding:12px 20px; font-size:13px; color:#333; position:absolute; left:-30px; opacity:0.4;">←</div>
+        <div style="background:white; border-radius:8px; padding:12px 30px; font-size:13px; color:#333; box-shadow:0 4px 20px rgba(0,0,0,0.2); margin:0 auto;">Слайд 2</div>
+        <div style="background:white; border-radius:8px; padding:12px 20px; font-size:13px; color:#333; position:absolute; right:-30px; opacity:0.4;">→</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Скольжение (Slide)</h3>
+      <p>Слайды въезжают горизонтально. Чёткое ощущение движения вперёд, как в презентации.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="pop" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display:flex; align-items:center; justify-content:center; height:140px; border-radius:8px; overflow:hidden; position:relative;">
+      <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
+        <div style="background:white; border-radius:8px; padding:8px 24px; font-size:13px; color:#333; box-shadow:0 4px 20px rgba(0,0,0,0.2); animation:none;">Заголовок</div>
+        <div style="background:rgba(255,255,255,0.7); border-radius:6px; padding:6px 20px; font-size:12px; color:#333;">→ Контент появляется</div>
+        <div style="background:rgba(255,255,255,0.5); border-radius:6px; padding:6px 20px; font-size:12px; color:#333;">→ Пункт за пунктом</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Появление элементов (Pop-in)</h3>
+      <p>Заголовок, текст, буллеты появляются последовательно с задержкой. Динамично, акцентирует внимание.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="mix" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display:flex; align-items:center; justify-content:center; height:140px; border-radius:8px; overflow:hidden; position:relative;">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <div style="background:white; border-radius:8px; padding:8px 16px; font-size:12px; color:#333; box-shadow:0 2px 8px rgba(0,0,0,0.15);">Слайд въезжает →</div>
+        <div style="font-size:18px;">+</div>
+        <div style="background:white; border-radius:8px; padding:8px 16px; font-size:12px; color:#333; box-shadow:0 2px 8px rgba(0,0,0,0.15);">элементы pop-in</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Комбо</h3>
+      <p>Слайды переключаются с горизонтальным скольжением, а внутри — элементы появляются последовательно.</p>
+    </div>
+  </div>
+
+</div>

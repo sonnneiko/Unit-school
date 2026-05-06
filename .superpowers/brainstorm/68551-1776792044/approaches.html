@@ -1,0 +1,40 @@
+<h2>Как реализовать отдельный сайдбар для админки?</h2>
+<p class="subtitle">Три архитектурных подхода. Нажми чтобы выбрать.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Отдельный AdminAppLayout (рекомендую)</h3>
+      <p>Admin-маршруты выносятся из текущего <code>AppLayout</code> в собственный <code>AdminAppLayout</code> с <code>AdminSidebar</code>. Два полностью независимых дерева: <code>/</code> → AppLayout+Sidebar, <code>/admin</code> → AdminAppLayout+AdminSidebar.</p>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Плюсы</h4><ul><li>Чистое разделение</li><li>Обе навигации независимы</li><li>Легко развивать каждую отдельно</li></ul></div>
+        <div class="cons"><h4>Минусы</h4><ul><li>Нужно создать новый компонент</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Умный Sidebar по маршруту</h3>
+      <p>Существующий <code>Sidebar</code> определяет текущий маршрут: если <code>/admin/*</code> — показывает админ-пункты, иначе — обычные. Один компонент, разная конфигурация.</p>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Плюсы</h4><ul><li>Меньше новых файлов</li></ul></div>
+        <div class="cons"><h4>Минусы</h4><ul><li>Один компонент знает о двух режимах</li><li>Сложнее поддерживать</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>AdminSidebar внутри AdminLayout</h3>
+      <p>Оставляем admin-маршруты внутри <code>AppLayout</code>, но <code>AdminLayout</code> (уже существует) сам рендерит свой сайдбар поверх/вместо основного.</p>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Плюсы</h4><ul><li>Маршруты не трогаем</li></ul></div>
+        <div class="cons"><h4>Минусы</h4><ul><li>Два сайдбара на экране или хак с CSS</li><li>Грязное решение</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

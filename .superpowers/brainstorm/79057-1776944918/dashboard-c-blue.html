@@ -1,0 +1,175 @@
+<h2>Вариант C — синий бренд</h2>
+<p class="subtitle">Главная страница с фокусом на "что делать сейчас" · цвет #597ef7</p>
+
+<style>
+:root {
+  --brand: #597ef7;
+  --brand-light: #eef1fe;
+  --brand-dark: #3d5bd9;
+  --brand-text: #3d5bd9;
+}
+.dash-mock {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.dm-hero {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid var(--brand);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dm-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--brand-light);
+  border: 1px solid #c7d2fe;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--brand-text);
+  font-weight: 600;
+}
+.dm-level-hint { font-size: 11px; color: #9ca3af; }
+.dm-cta {
+  background: var(--brand);
+  color: #fff;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dm-progress-bar { height: 5px; background: #e5e7eb; border-radius: 3px; margin-top: 6px; }
+.dm-progress-fill { height: 5px; background: var(--brand); border-radius: 3px; }
+.dm-row { display: grid; gap: 10px; margin-bottom: 10px; }
+.dm-2col { grid-template-columns: 1fr 1fr; }
+.dm-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px; }
+.dm-card-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #9ca3af; margin-bottom: 8px; }
+.dm-card-title { font-size: 12px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+.dm-card-sub { font-size: 11px; color: #6b7280; }
+
+/* Path */
+.dm-path-wrap { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.dm-step { font-size: 10px; padding: 4px 10px; border-radius: 12px; font-weight: 600; text-align: center; }
+.dm-step-sub { font-size: 9px; text-align: center; margin-top: 2px; }
+.dm-step-done { background: var(--brand-light); color: var(--brand-text); }
+.dm-step-current { background: var(--brand); color: #fff; }
+.dm-step-next { background: #f3f4f6; color: #9ca3af; }
+.dm-step-arrow { color: #d1d5db; font-size: 14px; }
+
+/* Achieve */
+.dm-achieve { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; }
+.dm-achieve:last-child { border-bottom: none; }
+.dm-achieve-icon { width: 28px; height: 28px; border-radius: 8px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.dm-achieve-text { font-size: 11px; color: #374151; font-weight: 500; }
+.dm-achieve-date { font-size: 10px; color: #9ca3af; }
+
+/* Course badges */
+.dm-badge-progress { background: var(--brand-light); color: var(--brand-text); font-size: 9px; padding: 2px 6px; border-radius: 8px; font-weight: 600; }
+.dm-badge-soon { background: #f3f4f6; color: #6b7280; font-size: 9px; padding: 2px 6px; border-radius: 8px; }
+.dm-locked { opacity: 0.5; }
+</style>
+
+<div class="mockup">
+  <div class="mockup-header">Главная · пользователь Соня</div>
+  <div class="mockup-body">
+    <div class="dash-mock">
+
+      <!-- Hero: продолжить сейчас -->
+      <div class="dm-hero">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="dm-level-badge">🌱 Новичок</div>
+          <span class="dm-level-hint">→ до Junior AM: 2 курса</span>
+        </div>
+        <div style="font-size:15px; font-weight:700; color:#111827;">Продолжи с места, где остановился</div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="flex:1;">
+            <div style="font-size:12px; color:#374151; font-weight:600; margin-bottom:4px;">День 1 — Знакомство с UnitPay</div>
+            <div class="dm-progress-bar"><div class="dm-progress-fill" style="width:37%"></div></div>
+            <div style="font-size:10px; color:#9ca3af; margin-top:3px;">Слайд 3 из 8 · 37%</div>
+          </div>
+          <div class="dm-cta">Продолжить →</div>
+        </div>
+      </div>
+
+      <!-- Путь развития -->
+      <div class="dm-card" style="margin-bottom:10px;">
+        <div class="dm-card-label">Твой путь развития</div>
+        <div class="dm-path-wrap">
+          <div>
+            <div class="dm-step dm-step-done">✓ Новичок</div>
+            <div class="dm-step-sub" style="color:var(--brand-text);">пройдено</div>
+          </div>
+          <span class="dm-step-arrow">→</span>
+          <div>
+            <div class="dm-step dm-step-current">● Junior AM</div>
+            <div class="dm-step-sub" style="color:var(--brand);">сейчас</div>
+          </div>
+          <span class="dm-step-arrow">→</span>
+          <div>
+            <div class="dm-step dm-step-next">○ Middle AM</div>
+            <div class="dm-step-sub" style="color:#9ca3af;">нужно 3 курса</div>
+          </div>
+          <span class="dm-step-arrow">→</span>
+          <div>
+            <div class="dm-step dm-step-next">○ Senior AM</div>
+            <div class="dm-step-sub" style="color:#9ca3af;">нужно 6 курсов</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Курсы + Достижения -->
+      <div class="dm-row dm-2col">
+        <div class="dm-card">
+          <div class="dm-card-label">Курсы</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+            <div class="dm-card-title" style="margin:0;">День 1 — Знакомство</div>
+            <span class="dm-badge-progress">В процессе</span>
+          </div>
+          <div class="dm-progress-bar" style="margin-bottom:10px;"><div class="dm-progress-fill" style="width:37%"></div></div>
+          <div class="dm-locked" style="display:flex; align-items:center; justify-content:space-between;">
+            <div class="dm-card-title" style="margin:0;">День 2 — Аккаунтинг</div>
+            <span class="dm-badge-soon">Скоро</span>
+          </div>
+        </div>
+        <div class="dm-card">
+          <div class="dm-card-label">Последние достижения</div>
+          <div class="dm-achieve">
+            <div class="dm-achieve-icon">🎯</div>
+            <div>
+              <div class="dm-achieve-text">Первый курс начат</div>
+              <div class="dm-achieve-date">21 апр</div>
+            </div>
+          </div>
+          <div class="dm-achieve">
+            <div class="dm-achieve-icon">📅</div>
+            <div>
+              <div class="dm-achieve-text">3 дня подряд в обучении</div>
+              <div class="dm-achieve-date">22 апр</div>
+            </div>
+          </div>
+          <div class="dm-achieve">
+            <div class="dm-achieve-icon">📘</div>
+            <div>
+              <div class="dm-achieve-text">Завершён обязательный блок</div>
+              <div class="dm-achieve-date">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

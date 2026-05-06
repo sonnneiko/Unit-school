@@ -1,0 +1,217 @@
+<h2>Структура главной страницы</h2>
+<p class="subtitle">Три варианта компоновки — выбери что ближе по ощущению</p>
+
+<style>
+.dash-mock {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  min-height: 380px;
+}
+.dm-hero {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dm-hero-left h3 { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+.dm-hero-left p { font-size: 11px; color: #6b7280; margin-bottom: 8px; }
+.dm-level-badge { display: inline-flex; align-items: center; gap: 4px; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 20px; padding: 3px 10px; font-size: 11px; color: #374151; font-weight: 600; }
+.dm-cta { background: #22c55e; color: #fff; border-radius: 8px; padding: 8px 16px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.dm-progress-ring { display: flex; align-items: center; gap: 8px; }
+.dm-ring { width: 52px; height: 52px; border-radius: 50%; background: conic-gradient(#22c55e 15%, #e5e7eb 0); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #111827; }
+.dm-row { display: grid; gap: 10px; margin-bottom: 10px; }
+.dm-2col { grid-template-columns: 1fr 1fr; }
+.dm-3col { grid-template-columns: 1fr 1fr 1fr; }
+.dm-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px; }
+.dm-card-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #9ca3af; margin-bottom: 6px; }
+.dm-card-title { font-size: 12px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+.dm-card-sub { font-size: 11px; color: #6b7280; }
+.dm-progress-bar { height: 4px; background: #e5e7eb; border-radius: 2px; margin-top: 8px; }
+.dm-progress-fill { height: 4px; background: #22c55e; border-radius: 2px; }
+.dm-path { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+.dm-step { font-size: 10px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+.dm-step-done { background: #dcfce7; color: #16a34a; }
+.dm-step-current { background: #22c55e; color: #fff; }
+.dm-step-next { background: #f3f4f6; color: #9ca3af; }
+.dm-step-arrow { color: #d1d5db; font-size: 10px; }
+.dm-achieve { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
+.dm-achieve:last-child { border-bottom: none; }
+.dm-achieve-icon { width: 28px; height: 28px; border-radius: 8px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.dm-achieve-text { font-size: 11px; color: #374151; font-weight: 500; }
+.dm-achieve-date { font-size: 10px; color: #9ca3af; }
+.dm-locked { opacity: 0.5; }
+.dm-soon-badge { font-size: 10px; background: #f3f4f6; color: #6b7280; padding: 2px 6px; border-radius: 10px; float: right; }
+</style>
+
+<div class="cards">
+
+  <!-- OPTION A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dash-mock">
+        <!-- Hero -->
+        <div class="dm-hero">
+          <div class="dm-hero-left">
+            <h3>Привет, Соня! 🐾</h3>
+            <p>Продолжай расти — каждый шаг важен</p>
+            <div class="dm-level-badge">🌱 Новичок</div>
+          </div>
+          <div class="dm-progress-ring">
+            <div class="dm-ring">15%</div>
+          </div>
+          <div class="dm-cta">Продолжить →</div>
+        </div>
+        <!-- Продолжить + Путь -->
+        <div class="dm-row dm-2col">
+          <div class="dm-card">
+            <div class="dm-card-label">Продолжаю</div>
+            <div class="dm-card-title">День 1 — Знакомство с UnitPay</div>
+            <div class="dm-card-sub">Слайд 3 из 8</div>
+            <div class="dm-progress-bar"><div class="dm-progress-fill" style="width:37%"></div></div>
+          </div>
+          <div class="dm-card">
+            <div class="dm-card-label">Твой путь</div>
+            <div class="dm-path">
+              <span class="dm-step dm-step-done">Новичок</span>
+              <span class="dm-step-arrow">→</span>
+              <span class="dm-step dm-step-current">Junior AM</span>
+              <span class="dm-step-arrow">→</span>
+              <span class="dm-step dm-step-next">Middle</span>
+            </div>
+            <div class="dm-card-sub" style="margin-top:8px">До Junior AM: 2 курса</div>
+          </div>
+        </div>
+        <!-- Курсы + Достижения -->
+        <div class="dm-row dm-2col">
+          <div class="dm-card">
+            <div class="dm-card-label">Открытые курсы</div>
+            <div class="dm-card-title">День 1 — Знакомство</div>
+            <div class="dm-card-title dm-locked">День 2 — Аккаунтинг <span class="dm-soon-badge">Скоро</span></div>
+          </div>
+          <div class="dm-card">
+            <div class="dm-card-label">Достижения</div>
+            <div class="dm-achieve"><div class="dm-achieve-icon">🎯</div><div><div class="dm-achieve-text">Первый курс начат</div><div class="dm-achieve-date">21 апр</div></div></div>
+            <div class="dm-achieve"><div class="dm-achieve-icon">📅</div><div><div class="dm-achieve-text">3 дня в обучении</div><div class="dm-achieve-date">22 апр</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Компактный герой + 2×2 сетка</h3>
+      <p>Всё на одном экране, минимальный скролл. Путь и прогресс рядом в верхней части.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dash-mock">
+        <!-- Большой герой -->
+        <div class="dm-hero" style="flex-direction:column; align-items:flex-start; padding:20px; background: linear-gradient(135deg, #f0fdf4 0%, #fff 100%);">
+          <div style="display:flex; align-items:center; justify-content:space-between; width:100%; margin-bottom:12px;">
+            <div>
+              <h3 style="font-size:17px; font-weight:700; color:#111827; margin-bottom:4px;">Привет, Соня! 🐾</h3>
+              <div class="dm-level-badge">🌱 Новичок → Junior AM</div>
+            </div>
+            <div class="dm-ring" style="width:56px;height:56px;font-size:12px;">15%</div>
+          </div>
+          <div style="width:100%">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">Общий прогресс обучения</div>
+            <div class="dm-progress-bar" style="height:6px;"><div class="dm-progress-fill" style="width:15%;height:6px;"></div></div>
+          </div>
+          <div class="dm-cta" style="margin-top:12px; align-self:flex-end;">Продолжить обучение →</div>
+        </div>
+        <!-- Три колонки -->
+        <div class="dm-row dm-3col">
+          <div class="dm-card">
+            <div class="dm-card-label">Остановился</div>
+            <div class="dm-card-title">День 1</div>
+            <div class="dm-card-sub">Слайд 3 из 8</div>
+            <div class="dm-progress-bar"><div class="dm-progress-fill" style="width:37%"></div></div>
+          </div>
+          <div class="dm-card">
+            <div class="dm-card-label">Путь развития</div>
+            <div class="dm-path" style="flex-direction:column; align-items:flex-start; gap:4px;">
+              <span class="dm-step dm-step-done">✓ Новичок</span>
+              <span class="dm-step dm-step-current">◉ Junior AM (сейчас)</span>
+              <span class="dm-step dm-step-next">○ Middle AM</span>
+            </div>
+          </div>
+          <div class="dm-card">
+            <div class="dm-card-label">Достижения</div>
+            <div class="dm-achieve"><div class="dm-achieve-icon">🎯</div><div class="dm-achieve-text">Первый курс начат</div></div>
+            <div class="dm-achieve"><div class="dm-achieve-icon">📅</div><div class="dm-achieve-text">3 дня подряд</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Большой герой + 3 колонки</h3>
+      <p>Выразительный верхний блок с общим прогрессом и градиентом. Путь развития в вертикальном списке.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="dash-mock">
+        <!-- Герой с фокусом на "что делать сейчас" -->
+        <div class="dm-hero" style="flex-direction:column; align-items:flex-start; background:#fff; border-left: 4px solid #22c55e; padding: 14px 18px; gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="dm-level-badge">🌱 Новичок</div>
+            <span style="font-size:11px;color:#9ca3af;">→ до Junior AM: 2 курса</span>
+          </div>
+          <div style="font-size:15px;font-weight:700;color:#111827;">Продолжи с места, где остановился</div>
+          <div style="display:flex;align-items:center;gap:12px;width:100%;">
+            <div style="flex:1;">
+              <div style="font-size:12px;color:#374151;font-weight:600;margin-bottom:4px;">День 1 — Знакомство с UnitPay</div>
+              <div class="dm-progress-bar"><div class="dm-progress-fill" style="width:37%"></div></div>
+              <div style="font-size:10px;color:#9ca3af;margin-top:3px;">Слайд 3 из 8 · 37%</div>
+            </div>
+            <div class="dm-cta">Продолжить →</div>
+          </div>
+        </div>
+        <!-- Путь развития широкий -->
+        <div class="dm-card" style="margin-bottom:10px;">
+          <div class="dm-card-label">Твой путь развития</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap;">
+            <div style="text-align:center;"><div class="dm-step dm-step-done" style="display:block;">✓ Новичок</div><div style="font-size:9px;color:#9ca3af;margin-top:2px;">пройдено</div></div>
+            <span class="dm-step-arrow" style="font-size:16px;">→</span>
+            <div style="text-align:center;"><div class="dm-step dm-step-current" style="display:block;">● Junior AM</div><div style="font-size:9px;color:#22c55e;margin-top:2px;">сейчас</div></div>
+            <span class="dm-step-arrow" style="font-size:16px;">→</span>
+            <div style="text-align:center;"><div class="dm-step dm-step-next" style="display:block;">○ Middle AM</div><div style="font-size:9px;color:#9ca3af;margin-top:2px;">нужно 3 курса</div></div>
+            <span class="dm-step-arrow" style="font-size:16px;">→</span>
+            <div style="text-align:center;"><div class="dm-step dm-step-next" style="display:block;">○ Senior AM</div><div style="font-size:9px;color:#9ca3af;margin-top:2px;">нужно 6 курсов</div></div>
+          </div>
+        </div>
+        <!-- Курсы + достижения -->
+        <div class="dm-row dm-2col">
+          <div class="dm-card">
+            <div class="dm-card-label">Курсы</div>
+            <div style="margin-bottom:4px;"><span class="dm-card-title">День 1</span> <span style="background:#dcfce7;color:#16a34a;font-size:9px;padding:1px 5px;border-radius:8px;font-weight:600;">В процессе</span></div>
+            <div class="dm-locked"><span class="dm-card-title">День 2</span> <span class="dm-soon-badge">Скоро</span></div>
+          </div>
+          <div class="dm-card">
+            <div class="dm-card-label">Последние достижения</div>
+            <div class="dm-achieve"><div class="dm-achieve-icon">🎯</div><div><div class="dm-achieve-text">Первый курс начат</div><div class="dm-achieve-date">21 апр</div></div></div>
+            <div class="dm-achieve"><div class="dm-achieve-icon">📅</div><div><div class="dm-achieve-text">3 дня подряд</div><div class="dm-achieve-date">22 апр</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Фокус на "что делать сейчас"</h3>
+      <p>Главный акцент — продолжить конкретный курс. Путь развития горизонтальный, все 4 ступени видны сразу.</p>
+    </div>
+  </div>
+
+</div>

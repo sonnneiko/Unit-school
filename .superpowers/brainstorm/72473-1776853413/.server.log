@@ -1,0 +1,31 @@
+{"type":"server-started","port":58544,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:58544","screen_dir":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v2.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v2.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v3.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v3.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v3.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v3.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v4.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v4.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v4.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/admin-design-v4.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/progress-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/progress-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/progress-layout.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/progress-layout.html"}
+{"source":"user-event","type":"click","text":"Б — Карточки сотрудников\n      \n        \n        \n          \n            ААнна Смирнова\n            Среднее: 75%\n          \n          \n            \n              Введение\n              \n              100%\n            \n            \n              Продажи\n              \n              80%\n            \n            \n              Продукт\n              \n              45%\n            \n          \n        \n        \n        \n          \n            ИИван Петров\n            Среднее: 40%\n          \n          \n            \n              Введение\n              \n              100%\n            \n            \n              Продукт\n              \n              20%\n            \n          \n        \n      \n    \n    \n      Б — Карточки по сотрудникам\n      Удобно смотреть на одного человека. Хорошо масштабируется по курсам. Длинный скролл при 20+ сотрудниках.","choice":"cards","id":null,"timestamp":1776854895519}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-charts.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-charts.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-charts.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-charts.html"}
+{"type":"screen-added","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-ref-style.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-ref-style.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-ref-style.html"}
+{"type":"screen-updated","file":"/Users/s.alhazova/Documents/GitHub/Unit-school/.superpowers/brainstorm/72473-1776853413/dashboard-ref-style.html"}
+{"type":"server-stopped","reason":"idle timeout"}

@@ -1,0 +1,78 @@
+<h2>Дизайн: структура и роутинг</h2>
+<p class="subtitle">Раздел 1 из 4 — архитектура AdminAppLayout</p>
+
+<div class="section">
+  <h3>Два независимых дерева маршрутов</h3>
+  <div class="split">
+    <div class="mockup">
+      <div class="mockup-header">Сейчас (App.tsx)</div>
+      <div class="mockup-body" style="font-family:monospace;font-size:12px;line-height:1.8;color:#ccc;">
+        <span style="color:#888">PrivateRoute</span><br>
+        &nbsp;&nbsp;<span style="color:#4CAF50">AppLayout</span> ← <em>Sidebar (Главная, Курсы…)</em><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/  → Dashboard<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/courses → Placeholder<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/progress → Placeholder<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/profile → Placeholder<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888">AdminRoute</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e57373">AdminLayout</span> ← <em>только breadcrumbs</em><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/users<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/courses<br>
+      </div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-header">После (App.tsx)</div>
+      <div class="mockup-body" style="font-family:monospace;font-size:12px;line-height:1.8;color:#ccc;">
+        <span style="color:#888">PrivateRoute</span><br>
+        &nbsp;&nbsp;<span style="color:#4CAF50">AppLayout</span> ← <em>Sidebar (Главная, Курсы…)</em><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/  → Dashboard<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/courses → Placeholder<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/progress → Placeholder<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/profile → Placeholder<br>
+        &nbsp;&nbsp;<span style="color:#888">AdminRoute</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64b5f6">AdminAppLayout</span> ← <em>AdminSidebar (новый)</em><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin → redirect<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/dashboard → <strong>AdminDashboardPage</strong> (новая)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/users → UsersListPage<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/users/new → NewUserPage<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/users/:id → UserDetailPage*<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/courses → CoursesListPage<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/courses/:id → CourseDetailPage<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/admin/progress → <strong>AdminProgressPage</strong> (новая)<br>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:8px">* UserDetailPage — убираем блок прогресса по курсам</p>
+</div>
+
+<div class="section">
+  <h3>Новые файлы</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+    <div style="background:#1e2a1e;border:1px solid #2d4a2d;border-radius:8px;padding:12px">
+      <div class="label" style="color:#4CAF50">Новые компоненты</div>
+      <ul style="margin:8px 0 0;padding-left:16px;color:#ccc;font-size:13px;line-height:2">
+        <li>src/components/AdminSidebar/AdminSidebar.tsx</li>
+        <li>src/components/AdminAppLayout/AdminAppLayout.tsx</li>
+      </ul>
+    </div>
+    <div style="background:#1e2a1e;border:1px solid #2d4a2d;border-radius:8px;padding:12px">
+      <div class="label" style="color:#4CAF50">Новые страницы</div>
+      <ul style="margin:8px 0 0;padding-left:16px;color:#ccc;font-size:13px;line-height:2">
+        <li>src/pages/Admin/AdminDashboardPage.tsx</li>
+        <li>src/pages/Admin/AdminProgressPage.tsx</li>
+      </ul>
+    </div>
+    <div style="background:#2a1e1e;border:1px solid #4a2d2d;border-radius:8px;padding:12px">
+      <div class="label" style="color:#e57373">Изменённые файлы</div>
+      <ul style="margin:8px 0 0;padding-left:16px;color:#ccc;font-size:13px;line-height:2">
+        <li>App.tsx — новая структура маршрутов</li>
+        <li>UserDetailPage.tsx — убрать прогресс</li>
+        <li>AdminLayout.tsx — можно удалить или оставить breadcrumbs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:24px;padding:16px;background:#1a2a1a;border-radius:8px;border:1px solid #2d4a2d">
+  <p style="color:#4CAF50;margin:0;font-size:14px">Эта структура выглядит правильно?</p>
+  <p style="color:#888;font-size:12px;margin:4px 0 0">Следующий шаг — дизайн страниц Главная и Прогресс</p>
+</div>

@@ -1,0 +1,113 @@
+<h2>A vs B — как выглядит страница «Обучение»</h2>
+<p class="subtitle">Кликни на вариант, который нравится больше</p>
+
+<div class="split" style="gap:24px;align-items:flex-start">
+
+  <!-- OPTION A -->
+  <div class="mockup card" data-choice="a" onclick="toggleSelect(this)" style="cursor:pointer;padding:0;overflow:hidden">
+    <div class="mockup-header" style="background:#1a1a2e;color:#fff;font-size:13px;padding:10px 16px">
+      А — Плоский список тем
+    </div>
+    <div class="mockup-body" style="padding:20px;background:#f6f7fb;font-family:system-ui">
+
+      <div style="font-size:20px;font-weight:700;color:#1a1a2e;margin-bottom:4px">Обучение</div>
+      <div style="font-size:13px;color:#888;margin-bottom:18px">8 тем · 1 завершена</div>
+
+      <!-- Card 1 - completed -->
+      <div style="background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:12px">
+        <div style="width:36px;height:36px;border-radius:8px;background:#22c55e22;display:flex;align-items:center;justify-content:center;font-size:16px">✅</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:#1a1a2e">Основы UnitPay</div>
+          <div style="font-size:12px;color:#22c55e;margin-top:2px">Завершён</div>
+        </div>
+      </div>
+
+      <!-- Card 2 - in progress -->
+      <div style="background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:2px solid #597ef7;display:flex;align-items:center;gap:12px">
+        <div style="width:36px;height:36px;border-radius:8px;background:#597ef722;display:flex;align-items:center;justify-content:center;font-size:16px">📋</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:#1a1a2e">Аккаунтинг</div>
+          <div style="height:4px;background:#eee;border-radius:2px;margin-top:6px"><div style="width:30%;height:100%;background:#597ef7;border-radius:2px"></div></div>
+          <div style="font-size:11px;color:#888;margin-top:3px">3 из 10 слайдов</div>
+        </div>
+      </div>
+
+      <!-- Card 3 - locked -->
+      <div style="background:#f9f9f9;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:12px;opacity:0.7">
+        <div style="width:36px;height:36px;border-radius:8px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:16px">🔒</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:#aaa">Работа с мерчантами</div>
+          <div style="font-size:12px;color:#bbb;margin-top:2px">Скоро</div>
+        </div>
+      </div>
+
+      <!-- Card 4 - locked -->
+      <div style="background:#f9f9f9;border-radius:10px;padding:14px 16px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:12px;opacity:0.7">
+        <div style="width:36px;height:36px;border-radius:8px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:16px">🔒</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:#aaa">Триггеры и алерты</div>
+          <div style="font-size:12px;color:#bbb;margin-top:2px">Скоро</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="mockup card" data-choice="b" onclick="toggleSelect(this)" style="cursor:pointer;padding:0;overflow:hidden">
+    <div class="mockup-header" style="background:#1a1a2e;color:#fff;font-size:13px;padding:10px 16px">
+      B — Разделы → уроки
+    </div>
+    <div class="mockup-body" style="padding:20px;background:#f6f7fb;font-family:system-ui">
+
+      <div style="font-size:20px;font-weight:700;color:#1a1a2e;margin-bottom:4px">Обучение</div>
+      <div style="font-size:13px;color:#888;margin-bottom:18px">3 раздела · 8 уроков</div>
+
+      <!-- Section 1 -->
+      <div style="margin-bottom:18px">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#597ef7;letter-spacing:0.8px;margin-bottom:10px">Основы платежей</div>
+        <div style="background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:10px">
+          <div style="font-size:16px">✅</div>
+          <div style="flex:1;font-size:13px;font-weight:600;color:#1a1a2e">Основы UnitPay</div>
+          <div style="font-size:12px;color:#22c55e">Готово</div>
+        </div>
+        <div style="background:#fff;border-radius:10px;padding:12px 14px;border:2px solid #597ef7;display:flex;align-items:center;gap:10px">
+          <div style="font-size:16px">📘</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#1a1a2e">Путь платежа</div>
+            <div style="height:3px;background:#eee;border-radius:2px;margin-top:5px"><div style="width:30%;height:100%;background:#597ef7;border-radius:2px"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div style="margin-bottom:18px">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#888;letter-spacing:0.8px;margin-bottom:10px">Аккаунтинг</div>
+        <div style="background:#f9f9f9;border-radius:10px;padding:12px 14px;margin-bottom:8px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:10px;opacity:0.65">
+          <div style="font-size:16px">🔒</div>
+          <div style="flex:1;font-size:13px;font-weight:600;color:#aaa">Аккаунтинг: основы</div>
+          <div style="font-size:12px;color:#bbb">Скоро</div>
+        </div>
+        <div style="background:#f9f9f9;border-radius:10px;padding:12px 14px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:10px;opacity:0.65">
+          <div style="font-size:16px">🔒</div>
+          <div style="flex:1;font-size:13px;font-weight:600;color:#aaa">Продвинутый аккаунтинг</div>
+          <div style="font-size:12px;color:#bbb">Скоро</div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#888;letter-spacing:0.8px;margin-bottom:10px">Работа с клиентами</div>
+        <div style="background:#f9f9f9;border-radius:10px;padding:12px 14px;border:1px solid #e8e8e8;display:flex;align-items:center;gap:10px;opacity:0.65">
+          <div style="font-size:16px">🔒</div>
+          <div style="flex:1;font-size:13px;font-weight:600;color:#aaa">Работа с мерчантами</div>
+          <div style="font-size:12px;color:#bbb">Скоро</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:20px;text-align:center">Кликни на вариант который нравится — или напиши в терминале</p>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Onest', -apple-system, sans-serif; background: #f9fafb; padding: 24px; }
+
+  .page-title { font-size: 22px; font-weight: 700; color: #111827; margin-bottom: 20px; }
+
+  /* stat cards row */
+  .stats { display: flex; gap: 14px; margin-bottom: 20px; }
+  .stat { flex: 1; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 22px; }
+  .stat-label { font-size: 12px; color: #9ca3af; margin-bottom: 4px; }
+  .stat-value { font-size: 30px; font-weight: 700; color: #111827; }
+
+  /* chart cards grid */
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .chart-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .chart-card-head { padding: 16px 20px 12px; }
+  .chart-card-label { font-size: 13px; color: #374151; margin-bottom: 6px; }
+  .chart-card-value { font-size: 26px; font-weight: 700; color: #111827; }
+  .chart-area { padding: 0 0 0; }
+
+  /* SVG charts */
+  svg { display: block; width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="page-title">Главная</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-label">Сотрудников</div><div class="stat-value">12</div></div>
+  <div class="stat"><div class="stat-label">Активных курсов</div><div class="stat-value">5</div></div>
+  <div class="stat"><div class="stat-label">Средний прогресс</div><div class="stat-value">67%</div></div>
+</div>
+
+<div class="charts">
+
+  <!-- Card 1: avg progress per course — green area -->
+  <div class="chart-card">
+    <div class="chart-card-head">
+      <div class="chart-card-label">Прогресс по курсам</div>
+      <div class="chart-card-value">67%</div>
+    </div>
+    <div class="chart-area">
+      <svg viewBox="0 0 300 110" preserveAspectRatio="none" height="110">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0.04"/>
+          </linearGradient>
+        </defs>
+        <!-- grid lines -->
+        <line x1="0" y1="20" x2="300" y2="20" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="50" x2="300" y2="50" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="80" x2="300" y2="80" stroke="#f3f4f6" stroke-width="1"/>
+        <!-- area fill -->
+        <path d="M0,72 L50,55 L100,40 L150,62 L200,30 L250,48 L300,35 L300,100 L0,100 Z" fill="url(#g1)"/>
+        <!-- line -->
+        <path d="M0,72 L50,55 L100,40 L150,62 L200,30 L250,48 L300,35" fill="none" stroke="#22c55e" stroke-width="2" stroke-linejoin="round"/>
+        <!-- dots -->
+        <circle cx="0" cy="72" r="3" fill="#22c55e"/>
+        <circle cx="50" cy="55" r="3" fill="#22c55e"/>
+        <circle cx="100" cy="40" r="3" fill="#22c55e"/>
+        <circle cx="150" cy="62" r="3" fill="#22c55e"/>
+        <circle cx="200" cy="30" r="3" fill="#22c55e"/>
+        <circle cx="250" cy="48" r="3" fill="#22c55e"/>
+        <circle cx="300" cy="35" r="3" fill="#fff" stroke="#22c55e" stroke-width="2"/>
+        <!-- x labels -->
+        <text x="0"   y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Введение</text>
+        <text x="50"  y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Продажи</text>
+        <text x="100" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">CRM</text>
+        <text x="150" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Сервис</text>
+        <text x="200" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Продукт</text>
+        <text x="250" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Скрипты</text>
+        <text x="300" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Финансы</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Card 2: employees progress — purple area -->
+  <div class="chart-card">
+    <div class="chart-card-head">
+      <div class="chart-card-label">Прогресс сотрудников</div>
+      <div class="chart-card-value">12 чел.</div>
+    </div>
+    <div class="chart-area">
+      <svg viewBox="0 0 300 110" preserveAspectRatio="none" height="110">
+        <defs>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.04"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="20" x2="300" y2="20" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="50" x2="300" y2="50" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="80" x2="300" y2="80" stroke="#f3f4f6" stroke-width="1"/>
+        <path d="M0,80 L43,60 L86,45 L129,65 L172,35 L215,50 L258,30 L300,42 L300,100 L0,100 Z" fill="url(#g2)"/>
+        <path d="M0,80 L43,60 L86,45 L129,65 L172,35 L215,50 L258,30 L300,42" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="0"   cy="80" r="3" fill="#a78bfa"/>
+        <circle cx="43"  cy="60" r="3" fill="#a78bfa"/>
+        <circle cx="86"  cy="45" r="3" fill="#a78bfa"/>
+        <circle cx="129" cy="65" r="3" fill="#a78bfa"/>
+        <circle cx="172" cy="35" r="3" fill="#a78bfa"/>
+        <circle cx="215" cy="50" r="3" fill="#a78bfa"/>
+        <circle cx="258" cy="30" r="3" fill="#a78bfa"/>
+        <circle cx="300" cy="42" r="3" fill="#fff" stroke="#a78bfa" stroke-width="2"/>
+        <text x="0"   y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Соня</text>
+        <text x="43"  y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Анна</text>
+        <text x="86"  y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Иван</text>
+        <text x="129" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Мария</text>
+        <text x="172" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Саша</text>
+        <text x="215" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Дима</text>
+        <text x="258" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Лена</text>
+        <text x="300" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Олег</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Card 3: courses completed — blue area -->
+  <div class="chart-card">
+    <div class="chart-card-head">
+      <div class="chart-card-label">Завершённых курсов</div>
+      <div class="chart-card-value">8</div>
+    </div>
+    <div class="chart-area">
+      <svg viewBox="0 0 300 110" preserveAspectRatio="none" height="110">
+        <defs>
+          <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.04"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="20" x2="300" y2="20" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="50" x2="300" y2="50" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="80" x2="300" y2="80" stroke="#f3f4f6" stroke-width="1"/>
+        <path d="M0,90 L50,75 L100,55 L150,65 L200,40 L250,35 L300,25 L300,100 L0,100 Z" fill="url(#g3)"/>
+        <path d="M0,90 L50,75 L100,55 L150,65 L200,40 L250,35 L300,25" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="0"   cy="90" r="3" fill="#60a5fa"/>
+        <circle cx="50"  cy="75" r="3" fill="#60a5fa"/>
+        <circle cx="100" cy="55" r="3" fill="#60a5fa"/>
+        <circle cx="150" cy="65" r="3" fill="#60a5fa"/>
+        <circle cx="200" cy="40" r="3" fill="#60a5fa"/>
+        <circle cx="250" cy="35" r="3" fill="#60a5fa"/>
+        <circle cx="300" cy="25" r="3" fill="#fff" stroke="#60a5fa" stroke-width="2"/>
+        <text x="0"   y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Введение</text>
+        <text x="50"  y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Продажи</text>
+        <text x="100" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">CRM</text>
+        <text x="150" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Сервис</text>
+        <text x="200" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Продукт</text>
+        <text x="250" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Скрипты</text>
+        <text x="300" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Финансы</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Card 4: activity — amber area -->
+  <div class="chart-card">
+    <div class="chart-card-head">
+      <div class="chart-card-label">Активность сотрудников</div>
+      <div class="chart-card-value">9 из 12</div>
+    </div>
+    <div class="chart-area">
+      <svg viewBox="0 0 300 110" preserveAspectRatio="none" height="110">
+        <defs>
+          <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.04"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="20" x2="300" y2="20" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="50" x2="300" y2="50" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="0" y1="80" x2="300" y2="80" stroke="#f3f4f6" stroke-width="1"/>
+        <path d="M0,60 L50,75 L100,45 L150,55 L200,35 L250,50 L300,38 L300,100 L0,100 Z" fill="url(#g4)"/>
+        <path d="M0,60 L50,75 L100,45 L150,55 L200,35 L250,50 L300,38" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="0"   cy="60" r="3" fill="#fbbf24"/>
+        <circle cx="50"  cy="75" r="3" fill="#fbbf24"/>
+        <circle cx="100" cy="45" r="3" fill="#fbbf24"/>
+        <circle cx="150" cy="55" r="3" fill="#fbbf24"/>
+        <circle cx="200" cy="35" r="3" fill="#fbbf24"/>
+        <circle cx="250" cy="50" r="3" fill="#fbbf24"/>
+        <circle cx="300" cy="38" r="3" fill="#fff" stroke="#fbbf24" stroke-width="2"/>
+        <text x="0"   y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Соня</text>
+        <text x="50"  y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Анна</text>
+        <text x="86"  y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Иван</text>
+        <text x="129" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Мария</text>
+        <text x="172" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Саша</text>
+        <text x="215" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Дима</text>
+        <text x="258" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Лена</text>
+        <text x="300" y="108" font-size="9" fill="#9ca3af" text-anchor="middle">Олег</text>
+      </svg>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

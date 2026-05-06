@@ -1,0 +1,89 @@
+<h2>Структура сайдбара в админ-панели</h2>
+<p class="subtitle">Как должна выглядеть навигация, когда администратор находится в /admin?</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;height:320px;background:#1a1a1a;border-radius:8px;overflow:hidden;">
+        <div style="width:200px;background:#141414;padding:20px 0;display:flex;flex-direction:column;gap:4px;border-right:1px solid #2a2a2a;">
+          <div style="padding:16px 20px 24px;display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:#4CAF50;border-radius:6px;"></div>
+            <span style="color:#fff;font-size:14px;font-weight:600;">UnitSchool</span>
+          </div>
+          <div style="padding:8px 12px;margin:0 8px;background:#4CAF50;border-radius:8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">🏠</span>
+            <span style="color:#000;font-size:13px;font-weight:600;">Главная</span>
+          </div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">👥</span>
+            <span style="color:#888;font-size:13px;">Сотрудники</span>
+          </div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">📊</span>
+            <span style="color:#888;font-size:13px;">Прогресс</span>
+          </div>
+          <div style="flex:1;"></div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;border-top:1px solid #2a2a2a;padding-top:16px;margin-top:8px;">
+            <span style="font-size:14px;">👤</span>
+            <div>
+              <div style="color:#fff;font-size:11px;">Admin User</div>
+              <div style="color:#555;font-size:10px;">admin@unit.com</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;padding:20px;">
+          <div style="color:#666;font-size:11px;">Контент страницы...</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Отдельный админ-сайдбар</h3>
+      <p>В /admin показывается только: Главная, Сотрудники, Прогресс. Никаких ссылок на обучение. Чистый административный интерфейс.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;height:320px;background:#1a1a1a;border-radius:8px;overflow:hidden;">
+        <div style="width:200px;background:#141414;padding:20px 0;display:flex;flex-direction:column;gap:4px;border-right:1px solid #2a2a2a;">
+          <div style="padding:16px 20px 24px;display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:#4CAF50;border-radius:6px;"></div>
+            <span style="color:#fff;font-size:14px;font-weight:600;">UnitSchool</span>
+          </div>
+          <div style="padding:8px 12px;margin:0 8px;background:#4CAF50;border-radius:8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">🏠</span>
+            <span style="color:#000;font-size:13px;font-weight:600;">Главная</span>
+          </div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">👥</span>
+            <span style="color:#888;font-size:13px;">Сотрудники</span>
+          </div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">📊</span>
+            <span style="color:#888;font-size:13px;">Прогресс</span>
+          </div>
+          <div style="height:1px;background:#2a2a2a;margin:8px 12px;"></div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:13px;">←</span>
+            <span style="color:#555;font-size:12px;">К обучению</span>
+          </div>
+          <div style="flex:1;"></div>
+          <div style="padding:8px 12px;margin:0 8px;display:flex;align-items:center;gap:10px;border-top:1px solid #2a2a2a;padding-top:16px;margin-top:8px;">
+            <span style="font-size:14px;">👤</span>
+            <div>
+              <div style="color:#fff;font-size:11px;">Admin User</div>
+              <div style="color:#555;font-size:10px;">admin@unit.com</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;padding:20px;">
+          <div style="color:#666;font-size:11px;">Контент страницы...</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Админ-сайдбар + ссылка назад</h3>
+      <p>Те же 3 раздела, плюс ненавязчивая ссылка «К обучению» для переключения обратно на пользовательский интерфейс.</p>
+    </div>
+  </div>
+</div>
