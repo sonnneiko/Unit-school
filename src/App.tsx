@@ -3,6 +3,7 @@ import { UsersProvider } from './context/UsersContext'
 import { LessonsProvider } from './context/LessonsContext'
 import { AuthProvider } from './context/AuthContext'
 import { PrivateRoute } from './components/PrivateRoute'
+import { AchievementToast } from './components/AchievementToast/AchievementToast'
 import { AdminRoute } from './components/AdminRoute'
 import { AppLayout } from './components/AppLayout'
 import { AdminAppLayout } from './components/AdminAppLayout/AdminAppLayout'
@@ -60,6 +61,7 @@ export default function App() {
               </Route>
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
+            <AchievementToast />
           </BrowserRouter>
         </AuthProvider>
       </LessonsProvider>
