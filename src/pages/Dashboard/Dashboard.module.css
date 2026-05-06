@@ -420,10 +420,24 @@
   height: 4px;
   background: var(--usr-card-border);
   border-radius: 2px;
+  overflow: hidden;
 }
 
 .barFill {
   height: 4px;
   background: #597ef7;
   border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 20px 16px;
+  }
+
+  .grid,
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCat { display: none; }
 }

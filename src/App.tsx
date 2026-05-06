@@ -14,6 +14,7 @@ import { DashboardPage } from './pages/Dashboard/Dashboard'
 import { LessonPage } from './pages/Lesson/Lesson'
 import { NotFoundPage } from './pages/NotFound/NotFound'
 import { CoursesPage } from './pages/Courses/CoursesPage'
+import { SectionPage } from './pages/Section/SectionPage'
 import { ProgressPage } from './pages/Progress/ProgressPage'
 import { ProfilePage } from './pages/Profile/Profile'
 import { UsersListPage } from './pages/Admin/UsersListPage'
@@ -23,6 +24,12 @@ import { CoursesListPage } from './pages/Admin/CoursesListPage'
 import { CourseDetailPage } from './pages/Admin/CourseDetailPage'
 import { EmployeeProgressPage } from './pages/Admin/EmployeeProgressPage'
 import { useAuth } from './context/AuthContext'
+import { useParams } from 'react-router-dom'
+
+function LessonPageWrapper() {
+  const { id } = useParams<{ id: string }>()
+  return <LessonPage key={id} />
+}
 
 function LoginRoute() {
   const { user } = useAuth()
@@ -40,8 +47,9 @@ export default function App() {
               <Route element={<PrivateRoute />}>
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<DashboardPage />} />
-                  <Route path="/lesson/:id" element={<LessonPage />} />
+                  <Route path="/lesson/:id" element={<LessonPageWrapper />} />
                   <Route path="/courses" element={<CoursesPage />} />
+                  <Route path="/courses/:sectionId" element={<SectionPage />} />
                   <Route path="/progress" element={<ProgressPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
                 </Route>

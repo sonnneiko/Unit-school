@@ -100,6 +100,47 @@
   padding: 2px 8px;
 }
 
+/* Card state variants */
+.card_locked {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.card_active {
+  border-color: #597ef7;
+  box-shadow: 0 0 0 3px #eef1fe;
+}
+
+.cardIcon_locked {
+  background: #f3f4f6;
+}
+
+/* Status badge */
+.statusBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.statusBadge_complete {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.statusBadge_active {
+  background: #eef1fe;
+  color: #597ef7;
+}
+
+.statusBadge_locked {
+  background: transparent;
+  color: var(--usr-text-muted);
+}
+
 /* Level milestone */
 .milestone {
   display: flex;
@@ -137,6 +178,36 @@
 }
 
 /* Coming soon card */
+/* Progress bar */
+.progressBar {
+  height: 4px;
+  background: var(--usr-badge-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #597ef7;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progressFill_complete {
+  background: #22c55e;
+}
+
+.topicChip_active {
+  background: #eef1fe;
+  color: #597ef7;
+}
+
+.card_comingSoon {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Coming soon card */
 .comingSoonCard {
   background: var(--usr-card-bg);
   border: 1px dashed var(--usr-card-border);
@@ -168,4 +239,10 @@
   font-size: 11px;
   color: var(--usr-text-muted);
   margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 20px 16px;
+  }
 }

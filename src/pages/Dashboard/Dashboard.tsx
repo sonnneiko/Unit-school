@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { useLessons } from '../../context/LessonsContext'
-import { computeLevel, isComplete, LEVEL_LABELS, LEVEL_EMOJI, LEVEL_ORDER, LEVEL_THRESHOLDS } from '../../utils/level'
+import { computeLevel, isComplete, LESSON_BLOCK_TITLE, LEVEL_LABELS, LEVEL_EMOJI, LEVEL_ORDER, LEVEL_THRESHOLDS } from '../../utils/level'
 import { computeAchievements } from '../../utils/achievements'
 import { calcProgress } from '../../components/slides/slideUtils'
 import { GrowthPath } from '../../components/GrowthPath/GrowthPath'
@@ -107,7 +107,7 @@ export function DashboardPage() {
                   </div>
                   <div className={styles.journeyBody}>
                     <div className={step.status === 'locked' ? styles.journeyTitleLocked : styles.journeyTitle}>
-                      {step.lesson.title}
+                      {LESSON_BLOCK_TITLE[step.lesson.id] ?? step.lesson.title}
                     </div>
                     {step.status === 'active' && step.lesson.published && (
                       <button className={styles.btnSmall} onClick={() => navigate(`/lesson/${step.lesson.id}`)}>
@@ -221,22 +221,27 @@ export function DashboardPage() {
       <div className={styles.grid}>
         <div className={styles.card}>
           <div className={styles.cardLabel}>Обучение</div>
-          {publishedLessons.map(lesson => (
-            <div key={lesson.id} className={styles.courseRow}>
-              <div style={{ flex: 1 }}>
-                <div className={styles.courseName}>{lesson.title}</div>
-                {user.progress[lesson.id] !== undefined && (
-                  <div className={styles.bar} style={{ marginTop: 4 }}>
-                    <div
-                      className={styles.barFill}
-                      style={{ width: `${calcProgress(user.progress[lesson.id], lesson.slides.length)}%` }}
-                    />
-                  </div>
-                )}
+          {(() => {
+            let activeIdx = publishedLessons.findIndex(l => !isComplete(l, user))
+            if (activeIdx === -1) activeIdx = Math.max(0, publishedLessons.length - 3)
+            const visibleLessons = publishedLessons.slice(activeIdx, activeIdx + 3)
+            return visibleLessons.map(lesson => (
+              <div key={lesson.id} className={styles.courseRow} style={{ cursor: 'pointer' }} onClick={() => navigate(`/lesson/${lesson.id}`)}>
+                <div style={{ flex: 1 }}>
+                  <div className={styles.courseName}>{lesson.title}</div>
+                  {user.progress[lesson.id] !== undefined && (
+                    <div className={styles.bar} style={{ marginTop: 4 }}>
+                      <div
+                        className={styles.barFill}
+                        style={{ width: `${calcProgress(user.progress[lesson.id], lesson.slides.length)}%` }}
+                      />
+                    </div>
+                  )}
+                </div>
+                {courseBadge(lesson)}
               </div>
-              {courseBadge(lesson)}
-            </div>
-          ))}
+            ))
+          })()}
         </div>
 
         <div className={styles.card}>
@@ -251,7 +256,7 @@ export function DashboardPage() {
                   <div className={styles.bar} style={{ marginTop: 10 }}>
                     <div
                       className={styles.barFill}
-                      style={{ width: `${Math.round((completedCount / LEVEL_THRESHOLDS[nextLevel]) * 100)}%` }}
+                      style={{ width: `${Math.min(100, Math.round((completedCount / LEVEL_THRESHOLDS[nextLevel]) * 100))}%` }}
                     />
                   </div>
                   <div className={styles.levelNextHint} style={{ marginTop: 6 }}>

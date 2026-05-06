@@ -9,6 +9,7 @@ const BASICS_LESSON_IDS = [
   'unitpay-basics-team', 'unitpay-basics-about', 'unitpay-basics-methods',
   'unitpay-basics-path', 'unitpay-basics-acquiring', 'unitpay-basics-netting',
   'unitpay-basics-entities', 'unitpay-basics-cash', 'unitpay-basics-vendors',
+  'accounting-intro', 'accounting-tools', 'accounting-chats',
 ]
 
 export function computeLevel(user: User, lessons: Lesson[]): Level {
@@ -52,6 +53,9 @@ export const LESSON_BLOCK_TITLE: Record<string, string> = {
   'unitpay-basics-entities':  'Основы UnitPay',
   'unitpay-basics-cash':      'Основы UnitPay',
   'unitpay-basics-vendors':   'Основы UnitPay',
+  'accounting-intro':         'Аккаунтинг',
+  'accounting-tools':         'Аккаунтинг',
+  'accounting-chats':         'Аккаунтинг',
 }
 
 // Hint shown in GrowthPath for what's needed to reach the next level

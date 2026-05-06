@@ -6,20 +6,28 @@ interface Props {
   total: number
   onPrev: () => void
   onNext: () => void
+  hideArrows?: boolean
+  hideNext?: boolean
+  hidePrev?: boolean
 }
 
-export function SlideNav({ current, total, onPrev, onNext }: Props) {
+export function SlideNav({ current, total, onPrev, onNext, hideArrows, hideNext, hidePrev }: Props) {
   useEffect(() => {
+    if (hideArrows) return
     function handleKey(e: KeyboardEvent) {
       if (e.key === 'ArrowRight') onNext()
       if (e.key === 'ArrowLeft') onPrev()
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [onPrev, onNext])
+  }, [onPrev, onNext, hideArrows])
 
   return (
     <div className={styles.nav}>
+      {!(hideArrows || hidePrev)
+        ? <button className={styles.arrow} onClick={onPrev} aria-label="Предыдущий слайд">←</button>
+        : <span className={styles.arrowPlaceholder} />
+      }
       <ol className={styles.dots} role="list">
         {Array.from({ length: total }).map((_, i) => (
           <li
@@ -29,25 +37,15 @@ export function SlideNav({ current, total, onPrev, onNext }: Props) {
           />
         ))}
       </ol>
-      <div className={styles.arrows}>
-        <button
-          className={styles.arrow}
-          onClick={onPrev}
-          disabled={current === 0}
-          aria-label="Предыдущий слайд"
-        >
-          ←
-        </button>
-        <span className={styles.counter}>{current + 1} / {total}</span>
+      {!(hideArrows || hideNext) && (
         <button
           className={styles.arrow}
           onClick={onNext}
-          disabled={current === total - 1}
           aria-label="Следующий слайд"
         >
           →
         </button>
-      </div>
+      )}
     </div>
   )
 }

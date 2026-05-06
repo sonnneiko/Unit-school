@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Lesson, User } from '../../types'
-import { computeLevel, LEVEL_LABELS, LEVEL_ORDER, LEVEL_THRESHOLDS } from '../../utils/level'
+import { computeLevel, LEVEL_LABELS, LEVEL_NEXT_HINT, LEVEL_ORDER } from '../../utils/level'
 import styles from './GrowthPath.module.css'
 
 interface Props {
@@ -19,7 +19,7 @@ export function GrowthPath({ user, lessons }: Props) {
         {LEVEL_ORDER.map((level, i) => {
           const isDone = i < currentIdx
           const isCurrent = i === currentIdx
-          const threshold = LEVEL_THRESHOLDS[level]
+          const hint = isCurrent ? LEVEL_NEXT_HINT[level] : undefined
 
           return (
             <React.Fragment key={level}>
@@ -30,7 +30,7 @@ export function GrowthPath({ user, lessons }: Props) {
                 </span>
                 <span className={`${styles.stepSub} ${isDone ? styles.stepSubDone : isCurrent ? styles.stepSubCurrent : styles.stepSubNext}`}>
                   {isDone && 'пройдено'}
-                  {isCurrent && 'сейчас'}
+                  {isCurrent && (hint ?? 'сейчас')}
                 </span>
               </div>
             </React.Fragment>
