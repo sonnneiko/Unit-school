@@ -1,0 +1,135 @@
+.completionBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #dcfce7;
+  color: #15803d;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.completionIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.page {
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.back {
+  font-size: 13px;
+  color: var(--usr-text-secondary);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--usr-text-primary);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--usr-text-primary);
+}
+
+.topicList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topicCard {
+  background: var(--usr-card-bg);
+  border: 1px solid var(--usr-card-border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: box-shadow 0.15s ease;
+}
+
+.topicCard:hover {
+  box-shadow: var(--usr-card-shadow), 0 4px 12px rgba(0,0,0,.06);
+}
+
+.topicCard_active {
+  border-color: #597ef7;
+}
+
+.topicBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topicTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--usr-text-primary);
+}
+
+.progressBar {
+  height: 4px;
+  background: var(--usr-badge-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #597ef7;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progressFill_complete {
+  background: #22c55e;
+}
+
+.statusBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.statusBadge_complete {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.statusBadge_active {
+  background: #eef1fe;
+  color: #597ef7;
+}
+
+.statusBadge_new {
+  background: var(--usr-badge-bg);
+  color: var(--usr-text-secondary);
+}

@@ -1,0 +1,107 @@
+.header { margin-bottom: 24px; }
+
+.title { font-size: 22px; font-weight: 700; color: var(--adm-text-primary); }
+
+.meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--adm-text-muted);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--adm-badge-bg);
+  color: var(--adm-badge-color);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--adm-badge-border);
+}
+
+.statusOn {
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.statusOff {
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  background: var(--adm-badge-bg);
+  color: var(--adm-badge-color);
+  border: 1px solid var(--adm-badge-border);
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--adm-text-muted);
+  margin: 24px 0 10px;
+}
+
+.slideItem {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--adm-separator);
+  font-size: 13px;
+  color: var(--adm-text-secondary);
+}
+
+.slideType {
+  font-weight: 600;
+  min-width: 100px;
+  color: var(--adm-text-muted);
+  text-transform: capitalize;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--adm-card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--adm-card-border);
+}
+
+.table th {
+  background: var(--adm-table-header-bg);
+  color: var(--adm-text-muted);
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--adm-card-border);
+}
+
+.table td {
+  padding: 11px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--adm-table-row-border);
+  color: var(--adm-text-secondary);
+}
+
+.table tr:last-child td { border-bottom: none; }
+
+.progressCell { min-width: 180px; }
+
+.notFound {
+  color: var(--adm-text-muted);
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+.backLink { color: var(--adm-text-muted); text-decoration: none; }
+.backLink:hover { color: var(--adm-text-primary); }

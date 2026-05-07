@@ -1,0 +1,44 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import type { Lesson, User } from '../../types'
+import { computeLevel, LEVEL_LABELS, LEVEL_NEXT_HINT, LEVEL_ORDER } from '../../utils/level'
+import styles from './GrowthPath.module.css'
+
+interface Props {
+  user: User
+  lessons: Lesson[]
+}
+
+export function GrowthPath({ user, lessons }: Props) {
+  const navigate = useNavigate()
+  const current = computeLevel(user, lessons)
+  const currentIdx = LEVEL_ORDER.indexOf(current)
+
+  return (
+    <div className={styles.card} style={{ cursor: 'pointer' }} onClick={() => navigate('/progress')}>
+      <div className={styles.label}>Твой путь развития</div>
+      <div className={styles.path}>
+        {LEVEL_ORDER.map((level, i) => {
+          const isDone = i < currentIdx
+          const isCurrent = i === currentIdx
+          const hint = isCurrent ? LEVEL_NEXT_HINT[level] : undefined
+
+          return (
+            <React.Fragment key={level}>
+              {i > 0 && <span className={styles.arrow}>→</span>}
+              <div className={styles.stepWrap}>
+                <span className={`${styles.step} ${isDone ? styles.stepDone : isCurrent ? styles.stepCurrent : styles.stepNext}`}>
+                  {isDone ? '✓ ' : isCurrent ? '● ' : '○ '}{LEVEL_LABELS[level]}
+                </span>
+                <span className={`${styles.stepSub} ${isDone ? styles.stepSubDone : isCurrent ? styles.stepSubCurrent : styles.stepSubNext}`}>
+                  {isDone && 'пройдено'}
+                  {isCurrent && (hint ?? 'сейчас')}
+                </span>
+              </div>
+            </React.Fragment>
+          )
+        })}
+      </div>
+    </div>
+  )
+}

@@ -1,0 +1,67 @@
+.heading { font-size: 22px; font-weight: 700; color: var(--adm-text-primary); margin-bottom: 24px; }
+
+.form { max-width: 480px; }
+
+.field { margin-bottom: 16px; }
+
+.label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--adm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--adm-card-border);
+  border-radius: 6px;
+  font-size: 13px;
+  background: var(--adm-card-bg);
+  color: var(--adm-text-primary);
+  box-sizing: border-box;
+}
+.input:focus, .select:focus { outline: none; border-color: #9ca3af; }
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btnCreate {
+  padding: 9px 24px;
+  background: var(--adm-btn-bg);
+  color: var(--adm-btn-color);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btnCancel {
+  padding: 9px 24px;
+  background: transparent;
+  color: var(--adm-text-muted);
+  border: 1px solid var(--adm-card-border);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.avatarPlaceholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--adm-badge-bg);
+  margin-bottom: 8px;
+}
