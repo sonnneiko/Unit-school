@@ -48,9 +48,10 @@ export const LEVELS: CourseLevel[] = [
         icon: '📊',
         title: 'Аккаунтинг',
         topics: [
-          { id: 'intro',  icon: '🧑‍💼', title: 'Аккаунтинг',  lessonId: 'accounting-intro' },
-          { id: 'tools',  icon: '🛠️',  title: 'Инструменты', lessonId: 'accounting-tools' },
-          { id: 'chats',  icon: '💬',  title: 'Чаты',         lessonId: 'accounting-chats' },
+          { id: 'intro',         icon: '🧑‍💼', title: 'Аккаунтинг',  lessonId: 'accounting-intro' },
+          { id: 'nastavleniya',  icon: '💡',  title: 'Наставления',  lessonId: 'accounting-nastavleniya' },
+          { id: 'tools',         icon: '🛠️',  title: 'Инструменты', lessonId: 'accounting-tools' },
+          { id: 'chats',         icon: '💬',  title: 'Чаты',         lessonId: 'accounting-chats' },
         ],
       },
     ],

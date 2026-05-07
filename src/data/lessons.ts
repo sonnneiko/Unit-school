@@ -540,8 +540,18 @@ export const mockLessons: Lesson[] = [
           ],
         },
       },
+    ],
+  },
+
+  // ── Аккаунтинг: Наставления ──────────────────────────────
+  {
+    id: 'accounting-nastavleniya',
+    title: 'Наставления',
+    tag: 'Аккаунтинг',
+    published: true,
+    slides: [
       {
-        id: 's2',
+        id: 's1',
         type: 'kstati',
         content: {
           image: kstatiCat,
