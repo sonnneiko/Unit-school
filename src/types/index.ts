@@ -29,13 +29,13 @@ export interface Lesson {
   slides: Slide[]
 }
 
-export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections'
+export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati'
 
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
   hasInternalNav?: boolean
-  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent
+  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent
 }
 
 export interface MethodItem {
@@ -327,6 +327,17 @@ export interface ObjectionItem {
 
 export interface ObjectionsContent {
   objections: ObjectionItem[]
+}
+
+// ── Kstati slide ──────────────────────────────────────────────
+export interface KstatiTip {
+  title: string
+  text: string
+}
+
+export interface KstatiContent {
+  tips: KstatiTip[]
+  image?: string
 }
 
 export interface Topic {

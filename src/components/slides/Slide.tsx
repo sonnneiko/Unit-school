@@ -1,4 +1,4 @@
-import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent } from '../../types'
+import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent, KstatiContent } from '../../types'
 import { WelcomeSlide } from './WelcomeSlide'
 import { InfoSlide } from './InfoSlide'
 import { FeatureSlide } from './FeatureSlide'
@@ -20,6 +20,7 @@ import { SearchSlide } from './SearchSlide'
 import { NichesSlide } from './NichesSlide'
 import { FunnelSlide } from './FunnelSlide'
 import { ObjectionsSlide } from './ObjectionsSlide'
+import { KstatiSlide } from './KstatiSlide'
 
 interface Props {
   slide: SlideType
@@ -73,6 +74,8 @@ export function Slide({ slide, onNext, nextLesson, onLastTab, initialTab }: Prop
       return <FunnelSlide content={slide.content as FunnelContent} />
     case 'objections':
       return <ObjectionsSlide content={slide.content as ObjectionsContent} />
+    case 'kstati':
+      return <KstatiSlide content={slide.content as KstatiContent} />
     default:
       return <div>Неизвестный тип слайда</div>
   }
