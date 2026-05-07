@@ -3371,18 +3371,19 @@
 }
 
 .kstatiRight {
-  width: 280px;
+  width: 320px;
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0 24px 0 0;
-  overflow: hidden;
+  padding: 0 16px 0 0;
 }
 
 .kstatiCat {
-  height: 88%;
+  max-height: 92%;
+  max-width: 100%;
   width: auto;
+  height: auto;
   display: block;
   object-fit: contain;
 }
