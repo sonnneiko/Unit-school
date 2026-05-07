@@ -23,3 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 .superpowers/
+
+# macOS duplicate files
+*\ 2.md
+*\ 2.ts
+*\ 2.tsx
+*\ 2.js
+*\ 2.json
+*\ 2.html
+*\ 2.css
+*\ 2.svg
+*\ 2.png
