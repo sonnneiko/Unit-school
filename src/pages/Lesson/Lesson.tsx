@@ -59,11 +59,7 @@ export function LessonPage() {
       }
       return
     }
-    setCurrentSlide(i => {
-      const prev = i - 1
-      if (id) updateProgress(id, prev)
-      return prev
-    })
+    setCurrentSlide(i => i - 1)
   }, [currentSlide, id, updateProgress, navigate, backUrl, navInfo])
 
   if (!lesson) return <Navigate to="/" replace />
