@@ -1,5 +1,6 @@
 import type { Lesson } from '../types'
 import accountingCat from '../assets/unit-cat/Супергерои.png'
+import attractionCat from '../assets/unit-cat/Сильныщ (1).png'
 
 export const mockLessons: Lesson[] = [
   // ── Команда ──────────────────────────────────────────────
@@ -712,10 +713,12 @@ export const mockLessons: Lesson[] = [
       {
         id: 's1',
         type: 'welcome',
+        hasInternalNav: true,
         content: {
           title: 'Поиск мерчантов',
           subtitle: 'Где и как находить потенциальных партнёров для подключения к UnitPay.',
           ctaLabel: 'Начать',
+          image: attractionCat,
           bullets: [
             'Google и Яндекс по нишам',
             'ChatGPT для поиска по запросам',
@@ -908,10 +911,12 @@ export const mockLessons: Lesson[] = [
       {
         id: 's1',
         type: 'welcome',
+        hasInternalNav: true,
         content: {
           title: 'Питч и аргументы',
           subtitle: 'Как подходить к разным нишам: целевая аудитория, боли и скрипт первого сообщения.',
           ctaLabel: 'Начать',
+          image: attractionCat,
           bullets: [
             'Gaming — игровые сервисы и сервера',
             'Digital — VPN, ПО, цифровые товары',
@@ -1019,10 +1024,12 @@ export const mockLessons: Lesson[] = [
       {
         id: 's1',
         type: 'welcome',
+        hasInternalNav: true,
         content: {
           title: 'Ведение партнёра',
           subtitle: 'Пайплайн от первого контакта до оборота: что делать на каждом этапе.',
           ctaLabel: 'Начать',
+          image: attractionCat,
           bullets: [
             'Нашёл → Написал → Общение',
             'Предложение → Подключение → Оборот',
@@ -1171,10 +1178,12 @@ export const mockLessons: Lesson[] = [
       {
         id: 's1',
         type: 'welcome',
+        hasInternalNav: true,
         content: {
           title: 'Отработка возражений',
           subtitle: 'Как отвечать на типичные возражения мерчантов: логика, аргументы и скрипты.',
           ctaLabel: 'Начать',
+          image: attractionCat,
           bullets: [
             '«У нас уже есть провайдер»',
             '«У вас высокая комиссия»',
