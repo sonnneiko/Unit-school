@@ -1,4 +1,4 @@
-import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent } from '../../types'
+import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent } from '../../types'
 import { WelcomeSlide } from './WelcomeSlide'
 import { InfoSlide } from './InfoSlide'
 import { FeatureSlide } from './FeatureSlide'
@@ -16,6 +16,10 @@ import { EntitiesSlide } from './EntitiesSlide'
 import { FinishSlide } from './FinishSlide'
 import { ToolsSlide } from './ToolsSlide'
 import { TgChatsSlide } from './TgChatsSlide'
+import { SearchSlide } from './SearchSlide'
+import { NichesSlide } from './NichesSlide'
+import { FunnelSlide } from './FunnelSlide'
+import { ObjectionsSlide } from './ObjectionsSlide'
 
 interface Props {
   slide: SlideType
@@ -61,6 +65,14 @@ export function Slide({ slide, onNext, nextLesson, onLastTab, initialTab }: Prop
       return <ToolsSlide content={slide.content as ToolsContent} onNext={onNext} />
     case 'tgchats':
       return <TgChatsSlide content={slide.content as TgChatsContent} />
+    case 'search':
+      return <SearchSlide content={slide.content as SearchContent} />
+    case 'niches':
+      return <NichesSlide content={slide.content as NichesContent} />
+    case 'funnel':
+      return <FunnelSlide content={slide.content as FunnelContent} />
+    case 'objections':
+      return <ObjectionsSlide content={slide.content as ObjectionsContent} />
     default:
       return <div>Неизвестный тип слайда</div>
   }

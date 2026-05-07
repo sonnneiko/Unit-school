@@ -64,12 +64,13 @@ export const LEVELS: CourseLevel[] = [
       {
         id: 'unitpay-attraction',
         icon: '🎯',
-        title: 'Привлечение',
+        title: 'Привлечение мерчантов',
         topics: [
-          { id: 'search',  icon: '🔍', title: 'Поиск мерчантов',       lessonId: 'attraction-search' },
-          { id: 'partner', icon: '🤝', title: 'Партнерская программа', lessonId: 'attraction-partner' },
+          { id: 'search',     icon: '🔍',  title: 'Поиск мерчантов',     lessonId: 'attraction-search' },
+          { id: 'pitch',      icon: '💬',  title: 'Питч и аргументы',     lessonId: 'attraction-pitch' },
+          { id: 'funnel',     icon: '🗺️', title: 'Ведение партнёра',     lessonId: 'attraction-funnel' },
+          { id: 'objections', icon: '🛡️', title: 'Отработка возражений', lessonId: 'attraction-objections' },
         ],
-        comingSoon: true,
       },
       {
         id: 'unitpay-details',
