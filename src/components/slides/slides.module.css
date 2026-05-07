@@ -3370,6 +3370,12 @@
   line-height: 1.65;
 }
 
+.kstatiFooter {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
 .kstatiRight {
   width: 320px;
   flex-shrink: 0;

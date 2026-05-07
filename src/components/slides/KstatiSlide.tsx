@@ -19,6 +19,7 @@ export function KstatiSlide({ content }: Props) {
             </div>
           ))}
         </div>
+        <div className={styles.kstatiFooter}>парочка наставлений от кота Юнита</div>
       </div>
       {content.image && (
         <div className={styles.kstatiRight}>
