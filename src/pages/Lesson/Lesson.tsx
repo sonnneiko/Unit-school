@@ -25,7 +25,6 @@ export function LessonPage() {
       ? lesson.slides.length - 1
       : isComplete(lesson, user) ? 0 : (user.progress[lesson.id] ?? 0)
     setCurrentSlide(slide)
-    setOnLastInternalTab(false)
   }, [id])
 
   const backUrl = (location.state as { from?: string } | null)?.from ?? '/courses'
