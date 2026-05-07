@@ -29,13 +29,13 @@ export interface Lesson {
   slides: Slide[]
 }
 
-export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats'
+export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections'
 
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
   hasInternalNav?: boolean
-  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent
+  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent
 }
 
 export interface MethodItem {
@@ -252,6 +252,81 @@ export interface TgChatsContent {
   cards: TgChatCard[]
   downloadUrl?: string
   footerNote?: string
+}
+
+// ── Search slide ──────────────────────────────────────────────
+export interface SearchChannel {
+  icon: string
+  title: string
+  sub: string
+  sections: {
+    icon: string
+    label: string
+    color: string
+    items: string[]
+  }[]
+  tip: string
+  side: {
+    title: string
+    items: string[]
+  }
+}
+
+export interface SearchContent {
+  channels: SearchChannel[]
+}
+
+// ── Niches slide ──────────────────────────────────────────────
+export interface NicheItem {
+  id: string
+  emoji: string
+  title: string
+  sub: string
+  whoText: string
+  whoTags: string[]
+  pains: string[]
+  script: string
+  note: string
+  lifehack?: string
+}
+
+export interface NichesContent {
+  niches: NicheItem[]
+}
+
+// ── Funnel slide ──────────────────────────────────────────────
+export interface FunnelSection {
+  icon: string
+  label: string
+  color: string
+  content: string
+}
+
+export interface FunnelStage {
+  emoji: string
+  title: string
+  sub: string
+  sections: FunnelSection[]
+  side: 'followup' | 'sources' | 'none'
+}
+
+export interface FunnelContent {
+  stages: FunnelStage[]
+}
+
+// ── Objections slide ──────────────────────────────────────────
+export interface ObjectionItem {
+  emoji: string
+  short: string
+  title: string
+  why: string
+  reply: string[]
+  script: string
+  tip: string
+}
+
+export interface ObjectionsContent {
+  objections: ObjectionItem[]
 }
 
 export interface Topic {
