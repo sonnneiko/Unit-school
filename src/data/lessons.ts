@@ -731,7 +731,6 @@ export const mockLessons: Lesson[] = [
       {
         id: 's2',
         type: 'search',
-        hasInternalNav: true,
         content: {
           channels: [
             {
@@ -929,7 +928,6 @@ export const mockLessons: Lesson[] = [
       {
         id: 's2',
         type: 'niches',
-        hasInternalNav: true,
         content: {
           niches: [
             {
@@ -1040,7 +1038,6 @@ export const mockLessons: Lesson[] = [
       {
         id: 's2',
         type: 'funnel',
-        hasInternalNav: true,
         content: {
           stages: [
             {
@@ -1197,7 +1194,6 @@ export const mockLessons: Lesson[] = [
       {
         id: 's2',
         type: 'objections',
-        hasInternalNav: true,
         content: {
           objections: [
             {
