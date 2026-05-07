@@ -44,8 +44,9 @@ export function DashboardPage() {
 
   function courseBadge(lesson: Lesson) {
     const idx = user!.progress[lesson.id]
-    if (idx === undefined || idx === 0) return <span className={styles.badgeBlue}>Начать</span>
+    if (idx === undefined) return <span className={styles.badgeBlue}>Начать</span>
     if (isComplete(lesson, user!)) return <span className={styles.badgeGreen}>Завершён</span>
+    if (idx === 0) return <span className={styles.badgeBlue}>Начать</span>
     return <span className={styles.badgeBlue}>В процессе</span>
   }
 
@@ -217,34 +218,9 @@ export function DashboardPage() {
       {/* Growth path */}
       <GrowthPath user={user} lessons={lessons} />
 
-      {/* Courses + Achievements */}
+      {/* Level + Achievements */}
       <div className={styles.grid}>
-        <div className={styles.card}>
-          <div className={styles.cardLabel}>Обучение</div>
-          {(() => {
-            let activeIdx = publishedLessons.findIndex(l => !isComplete(l, user))
-            if (activeIdx === -1) activeIdx = Math.max(0, publishedLessons.length - 3)
-            const visibleLessons = publishedLessons.slice(activeIdx, activeIdx + 3)
-            return visibleLessons.map(lesson => (
-              <div key={lesson.id} className={styles.courseRow} style={{ cursor: 'pointer' }} onClick={() => navigate(`/lesson/${lesson.id}`)}>
-                <div style={{ flex: 1 }}>
-                  <div className={styles.courseName}>{lesson.title}</div>
-                  {user.progress[lesson.id] !== undefined && (
-                    <div className={styles.bar} style={{ marginTop: 4 }}>
-                      <div
-                        className={styles.barFill}
-                        style={{ width: `${calcProgress(user.progress[lesson.id], lesson.slides.length)}%` }}
-                      />
-                    </div>
-                  )}
-                </div>
-                {courseBadge(lesson)}
-              </div>
-            ))
-          })()}
-        </div>
-
-        <div className={styles.card}>
+        <div className={styles.card} style={{ cursor: 'pointer' }} onClick={() => navigate('/progress')}>
           <div className={styles.cardLabel}>Уровень</div>
           <div className={styles.levelCardRow}>
             <div>
@@ -270,15 +246,14 @@ export function DashboardPage() {
           </div>
         </div>
 
-        <div className={styles.card}>
-          <div className={styles.cardLabel}>Достижения</div>
-          {achievements.map(a => <AchievementBadge key={a.key} achievement={a} />)}
-          {lockedDefs.map(a => (
-            <div key={a.key} className={styles.achievementLocked}>
-              <div className={styles.achievementLockedIcon}>{a.icon}</div>
-              <div className={styles.achievementLockedName}>{a.name}</div>
-            </div>
+        <div className={styles.card} style={{ cursor: 'pointer' }} onClick={() => navigate('/progress')}>
+          <div className={styles.cardLabel}>Последние достижения</div>
+          {achievements.slice(-3).reverse().map(a => (
+            <AchievementBadge key={a.key} achievement={{ ...a, unlockedAt: undefined }} />
           ))}
+          {achievements.length === 0 && (
+            <div className={styles.emptyAchievementsText}>Пока пусто — начни первый урок!</div>
+          )}
         </div>
       </div>
 
