@@ -909,24 +909,6 @@ export const mockLessons: Lesson[] = [
     slides: [
       {
         id: 's1',
-        type: 'welcome',
-        hasInternalNav: true,
-        content: {
-          title: 'Питч и аргументы',
-          subtitle: 'Как подходить к разным нишам: целевая аудитория, боли и скрипт первого сообщения.',
-          ctaLabel: 'Начать',
-          image: attractionCat,
-          bullets: [
-            'Gaming — игровые сервисы и сервера',
-            'Digital — VPN, ПО, цифровые товары',
-            'SaaS — подписочные сервисы',
-            'E-com — интернет-магазины',
-            'VK-сообщества — монетизация аудитории',
-          ],
-        },
-      },
-      {
-        id: 's2',
         type: 'niches',
         content: {
           niches: [
@@ -1021,22 +1003,6 @@ export const mockLessons: Lesson[] = [
     slides: [
       {
         id: 's1',
-        type: 'welcome',
-        hasInternalNav: true,
-        content: {
-          title: 'Ведение партнёра',
-          subtitle: 'Пайплайн от первого контакта до оборота: что делать на каждом этапе.',
-          ctaLabel: 'Начать',
-          image: attractionCat,
-          bullets: [
-            'Нашёл → Написал → Общение',
-            'Предложение → Подключение → Оборот',
-            'Фолоу-ап и работа с тишиной',
-          ],
-        },
-      },
-      {
-        id: 's2',
         type: 'funnel',
         content: {
           stages: [
@@ -1174,25 +1140,6 @@ export const mockLessons: Lesson[] = [
     slides: [
       {
         id: 's1',
-        type: 'welcome',
-        hasInternalNav: true,
-        content: {
-          title: 'Отработка возражений',
-          subtitle: 'Как отвечать на типичные возражения мерчантов: логика, аргументы и скрипты.',
-          ctaLabel: 'Начать',
-          image: attractionCat,
-          bullets: [
-            '«У нас уже есть провайдер»',
-            '«У вас высокая комиссия»',
-            '«Сложно интегрировать»',
-            '«Не знаем вас»',
-            '«Много документов»',
-            '«Боимся блокировки»',
-          ],
-        },
-      },
-      {
-        id: 's2',
         type: 'objections',
         content: {
           objections: [
