@@ -152,7 +152,7 @@ export function AcquiringSlide({
     const tab = initialTab ?? 0
     setActiveTab(tab)
     onLastTab?.(tab === content.tabs.length - 1)
-  }, [])
+  }, [initialTab])
 
   const handleTab = (i: number) => {
     setActiveTab(i)

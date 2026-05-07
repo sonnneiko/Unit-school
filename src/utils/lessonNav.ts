@@ -9,15 +9,24 @@ interface LessonNavInfo {
   sectionTitle: string
 }
 
-export function getLessonNavInfo(lessonId: string): LessonNavInfo | null {
+export function getLessonNavInfo(lessonId: string, startTab?: number): LessonNavInfo | null {
   for (const level of LEVELS) {
     for (const section of level.sections) {
-      const idx = section.topics.findIndex(t => t.lessonId === lessonId)
+      const idx = section.topics.findIndex(t =>
+        t.lessonId === lessonId &&
+        (startTab !== undefined ? t.startTab === startTab : t.startTab === undefined)
+      )
       if (idx === -1) continue
 
       const total = section.topics.length
-      const prevTopic = idx > 0 ? section.topics[idx - 1] : null
-      const nextTopic = section.topics[idx + 1] ?? null
+
+      let nextIdx = idx + 1
+      while (nextIdx < total && section.topics[nextIdx].lessonId === lessonId) nextIdx++
+      const nextTopic = nextIdx < total ? section.topics[nextIdx] : null
+
+      let prevIdx = idx - 1
+      while (prevIdx >= 0 && section.topics[prevIdx].lessonId === lessonId) prevIdx--
+      const prevTopic = prevIdx >= 0 ? section.topics[prevIdx] : null
 
       const prevLesson = prevTopic ? mockLessons.find(l => l.id === prevTopic.lessonId && l.published) : null
       const nextLesson = nextTopic ? mockLessons.find(l => l.id === nextTopic.lessonId && l.published) : null

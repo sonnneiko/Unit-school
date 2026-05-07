@@ -30,7 +30,7 @@ export function LessonPage() {
   const backUrl = (location.state as { from?: string } | null)?.from ?? '/courses'
   const initialTab = (location.state as { initialTab?: number } | null)?.initialTab
   const isLastSlide = currentSlide === (lesson?.slides.length ?? 1) - 1
-  const navInfo = useMemo(() => id ? getLessonNavInfo(id) : null, [id])
+  const navInfo = useMemo(() => id ? getLessonNavInfo(id, initialTab) : null, [id, initialTab])
 
   const goNext = useCallback(() => {
     if (isLastSlide) {
