@@ -78,10 +78,9 @@ export const LEVELS: CourseLevel[] = [
         icon: '🔍',
         title: 'UnitPay: Все детали',
         topics: [
-          { id: 'recurring', icon: '🔁', title: 'Рекуррентные платежи',         lessonId: 'details-recurring' },
-          { id: 'help',      icon: '📖', title: 'Знакомство с help.unitpay.ru', lessonId: 'details-help' },
+          { id: 'recurring', icon: '🔁', title: 'Рекуррентные платежи',     lessonId: 'details-recurring' },
+          { id: 'help',      icon: '📖', title: 'Знакомство с help.unitpay', lessonId: 'details-help' },
         ],
-        comingSoon: true,
       },
       {
         id: 'unitpay-finance',
