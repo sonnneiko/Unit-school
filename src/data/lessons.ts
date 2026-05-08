@@ -1335,4 +1335,48 @@ export const mockLessons: Lesson[] = [
       },
     ],
   },
+  {
+    id: 'details-help',
+    title: 'Знакомство с help.unitpay',
+    tag: 'UnitPay: Все детали',
+    published: true,
+    slides: [
+      {
+        id: 's1',
+        type: 'info',
+        content: {
+          heading: 'Документация UnitPay',
+          bullets: [
+            'Мерчанты часто приходят с техническими вопросами — многие ответы уже есть в доках',
+            'Пригодится самому: статусы платежей, параметры API, коды ошибок, форматы выплат',
+            'Пригодится для мерчанта: как добавить проект, готовые модули для CMS, онлайн-кассы',
+          ],
+        },
+      },
+      {
+        id: 's2',
+        type: 'tools',
+        content: {
+          tools: [
+            {
+              id: 'help-ru',
+              title: 'help.unitpay.ru',
+              gradient: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+              description: 'Основная документация для ЮЛ и ИП. Регистрация и проекты, платежи и подписки, выплаты, онлайн-кассы, готовые модули для 40+ CMS-платформ, справочник статусов и кодов.',
+              ctaLabel: 'Открыть',
+              ctaUrl: 'https://help.unitpay.ru',
+            },
+            {
+              id: 'help-money',
+              title: 'help.unitpay.money',
+              gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+              description: 'Обновлённая версия документации на русском и английском. Начало работы, платежи, выплаты, личный кабинет, тестовое API. Удобно делиться с зарубежными партнёрами.',
+              ctaLabel: 'Открыть',
+              ctaUrl: 'https://help.unitpay.money',
+            },
+          ],
+        },
+      },
+    ],
+  },
 ]
