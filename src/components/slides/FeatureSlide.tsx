@@ -1,9 +1,9 @@
-import { LayoutGrid, CreditCard, Printer, type LucideIcon } from 'lucide-react'
+import { LayoutGrid, CreditCard, Printer, FileText, CheckSquare, Bell, type LucideIcon } from 'lucide-react'
 import unitCat from '../../assets/unit-cat/Лайк (2).png'
 import type { FeatureContent } from '../../types'
 import styles from './slides.module.css'
 
-const ICON_MAP: Record<string, LucideIcon> = { LayoutGrid, CreditCard, Printer }
+const ICON_MAP: Record<string, LucideIcon> = { LayoutGrid, CreditCard, Printer, FileText, CheckSquare, Bell }
 
 export function FeatureSlide({ content }: { content: FeatureContent }) {
   return (
