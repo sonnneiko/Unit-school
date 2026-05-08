@@ -23,9 +23,11 @@ export function ToolsSlide({ content, onNext }: Props) {
             style={{ background: tool.gradient }}
             onClick={() => setActiveId(tool.id)}
           >
-            <div className={styles.toolCardIcon}>
-              <img src={tool.logo} alt={tool.title} className={styles.toolCardLogo} />
-            </div>
+            {tool.logo && (
+              <div className={styles.toolCardIcon}>
+                <img src={tool.logo} alt={tool.title} className={styles.toolCardLogo} />
+              </div>
+            )}
             <span className={styles.toolCardTitle}>{tool.title}</span>
           </div>
         ))}
@@ -37,7 +39,16 @@ export function ToolsSlide({ content, onNext }: Props) {
           <p className={styles.toolsDetailDesc}>{activeTool.description}</p>
 
           {activeTool.ctaLabel ? (
-            <button className={styles.toolsNextBtn} onClick={onNext}>
+            <button
+              className={styles.toolsNextBtn}
+              onClick={() => {
+                if (activeTool.ctaUrl) {
+                  window.open(activeTool.ctaUrl, '_blank', 'noopener,noreferrer')
+                } else {
+                  onNext?.()
+                }
+              }}
+            >
               {activeTool.ctaLabel}
             </button>
           ) : activeTool.videoUrl ? (
