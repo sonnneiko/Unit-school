@@ -29,13 +29,13 @@ export interface Lesson {
   slides: Slide[]
 }
 
-export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati'
+export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring'
 
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
   hasInternalNav?: boolean
-  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent
+  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent
 }
 
 export interface MethodItem {
@@ -347,4 +347,41 @@ export interface Topic {
   title: string
   lessonId: string
   startTab?: number
+}
+
+// ── Recurring slides ──────────────────────────────────────────
+export interface RecurringNote {
+  title: string
+  text: string
+  warn?: boolean
+}
+
+export interface RecurringOverviewContent {
+  variant: 'overview'
+  tag: string
+  title: string
+  description: string
+  facts: string[]
+  notes: RecurringNote[]
+}
+
+export interface RecurringRequirement {
+  emoji: string
+  name: string
+  desc: string
+}
+
+export interface RecurringChecklistItem {
+  label: string
+  done: boolean
+}
+
+export interface RecurringRequirementsContent {
+  variant: 'requirements'
+  eyebrow: string
+  title: string
+  sub: string
+  requirements: RecurringRequirement[]
+  checklist: RecurringChecklistItem[]
+  badge: string
 }
