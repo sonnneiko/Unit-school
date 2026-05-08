@@ -1,4 +1,4 @@
-import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent, KstatiContent, RecurringOverviewContent, RecurringRequirementsContent } from '../../types'
+import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent, KstatiContent, RecurringOverviewContent, RecurringRequirementsContent, HelpIntroContent, HelpPortalsContent } from '../../types'
 import { WelcomeSlide } from './WelcomeSlide'
 import { InfoSlide } from './InfoSlide'
 import { FeatureSlide } from './FeatureSlide'
@@ -22,6 +22,7 @@ import { FunnelSlide } from './FunnelSlide'
 import { ObjectionsSlide } from './ObjectionsSlide'
 import { KstatiSlide } from './KstatiSlide'
 import { RecurringSlide } from './RecurringSlide'
+import { HelpDocsSlide } from './HelpDocsSlide'
 
 interface Props {
   slide: SlideType
@@ -79,6 +80,8 @@ export function Slide({ slide, onNext, nextLesson, onLastTab, initialTab }: Prop
       return <KstatiSlide content={slide.content as KstatiContent} />
     case 'recurring':
       return <RecurringSlide content={slide.content as RecurringOverviewContent | RecurringRequirementsContent} />
+    case 'helpdocs':
+      return <HelpDocsSlide content={slide.content as HelpIntroContent | HelpPortalsContent} />
     default:
       return <div>Неизвестный тип слайда</div>
   }

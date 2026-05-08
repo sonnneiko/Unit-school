@@ -29,13 +29,13 @@ export interface Lesson {
   slides: Slide[]
 }
 
-export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring'
+export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring' | 'helpdocs'
 
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
   hasInternalNav?: boolean
-  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent
+  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent | HelpIntroContent | HelpPortalsContent
 }
 
 export interface MethodItem {
@@ -384,4 +384,41 @@ export interface RecurringRequirementsContent {
   requirements: RecurringRequirement[]
   checklist: RecurringChecklistItem[]
   badge: string
+}
+
+// ── HelpDocs slides ───────────────────────────────────────────
+export interface HelpUseCard {
+  title: string
+  text: string
+}
+
+export interface HelpIntroContent {
+  variant: 'intro'
+  eyebrow: string
+  title: string
+  description: string
+  bullets: string[]
+  useCases: HelpUseCard[]
+}
+
+export interface HelpPortalSection {
+  icon: string
+  name: string
+  desc: string
+}
+
+export interface HelpPortal {
+  badge: string
+  badgeVariant: 'blue' | 'purple'
+  url: string
+  tagline: string
+  sections: HelpPortalSection[]
+  ctaUrl: string
+}
+
+export interface HelpPortalsContent {
+  variant: 'portals'
+  title: string
+  subtitle: string
+  portals: [HelpPortal, HelpPortal]
 }
