@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рекуррентные платежи — прототип слайдов</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+    min-height: 100vh;
+  }
+
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  /* ── SLIDE SHELL ────────────────────────────────────── */
+  .slide {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    background: #f5f5f5;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    position: relative;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     SLIDE 1 — Определение + Важно
+  ══════════════════════════════════════════════════════ */
+  .s1 {
+    flex-direction: row;
+  }
+
+  /* Left: main content */
+  .s1-left {
+    flex: 0 0 58%;
+    background: #ffffff;
+    padding: 56px 52px 56px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .s1-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #dcfce7;
+    color: #16a34a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .s1-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -.02em;
+  }
+
+  .s1-desc {
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .s1-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .s1-fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+  }
+
+  .s1-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* Right: важно */
+  .s1-right {
+    flex: 1;
+    background: #f9fafb;
+    border-left: 1px solid #e5e7eb;
+    padding: 48px 40px 48px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .s1-right-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 4px;
+  }
+
+  .note-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-left: 3px solid #22c55e;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .note-card.warn {
+    border-left-color: #f59e0b;
+  }
+
+  .note-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+  }
+
+  .note-text {
+    font-size: 12.5px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     SLIDE 2 — Требования
+  ══════════════════════════════════════════════════════ */
+  .s2 {
+    flex-direction: row;
+    background: #ffffff;
+  }
+
+  .s2-left {
+    flex: 0 0 52%;
+    padding: 60px 52px 60px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .s2-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #22c55e;
+    margin-bottom: 14px;
+  }
+
+  .s2-title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -.02em;
+  }
+
+  .s2-sub {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 36px;
+    padding-left: 14px;
+    border-left: 2px solid #22c55e;
+  }
+
+  .req-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .req-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .req-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+  }
+
+  .req-body {}
+
+  .req-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 3px;
+  }
+
+  .req-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  /* Right decorative panel */
+  .s2-right {
+    flex: 1;
+    background: linear-gradient(160deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 1px solid #bbf7d0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .s2-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(34,197,94,.12) 0%, transparent 60%);
+  }
+
+  .checklist-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    padding: 18px 20px;
+    width: 100%;
+    max-width: 280px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .checklist-header {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 12px;
+  }
+
+  .checklist-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #374151;
+    padding: 5px 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .checklist-row:last-child { border-bottom: none; }
+
+  .check {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid #d1d5db;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check.done {
+    background: #22c55e;
+    border-color: #22c55e;
+    color: white;
+    font-size: 10px;
+  }
+
+  .checklist-row.active .check { border-color: #22c55e; }
+  .checklist-row.active span { color: #111827; font-weight: 600; }
+
+  .s2-badge {
+    background: #22c55e;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Nav buttons */
+  .slide-nav {
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #374151;
+    cursor: pointer;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d1d5db;
+  }
+
+  .dot.active {
+    background: #22c55e;
+    width: 20px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="label">Слайд 1 — Рекуррентные платежи (определение + важно)</div>
+<div class="slide s1">
+  <div class="s1-left">
+    <div class="s1-tag">🔁 Рекуррентные платежи</div>
+    <h1 class="s1-title">Автосписания без<br>повторного согласия</h1>
+    <p class="s1-desc">
+      Клиент платит один раз и соглашается на регулярные списания. Дальше деньги уходят автоматически — по расписанию, которое задаёт сам мерчант.
+    </p>
+    <div class="s1-facts">
+      <div class="s1-fact"><div class="s1-dot"></div><span>Без повторного ввода реквизитов и 3DS-подтверждения</span></div>
+      <div class="s1-fact"><div class="s1-dot"></div><span>Сумму и периодичность мерчант задаёт на своей стороне</span></div>
+      <div class="s1-fact"><div class="s1-dot"></div><span>Доступны только на эквайринге: карты, Tinkoff Pay, СБП</span></div>
+    </div>
+  </div>
+
+  <div class="s1-right">
+    <div class="s1-right-heading">Важно знать</div>
+    <div class="note-card">
+      <div class="note-title">Только через поддержку</div>
+      <div class="note-text">Подключение требует согласования со Службой безопасности. Без этого шага рекуррентные платежи не заработают.</div>
+    </div>
+    <div class="note-card warn">
+      <div class="note-title">Только ЮЛ и ИП</div>
+      <div class="note-text">Физлица не могут подключить рекуррентные платежи.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-title">Не мешает обычным платежам</div>
+      <div class="note-text">Наличие подписок на проекте не ограничивает приём платежей обычным способом.</div>
+    </div>
+  </div>
+
+  <div class="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="slide-nav">
+    <div class="nav-btn">→</div>
+  </div>
+</div>
+
+
+<div class="label">Слайд 2 — Что нужно добавить на проект</div>
+<div class="slide s2">
+  <div class="s2-left">
+    <div class="s2-eyebrow">Для подключения подписок</div>
+    <h1 class="s2-title">Что нужно добавить<br>на проект</h1>
+    <p class="s2-sub">
+      Служба безопасности согласует рекуррентные платежи только если эти три вещи реализованы на сайте мерчанта.
+    </p>
+    <div class="req-list">
+      <div class="req-item">
+        <div class="req-icon">📋</div>
+        <div class="req-body">
+          <div class="req-name">Форма регистрации перед оплатой</div>
+          <div class="req-desc">Если нет стандартного личного кабинета — форма обязательна</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <div class="req-icon">☑️</div>
+        <div class="req-body">
+          <div class="req-name">Две обязательные галочки</div>
+          <div class="req-desc">Согласие с условиями подписки + согласие с автосписанием конкретной суммы с периодичностью. Не pre-checked.</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <div class="req-icon">🔔</div>
+        <div class="req-body">
+          <div class="req-name">Статус и отмена подписки</div>
+          <div class="req-desc">Клиент должен иметь возможность проверить статус и отменить подписку</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s2-right">
+    <div class="checklist-card">
+      <div class="checklist-header">Чеклист мерчанта</div>
+      <div class="checklist-row done"><div class="check done">✓</div><span>Эквайринг подключён</span></div>
+      <div class="checklist-row done"><div class="check done">✓</div><span>ЮЛ или ИП</span></div>
+      <div class="checklist-row active"><div class="check"></div><span>Форма регистрации</span></div>
+      <div class="checklist-row active"><div class="check"></div><span>Галочки согласия</span></div>
+      <div class="checklist-row active"><div class="check"></div><span>Страница управления</span></div>
+    </div>
+    <div class="s2-badge">Готово → передаём Службе безопасности</div>
+  </div>
+
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot active"></div>
+  </div>
+  <div class="slide-nav">
+    <div class="nav-btn">←</div>
+  </div>
+</div>
+
+</body>
+</html>

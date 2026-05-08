@@ -3416,10 +3416,22 @@
 .recurringLeft {
   flex: 0 0 58%;
   background: #ffffff;
-  padding: 40px 48px 80px 60px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.recurringTop {
+  padding: 48px 48px 0 60px;
+}
+
+.recurringBody {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 48px 48px 60px;
+  gap: 0;
 }
 
 .recurringTag {
@@ -3444,12 +3456,12 @@
   font-weight: normal;
   color: #111827;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   white-space: pre-line;
 }
 
 .recurringDesc {
-  font-size: 15px;
+  font-size: 17px;
   color: #374151;
   line-height: 1.65;
   margin-bottom: 26px;
@@ -3466,7 +3478,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 14px;
+  font-size: 16px;
   color: #374151;
   line-height: 1.5;
 }
@@ -3484,10 +3496,17 @@
   flex: 1;
   background: #f9fafb;
   border-left: 1px solid #e5e7eb;
-  padding: 40px 36px 80px 40px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.recurringRight .recurringTop {
+  padding: 48px 36px 0 40px;
+}
+
+.recurringRight .recurringBody {
+  padding: 0 36px 48px 40px;
   gap: 14px;
 }
 
@@ -3520,7 +3539,7 @@
 }
 
 .recurringNoteText {
-  font-size: 12.5px;
+  font-size: 14px;
   color: #6b7280;
   line-height: 1.5;
 }
@@ -3540,7 +3559,7 @@
 }
 
 .recurringSubQuote {
-  font-size: 14px;
+  font-size: 17px;
   color: #6b7280;
   line-height: 1.6;
   margin-bottom: 32px;
@@ -3581,7 +3600,7 @@
 }
 
 .recurringReqDesc {
-  font-size: 13px;
+  font-size: 15px;
   color: #6b7280;
   line-height: 1.5;
 }
@@ -3593,8 +3612,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 72px 40px 40px;
+  justify-content: center;
+  padding: 40px;
   gap: 14px;
 }
 

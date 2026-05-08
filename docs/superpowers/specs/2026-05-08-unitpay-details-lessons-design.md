@@ -42,15 +42,18 @@ bullets:
 
 ```
 heading: "Что нужно добавить на проект для подписок"
-paragraphs: [краткое intro — без этого служба безопасности не согласует]
+paragraphs:
+  - "Перед тем как Служба безопасности согласует рекуррентные платежи, на проекте мерчанта должны быть реализованы три вещи."
 features:
-  - icon: FileText, title: "Форма регистрации перед оплатой"
+  - icon: "FileText", title: "Форма регистрации перед оплатой"
     subtitle: "Если на сайте нет стандартного личного кабинета — форма обязательна"
-  - icon: CheckSquare, title: "Две обязательные галочки"
+  - icon: "CheckSquare", title: "Две обязательные галочки"
     subtitle: "Согласие с условиями подписки + согласие с автосписанием конкретной суммы с периодичностью. Галочки не должны стоять автоматически"
-  - icon: Bell, title: "Статус и отмена подписки"
+  - icon: "Bell", title: "Статус и отмена подписки"
     subtitle: "Клиент должен иметь возможность проверить статус своей подписки и отменить её"
 ```
+
+Note: `FeatureSlide` uses icon strings resolved via lucide-react. Check existing usage (e.g. `attraction-search` lesson) to confirm correct icon name format before implementation.
 
 ---
 
@@ -74,24 +77,38 @@ bullets:
 
 ### Slide 2 — `tools`
 
-Two tool cards:
+Two tool cards. Requires type changes in `src/types/index.ts`:
+- Make `logo` optional: `logo?: string`
+- Add `ctaUrl?: string` to `ToolItem` so the CTA button can open a URL
 
 **Card 1 — help.unitpay.ru**
-- `title`: help.unitpay.ru
+- `id`: `help-ru`
+- `title`: `help.unitpay.ru`
 - `description`: Основная документация для ЮЛ и ИП. Регистрация и проекты, платежи и подписки, выплаты, онлайн-кассы, готовые модули для 40+ CMS-платформ, справочник статусов и кодов.
 - `ctaLabel`: Открыть
-- gradient: синий
+- `ctaUrl`: `https://help.unitpay.ru`
+- `gradient`: blue (`linear-gradient(135deg, #3b82f6, #1d4ed8)`)
+- `logo`: omitted (optional)
 
 **Card 2 — help.unitpay.money**
-- `title`: help.unitpay.money
+- `id`: `help-money`
+- `title`: `help.unitpay.money`
 - `description`: Обновлённая версия документации на русском и английском. Начало работы, платежи, выплаты, личный кабинет, тестовое API. Удобно делиться с зарубежными партнёрами.
 - `ctaLabel`: Открыть
-- gradient: фиолетовый
+- `ctaUrl`: `https://help.unitpay.money`
+- `gradient`: purple (`linear-gradient(135deg, #8b5cf6, #6d28d9)`)
+- `logo`: omitted (optional)
+
+`ToolsSlide` must open `ctaUrl` in a new tab when `ctaLabel` is clicked.
 
 ---
 
 ## Files to change
 
-1. `src/data/courses.ts` — rename topic title (remove ".ru")
-2. `src/data/lessons.ts` — add two new lesson objects at the end
-3. No new slide types needed — uses existing `info`, `kstati`, `feature`, `tools`
+1. `src/data/courses.ts`
+   - Rename topic title: remove ".ru"
+   - Remove `comingSoon: true` from `unitpay-details` section so lessons become accessible
+2. `src/types/index.ts` — make `ToolItem.logo` optional (`logo?: string`), add `ctaUrl?: string`
+3. `src/components/slides/ToolsSlide.tsx` — when `ctaUrl` present, open it in new tab on CTA click instead of calling `onNext`
+4. `src/components/slides/FeatureSlide.tsx` — add `FileText`, `CheckSquare`, `Bell` to `ICON_MAP` from lucide-react
+5. `src/data/lessons.ts` — add two new lesson objects
