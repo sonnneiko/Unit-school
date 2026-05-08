@@ -214,10 +214,11 @@ export interface ToolItem {
   id: string
   title: string
   gradient: string
-  logo: string
+  logo?: string
   description: string
   videoUrl?: string
   ctaLabel?: string  // если задан — показывается кнопка вместо видео
+  ctaUrl?: string
 }
 
 export interface ToolsContent {
