@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЮнитЧеки — прототип слайдов</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #e8e8e8;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #888; margin-bottom: 8px;
+}
+.slide {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  aspect-ratio: 16/9; background: #fff;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  display: flex;
+}
+
+/* shared */
+.col-left  { flex: 0 0 56%; display: flex; flex-direction: column; border-right: 1px solid #e5e7eb; }
+.col-right { flex: 1; background: #f9fafb; display: flex; flex-direction: column; }
+.top   { padding: 44px 44px 0 56px; }
+.top-r { padding: 44px 36px 0 36px; }
+.body  { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 44px 44px 56px; gap: 12px; }
+.body-r{ flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 36px 44px 36px; gap: 12px; }
+
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #22c55e; margin-bottom: 12px; }
+.title { font-size: 38px; font-weight: 800; color: #111827; line-height: 1.1; letter-spacing: -.02em; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 10px; }
+.desc { font-size: 16px; color: #374151; line-height: 1.65; }
+
+.note  { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 3px solid #22c55e; border-radius: 8px; padding: 12px 16px; font-size: 14px; color: #166534; line-height: 1.55; }
+.warn  { background: #fef3c7; border: 1px solid #fde68a; border-left: 3px solid #f59e0b; border-radius: 8px; padding: 12px 16px; font-size: 14px; color: #92400e; line-height: 1.55; }
+.alert { background: #fef2f2; border: 1px solid #fecaca; border-left: 3px solid #ef4444; border-radius: 8px; padding: 12px 16px; font-size: 14px; color: #7f1d1d; line-height: 1.55; }
+
+/* ── Slide 1: Intro ── */
+.check-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+.check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #374151; line-height: 1.5; }
+.check-icon { width: 20px; height: 20px; border-radius: 50%; background: #dcfce7; color: #16a34a; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.receipt-img {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.receipt-img img {
+  max-height: 85%;
+  max-width: 85%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* ── Slide 2: 54-ФЗ ── */
+.law-card { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; }
+.law-title { font-size: 13px; font-weight: 700; color: #1d4ed8; margin-bottom: 4px; }
+.law-text  { font-size: 13px; color: #1e40af; line-height: 1.5; }
+
+.req-list { display: flex; flex-direction: column; gap: 8px; }
+.req-item { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #374151; padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
+.req-item:last-child { border-bottom: none; }
+
+.fines-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.fines-table th { background: #f3f4f6; color: #374151; font-weight: 700; padding: 8px 10px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+.fines-table td { padding: 8px 10px; color: #374151; border-bottom: 1px solid #f3f4f6; vertical-align: top; line-height: 1.4; }
+.fines-table tr:last-child td { border-bottom: none; }
+.fines-table .col-name { font-weight: 600; color: #111827; }
+.fine-red { color: #dc2626; font-weight: 700; }
+.fine-orange { color: #d97706; font-weight: 700; }
+
+/* ── Slide 3: Агентская схема ── */
+.scheme-full { flex-direction: column; }
+.scheme-header { padding: 36px 56px 0; flex-shrink: 0; }
+.scheme-body { flex: 1; display: flex; padding: 20px 56px 32px; gap: 14px; align-items: center; }
+
+.scheme-node {
+  flex: 1; border-radius: 12px; padding: 16px 14px;
+  border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 6px;
+  position: relative;
+}
+.scheme-node.unitpay { border-color: #22c55e; background: #f0fdf4; }
+.scheme-node.merchant { border-color: #3b82f6; background: #eff6ff; }
+.scheme-node.buyer { border-color: #8b5cf6; background: #faf5ff; }
+.scheme-node.ofd { border-color: #f59e0b; background: #fffbeb; }
+.scheme-node.fns { border-color: #6b7280; background: #f9fafb; }
+
+.node-icon { font-size: 24px; margin-bottom: 2px; }
+.node-title { font-size: 13px; font-weight: 800; color: #111827; text-transform: uppercase; letter-spacing: .04em; }
+.node-role { font-size: 11px; font-weight: 600; color: #6b7280; margin-bottom: 4px; }
+.node-desc { font-size: 12px; color: #6b7280; line-height: 1.5; }
+
+.arrow { display: flex; align-items: center; color: #9ca3af; font-size: 20px; flex-shrink: 0; }
+
+/* ── Slide 4: Данные ── */
+.data-full { background: #fff; }
+.data-left { flex: 0 0 54%; display: flex; flex-direction: column; border-right: 1px solid #e5e7eb; }
+.data-right { flex: 1; background: #f9fafb; display: flex; flex-direction: column; }
+
+.data-block { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; }
+.data-block + .data-block { margin-top: 10px; }
+.data-block.blue { border-left: 3px solid #3b82f6; background: #f8faff; }
+.data-block.green { border-left: 3px solid #22c55e; background: #f0fdf4; }
+.data-block.purple { border-left: 3px solid #8b5cf6; background: #faf5ff; }
+.data-block-title { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 6px; }
+.data-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.data-tag {
+  font-size: 12px; color: #374151; background: #f3f4f6;
+  border: 1px solid #e5e7eb; border-radius: 6px; padding: 3px 8px;
+}
+
+/* ── Slide 5: FAQ ── */
+.faq-full { flex-direction: column; }
+.faq-header { padding: 36px 56px 20px; border-bottom: 1px solid #e5e7eb; flex-shrink: 0; }
+.faq-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.faq-item { padding: 16px 28px; border-bottom: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 5px; }
+.faq-item:nth-child(odd) { border-right: 1px solid #e5e7eb; }
+.faq-q { font-size: 13px; font-weight: 700; color: #111827; }
+.faq-a { font-size: 12px; color: #6b7280; line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="label">Слайд 1 — Что такое ЮнитЧеки и зачем они нужны</div>
+<div class="slide">
+  <div class="col-left">
+    <div class="top">
+      <div class="eyebrow">🧾 ЮнитЧеки</div>
+      <div class="title">Онлайн‑касса от UnitPay<br>по требованиям 54‑ФЗ</div>
+    </div>
+    <div class="body">
+      <div class="warn">⚠️ Невыгодно для UnitPay — используй только по запросу мерчанта или как крайнее решение</div>
+      <div class="section-label" style="margin-bottom:4px">Для мерчанта удобно и выгодно</div>
+      <div class="check-list">
+        <div class="check-item"><div class="check-icon">✓</div>Не нужно покупать онлайн‑кассу (от 30 000 ₽)</div>
+        <div class="check-item"><div class="check-icon">✓</div>Не нужен фискальный накопитель</div>
+        <div class="check-item"><div class="check-icon">✓</div>Не требуется самостоятельная настройка ККТ</div>
+        <div class="check-item"><div class="check-icon">✓</div>UnitPay берёт на себя формирование и отправку чеков</div>
+      </div>
+    </div>
+  </div>
+  <div class="receipt-img">
+    <img src="../public/Юнитчеки.jpg" alt="ЮнитЧеки" />
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="label">Слайд 2 — 54‑ФЗ и ответственность</div>
+<div class="slide">
+  <div class="col-left">
+    <div class="top">
+      <div class="eyebrow">📋 Законодательная база</div>
+      <div class="title">Федеральный закон<br>№ 54‑ФЗ</div>
+    </div>
+    <div class="body">
+      <div class="law-card">
+        <div class="law-title">ФЗ «О применении контрольно‑кассовой техники»</div>
+        <div class="law-text">Обязывает всех, кто принимает оплату от физических лиц, использовать онлайн‑кассу, включая онлайн‑платежи.</div>
+      </div>
+      <div class="req-list">
+        <div class="req-item">🧾 Формировать фискальные чеки</div>
+        <div class="req-item">📡 Передавать данные о чеках в ФНС</div>
+        <div class="req-item">🔗 Использовать ОФД (оператора фискальных данных)</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="top-r">
+      <div class="section-label">Ответственность за нарушение</div>
+    </div>
+    <div class="body-r">
+      <table class="fines-table">
+        <thead>
+          <tr>
+            <th>Нарушение</th>
+            <th>ИП</th>
+            <th>Юр. лицо</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-name">Неоформление чека</td>
+            <td class="fine-orange">от ¼ суммы, мин. 10 000 ₽</td>
+            <td class="fine-red">от 75% суммы, мин. 30 000 ₽</td>
+          </tr>
+          <tr>
+            <td class="col-name">Повторное нарушение</td>
+            <td class="fine-red">блокировка до 90 дней</td>
+            <td class="fine-red">от 75% суммы, мин. 30 000 ₽</td>
+          </tr>
+          <tr>
+            <td class="col-name">Отказ предоставить чек</td>
+            <td>до 2 000 ₽</td>
+            <td>до 10 000 ₽</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert">❗ Если чек не был сформирован при продаже — для ФНС это неприемлемый риск</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="label">Слайд 3 — Агентская схема и участники</div>
+<div class="slide scheme-full">
+  <div class="scheme-header">
+    <div class="eyebrow">🔗 Агентская схема</div>
+    <div class="title" style="font-size:30px">UnitPay — платежный агент. Мерчант — поставщик</div>
+  </div>
+  <div class="scheme-body">
+    <div class="scheme-node merchant">
+      <div class="node-icon">🏪</div>
+      <div class="node-title">Мерчант</div>
+      <div class="node-role">Поставщик / принципал</div>
+      <div class="node-desc">Передаёт данные: ИНН, название, товар/услугу, ставку НДС</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="scheme-node buyer">
+      <div class="node-icon">👤</div>
+      <div class="node-title">Покупатель</div>
+      <div class="node-role">Клиент мерчанта</div>
+      <div class="node-desc">Email или телефон для получения чека (только email)</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="scheme-node unitpay">
+      <div class="node-icon">💳</div>
+      <div class="node-title">UnitPay</div>
+      <div class="node-role">Платежный агент (владелец ККТ)</div>
+      <div class="node-desc">Формирует чек от своего имени, указывает мерчанта как поставщика</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="scheme-node ofd">
+      <div class="node-icon">📡</div>
+      <div class="node-title">ОФД</div>
+      <div class="node-role">Оплачивает UnitPay</div>
+      <div class="node-desc">Принимает чеки от кассы и передаёт данные в ФНС</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="scheme-node fns">
+      <div class="node-icon">🏛️</div>
+      <div class="node-title">ФНС</div>
+      <div class="node-role">Налоговая служба</div>
+      <div class="node-desc">Принимает данные по чекам, ставит ККТ на учёт</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="label">Слайд 4 — Необходимые данные</div>
+<div class="slide data-full">
+  <div class="data-left col-left">
+    <div class="top">
+      <div class="eyebrow">📝 Данные для подключения</div>
+      <div class="title">Что нужно собрать<br>у мерчанта</div>
+    </div>
+    <div class="body">
+      <div class="data-block blue">
+        <div class="data-block-title">🏪 От мерчанта (поставщика)</div>
+        <div class="data-tags">
+          <span class="data-tag">ИНН</span>
+          <span class="data-tag">Контактный телефон</span>
+          <span class="data-tag">Наименование юр. лица</span>
+          <span class="data-tag">Название позиции (товар / услуга)</span>
+          <span class="data-tag">Сумма позиции</span>
+          <span class="data-tag">Признак предмета расчёта</span>
+          <span class="data-tag">Ставка НДС</span>
+        </div>
+      </div>
+      <div class="data-block purple">
+        <div class="data-block-title">👤 От покупателя</div>
+        <div class="data-tags">
+          <span class="data-tag">Email (для отправки чека)</span>
+          <span class="data-tag">Телефон (только для идентификации)</span>
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:#6b7280">⚠️ Чеки приходят только на email. По телефону отправки нет.</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-right data-right">
+    <div class="top-r">
+      <div class="section-label">Ставки НДС</div>
+    </div>
+    <div class="body-r">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+        <span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:6px 14px;font-size:14px;font-weight:700;color:#374151">Без НДС</span>
+        <span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:6px 14px;font-size:14px;font-weight:700;color:#374151">0%</span>
+        <span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:6px 14px;font-size:14px;font-weight:700;color:#374151">5%</span>
+        <span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:6px 14px;font-size:14px;font-weight:700;color:#374151">7%</span>
+        <span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:6px 14px;font-size:14px;font-weight:700;color:#374151">10%</span>
+        <span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:6px 14px;font-size:14px;font-weight:700;color:#374151">22%</span>
+      </div>
+      <div class="note" style="margin-bottom:10px">СНО в чеке — всегда <strong>ОСНО</strong> (это СНО UnitPay как агента, не мерчанта)</div>
+      <div class="data-block green">
+        <div class="data-block-title">✅ Партнёрские кассы мерчантов</div>
+        <div style="font-size:12px;color:#374151;line-height:1.6">АТОЛ · МодульКасса · E‑Com Kassa · Kit Online · Чек Онлайн</div>
+        <div style="margin-top:6px;font-size:11px;color:#6b7280">Настройку мерчант выполняет самостоятельно. Мы помогаем только с интеграцией.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="label">Слайд 5 — FAQ</div>
+<div class="slide faq-full" style="flex-direction:column">
+  <div class="faq-header">
+    <div class="eyebrow">❓ Частые вопросы</div>
+    <div class="title" style="font-size:30px">Что мерчанты спрашивают про ЮнитЧеки</div>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">Кто отвечает за чек — UnitPay или мерчант?</div>
+      <div class="faq-a">UnitPay отвечает за формирование и отправку в ФНС. Мерчант — за корректность данных: название, сумму, ставку НДС.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Почему в чеке СНО не моя, а НДС мой?</div>
+      <div class="faq-a">СНО указывается агента (UnitPay — ОСНО). Ставка НДС — поставщика (мерчанта). Это агентская схема.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли изменить данные в чеке после оплаты?</div>
+      <div class="faq-a">Нет. После фискализации чек изменить нельзя. Исправления — только через чек коррекции собственной ККТ.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Нужно ли регистрировать кассу в ФНС?</div>
+      <div class="faq-a">Нет. ККТ регистрируется на UnitPay как на платежного агента. Мерчанту ничего делать не нужно.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли для самозанятых или B2B?</div>
+      <div class="faq-a">Нет. ЮнитЧеки — только для расчётов с физическими лицами. Самозанятые используют «Мой налог».</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Почему в чеке указан UnitPay, а не мерчант?</div>
+      <div class="faq-a">Чек агентский: UnitPay — платежный агент, мерчант указан как поставщик товара или услуги.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Возможны ли возвраты через ЮнитЧеки?</div>
+      <div class="faq-a">Да. При возврате формируется чек «возврат прихода» с передачей данных в ФНС.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Покупатель не получил чек — что делать?</div>
+      <div class="faq-a">Проверить email, предложить проверить «Спам». Чек считается корректным, если зарегистрирован в ФНС.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

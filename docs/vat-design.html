@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>НДС в транзакциях — прототип слайдов</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #e8e8e8;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #888; margin-bottom: 8px;
+}
+.slide {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  aspect-ratio: 16/9; background: #fff;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  display: flex;
+}
+
+/* ── shared layout ── */
+.col-left {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e5e7eb;
+}
+.col-right {
+  flex: 1;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+.top { padding: 48px 44px 0 56px; }
+.top-r { padding: 48px 36px 0 36px; }
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 44px 44px 56px;
+}
+.body-r {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 36px 44px 36px;
+  gap: 12px;
+}
+
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #22c55e; margin-bottom: 12px;
+}
+.title {
+  font-size: 38px; font-weight: 800; color: #111827;
+  line-height: 1.1; letter-spacing: -.02em;
+}
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #9ca3af; margin-bottom: 10px;
+}
+.desc { font-size: 16px; color: #374151; line-height: 1.65; margin-bottom: 24px; }
+.alert {
+  background: #fef3c7; border: 1px solid #fde68a;
+  border-left: 3px solid #f59e0b;
+  border-radius: 8px; padding: 12px 14px;
+  font-size: 13px; color: #92400e; line-height: 1.5;
+  margin-bottom: 20px;
+}
+.note {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-left: 3px solid #22c55e;
+  border-radius: 8px; padding: 12px 14px;
+  font-size: 13px; color: #166534; line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* compare cards */
+.compare-pair { display: flex; gap: 12px; }
+.compare-card {
+  flex: 1; border-radius: 10px; padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+}
+.compare-card.receipt { border-left: 3px solid #94a3b8; background: #f8fafc; }
+.compare-card.txn { border-left: 3px solid #22c55e; background: #f0fdf4; }
+.cc-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 6px; }
+.cc-title { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+.cc-desc { font-size: 12px; color: #6b7280; line-height: 1.5; }
+.cc-badge {
+  display: inline-block; margin-top: 8px;
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.cc-badge.grey { background: #f1f5f9; color: #64748b; }
+.cc-badge.green { background: #dcfce7; color: #16a34a; }
+
+/* operations */
+.ops-pair { display: flex; gap: 10px; }
+.ops-col { flex: 1; }
+.ops-header {
+  font-size: 11px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 6px 12px;
+  border-radius: 6px; margin-bottom: 8px;
+}
+.ops-header.red { background: #fef2f2; color: #dc2626; }
+.ops-header.green { background: #f0fdf4; color: #16a34a; }
+.ops-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #374151; padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.ops-item:last-child { border-bottom: none; }
+
+/* law card */
+.law-card {
+  background: #eff6ff; border: 1px solid #bfdbfe;
+  border-radius: 10px; padding: 14px 16px; margin-bottom: 16px;
+}
+.law-title { font-size: 12px; font-weight: 700; color: #1d4ed8; margin-bottom: 4px; }
+.law-text { font-size: 12px; color: #1e40af; line-height: 1.5; }
+
+/* calc table */
+.calc-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.calc-header-area {
+  padding: 40px 56px 0;
+}
+.calc-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 56px 40px;
+  gap: 16px;
+}
+.calc-formula {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 12px; padding: 20px 24px;
+  flex: 0 0 auto;
+  min-width: 220px;
+}
+.calc-formula-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 10px; }
+.calc-formula-eq { font-size: 22px; font-weight: 800; color: #111827; font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+.calc-formula-sub { font-size: 12px; color: #6b7280; }
+
+.tariff-cards { display: flex; gap: 12px; flex: 1; }
+.tariff-card {
+  flex: 1; background: #fff; border: 1px solid #e5e7eb;
+  border-radius: 12px; padding: 16px 18px;
+}
+.tariff-card.highlight { border-color: #22c55e; background: #f0fdf4; }
+.tc-tier { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 6px; }
+.tc-volume { font-size: 11px; color: #6b7280; margin-bottom: 10px; }
+.tc-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #374151; padding: 4px 0; border-bottom: 1px dashed #f3f4f6; }
+.tc-row:last-child { border-bottom: none; font-weight: 700; color: #111827; font-size: 14px; }
+.tc-row .val { font-weight: 600; }
+.tc-row.total .val { color: #16a34a; }
+
+/* faq */
+.faq-full {
+  flex-direction: column;
+}
+.faq-header-area { padding: 40px 56px 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 20px; flex-shrink: 0; }
+.faq-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+}
+.faq-item {
+  padding: 20px 32px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.faq-item:nth-child(odd) { border-right: 1px solid #e5e7eb; }
+.faq-q { font-size: 13px; font-weight: 700; color: #111827; }
+.faq-a { font-size: 12px; color: #6b7280; line-height: 1.55; }
+
+/* special case */
+.special-full { background: #fff; }
+.special-left {
+  flex: 0 0 52%;
+  border-right: 1px solid #e5e7eb;
+  display: flex; flex-direction: column;
+}
+.special-right {
+  flex: 1; background: #f9fafb;
+  display: flex; flex-direction: column;
+}
+.bank-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 16px 18px; margin-bottom: 12px;
+}
+.bank-card.tochka { border-left: 3px solid #f59e0b; }
+.bank-card.other { border-left: 3px solid #22c55e; }
+.bank-name { font-size: 12px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+.bank-desc { font-size: 12px; color: #6b7280; line-height: 1.5; }
+.min-comm-card {
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 10px; padding: 16px 18px;
+}
+.mc-title { font-size: 12px; font-weight: 700; color: #92400e; margin-bottom: 6px; }
+.mc-row { font-size: 12px; color: #78350f; line-height: 1.6; }
+.mc-highlight {
+  display: inline-block; background: #fef3c7;
+  border-radius: 4px; padding: 2px 8px;
+  font-weight: 700; color: #92400e; font-size: 13px; margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Определение + ключевое различие -->
+<div class="label">Слайд 1 — Что такое НДС в транзакциях</div>
+<div class="slide">
+  <div class="col-left">
+    <div class="top">
+      <div class="eyebrow">💰 НДС в транзакциях UnitPay</div>
+      <div class="title">НДС в чеке и в транзакции —<br>это разные вещи</div>
+    </div>
+    <div class="body">
+      <div class="alert">В этой теме речь только про НДС в транзакциях — налог на банковскую комиссию. Не путай с НДС в кассовом чеке.</div>
+      <p class="desc">С 01.01.2026 некоторые банковские операции стали облагаться НДС 22%. Налог начисляется не на сумму платежа, а только на комиссию банка.</p>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="top-r">
+      <div class="section-label">Сравни два понятия</div>
+    </div>
+    <div class="body-r">
+      <div class="compare-card receipt">
+        <div class="cc-label">НДС в чеке</div>
+        <div class="cc-title">Налог мерчанта для покупателя</div>
+        <div class="cc-desc">Мерч указывает ставку НДС в кассовом чеке, если является плательщиком НДС. Касается учёта товаров и услуг мерча.</div>
+        <span class="cc-badge grey">Не про банк</span>
+      </div>
+      <div class="compare-card txn">
+        <div class="cc-label">НДС в транзакции ← это наша тема</div>
+        <div class="cc-title">Налог банка на свою комиссию</div>
+        <div class="cc-desc">Банк начисляет НДС на стоимость услуги по проведению платежа (комиссию). Этот НДС включается в итоговую комиссию мерча.</div>
+        <span class="cc-badge green">Про нас</span>
+      </div>
+      <div class="note" style="margin-bottom:0">Статус мерча (плательщик НДС или нет) — <strong>не имеет значения</strong>. НДС платят банки.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: Закон + какие операции -->
+<div class="label">Слайд 2 — Почему появился + Какие операции</div>
+<div class="slide">
+  <div class="col-left">
+    <div class="top">
+      <div class="eyebrow">📋 Законодательная база</div>
+      <div class="title">Почему появился<br>НДС в транзакциях</div>
+    </div>
+    <div class="body">
+      <div class="law-card">
+        <div class="law-title">Федеральный закон от 28.11.2025 № 425-ФЗ</div>
+        <div class="law-text">С 01.01.2026 вступили в силу поправки: некоторые банковские операции по проведению платежей стали облагаться НДС 22%.</div>
+      </div>
+      <p class="desc" style="margin-bottom:0;font-size:15px">НДС начисляется <strong>не на сумму платежа,</strong> а на банковскую комиссию — стоимость услуги по проведению транзакции.</p>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="top-r">
+      <div class="section-label">Какие операции облагаются НДС</div>
+    </div>
+    <div class="body-r">
+      <div class="ops-pair">
+        <div class="ops-col">
+          <div class="ops-header red">❗ Облагаются НДС</div>
+          <div class="ops-item">💳 Карточные операции</div>
+          <div class="ops-item">🟢 SberPay</div>
+        </div>
+        <div class="ops-col">
+          <div class="ops-header green">✅ Не облагаются</div>
+          <div class="ops-item">🟡 T-Pay</div>
+          <div class="ops-item">⚡ СБП</div>
+        </div>
+      </div>
+      <div class="note" style="margin-bottom:0">Если мерч получает вопросы «почему у меня изменилась комиссия» — скорее всего он использует карточные операции или SberPay.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: Как считается -->
+<div class="label">Слайд 3 — Как считается НДС (131 Банк и Т-Банк)</div>
+<div class="slide" style="flex-direction:column">
+  <div class="calc-header-area">
+    <div class="eyebrow">🧮 Расчёт НДС</div>
+    <div class="title" style="font-size:32px">НДС 22% добавляется поверх базовой комиссии</div>
+    <div style="margin-top:12px;font-size:15px;color:#6b7280">Это пример расчётов</div>
+  </div>
+  <div class="calc-body">
+    <div class="calc-formula">
+      <div class="calc-formula-label">Формула</div>
+      <div class="calc-formula-eq">3,5% × 1,22</div>
+      <div class="calc-formula-sub">= 4,27% итого</div>
+      <div style="margin-top:14px;font-size:12px;color:#6b7280">или: базовая + (базовая × 0,22)</div>
+      <div style="margin-top:6px;font-size:12px;color:#6b7280">3,5 + 0,77 = <strong>4,27%</strong></div>
+    </div>
+    <div class="tariff-cards">
+      <div class="tariff-card highlight">
+        <div class="tc-tier">Стандарт</div>
+        <div class="tc-volume">Оборот до 1 млн ₽</div>
+        <div class="tc-row"><span>Базовая ставка</span><span class="val">3,5%</span></div>
+        <div class="tc-row"><span>НДС 22%</span><span class="val">+0,77%</span></div>
+        <div class="tc-row total"><span>Итого</span><span class="val">4,27%</span></div>
+      </div>
+      <div class="tariff-card">
+        <div class="tc-tier">VIP</div>
+        <div class="tc-volume">От 1 млн до 15 млн ₽</div>
+        <div class="tc-row"><span>Базовая ставка</span><span class="val">2,8%</span></div>
+        <div class="tc-row"><span>НДС 22%</span><span class="val">+0,616%</span></div>
+        <div class="tc-row total"><span>Итого</span><span class="val">3,416%</span></div>
+      </div>
+      <div class="tariff-card">
+        <div class="tc-tier">Super VIP</div>
+        <div class="tc-volume">От 15 млн ₽</div>
+        <div class="tc-row"><span>Базовая ставка</span><span class="val">2,6%</span></div>
+        <div class="tc-row"><span>НДС 22%</span><span class="val">+0,572%</span></div>
+        <div class="tc-row total"><span>Итого</span><span class="val">3,172%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: Особые случаи + где смотреть + минималка -->
+<div class="label">Слайд 4 — Особые случаи и нюансы</div>
+<div class="slide special-full">
+  <div class="special-left">
+    <div class="top">
+      <div class="eyebrow">⚠️ Особые случаи</div>
+      <div class="title" style="font-size:34px">Банк «Точка»<br>и минимальная комиссия</div>
+    </div>
+    <div class="body" style="gap:12px">
+      <div class="bank-card tochka">
+        <div class="bank-name">🏦 Банк «Точка» — НДС удерживается иначе</div>
+        <div class="bank-desc">НДС удерживается из комиссии, а не добавляется поверх. Ставка в договоре уже указана с учётом НДС. Мерчам ничего считать не нужно — они подписали доп. соглашение с банком.</div>
+      </div>
+      <div class="bank-card other">
+        <div class="bank-name">🏦 131 Банк и Т-Банк — НДС сверху</div>
+        <div class="bank-desc">НДС 22% просто добавляется поверх стандартной комиссии по формуле: базовая × 1,22</div>
+      </div>
+    </div>
+  </div>
+  <div class="special-right">
+    <div class="top-r">
+      <div class="section-label">Почему НДС одинаковый у разных сумм</div>
+    </div>
+    <div class="body-r">
+      <div class="min-comm-card">
+        <div class="mc-title">Минимальная комиссия: 4,9 ₽</div>
+        <div class="mc-row">Если комиссия по проценту меньше 4,9 ₽ — применяется минимум.</div>
+        <div class="mc-row" style="margin-top:8px">НДС 22% от 4,9 ₽:</div>
+        <span class="mc-highlight">всегда = 1,08 ₽</span>
+        <div class="mc-row" style="margin-top:10px">Поэтому у транзакций на 50 ₽ и 107 ₽ НДС одинаковый — обе попадают под минималку.</div>
+      </div>
+      <div class="note" style="margin-bottom:0">
+        <strong>Где смотреть в админке:</strong> Статистика → Детализация<br>
+        <span style="color:#6b7280;font-size:12px">Сейчас отображается только для Т-Банка. Для 131 Банка — позже.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: FAQ -->
+<div class="label">Слайд 5 — FAQ: частые вопросы от мерчантов</div>
+<div class="slide faq-full" style="flex-direction:column">
+  <div class="faq-header-area">
+    <div class="eyebrow">❓ Частые вопросы</div>
+    <div class="title" style="font-size:30px">Что мерчанты спрашивают про НДС</div>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">Я не плательщик НДС — почему всё равно списывают?</div>
+      <div class="faq-a">НДС платят банки, а не мерчи. Банк начисляет налог на свою комиссию и включает её в стоимость услуги. Статус мерча не имеет значения.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">У других агрегаторов НДС нет — почему у вас есть?</div>
+      <div class="faq-a">Либо они ещё не обновили расчёты, либо НДС уже вшит внутрь ставки — тогда фактическая комиссия просто выше. UnitPay показывает НДС прозрачно.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Это временно или навсегда?</div>
+      <div class="faq-a">Это требование законодательства. Пока закон действует — НДС начисляется.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли убрать НДС?</div>
+      <div class="faq-a">Нет. НДС — обязательный налог для банков, а не настройка агрегатора.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Почему НДС от комиссии, а не от суммы платежа?</div>
+      <div class="faq-a">Платёж — это деньги мерча. Услуга банка — это комиссия. НДС начисляется на услугу, а не на оборот.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что такое НДС вообще?</div>
+      <div class="faq-a">Налог на добавленную стоимость — госналог на услуги. Здесь: услуга = проведение платежа, исполнитель = банк, ставка = 22%.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

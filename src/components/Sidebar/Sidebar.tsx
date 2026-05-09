@@ -21,9 +21,12 @@ export function Sidebar() {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.top}>
-        <div className={styles.logo}>
+        <button
+          className={styles.logo}
+          onClick={() => navigate('/', { state: { fromLogo: true } })}
+        >
           <span className={styles.logoText}>UnitSchool</span>
-        </div>
+        </button>
         <nav className={styles.nav}>
           {NAV_ITEMS.map(item => (
             <NavLink

@@ -29,13 +29,13 @@ export interface Lesson {
   slides: Slide[]
 }
 
-export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring' | 'helpdocs'
+export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring' | 'helpdocs' | 'vat' | 'requirements' | 'unitchecks'
 
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
   hasInternalNav?: boolean
-  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent | HelpIntroContent | HelpPortalsContent
+  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent | HelpIntroContent | HelpPortalsContent | VatContent | ReqContent | UnitChecksContent
 }
 
 export interface MethodItem {
@@ -422,3 +422,266 @@ export interface HelpPortalsContent {
   subtitle: string
   portals: [HelpPortal, HelpPortal]
 }
+
+// ── VAT slides ────────────────────────────────────────────────
+export interface VatCompareCard {
+  label: string
+  title: string
+  desc: string
+  badge: string
+  variant: 'receipt' | 'txn'
+}
+
+export interface VatDefinitionContent {
+  variant: 'definition'
+  eyebrow: string
+  title: string
+  alert: string
+  description: string
+  rightLabel: string
+  compareCards: VatCompareCard[]
+  note: string
+}
+
+export interface VatLawContent {
+  variant: 'law'
+  eyebrow: string
+  title: string
+  lawTitle: string
+  lawText: string
+  description: string
+  rightLabel: string
+  taxedItems: string[]
+  notTaxedItems: string[]
+  note: string
+}
+
+export interface VatTariff {
+  tier: string
+  volume: string
+  baseRate: string
+  vat: string
+  total: string
+  highlight?: boolean
+}
+
+export interface VatCalculationContent {
+  variant: 'calculation'
+  eyebrow: string
+  title: string
+  subtitle: string
+  formulaEq: string
+  formulaSub: string
+  formulaNotes: string[]
+  tariffs: VatTariff[]
+}
+
+export interface VatBankNote {
+  name: string
+  desc: string
+  variant: 'tochka' | 'standard'
+}
+
+export interface VatSpecialContent {
+  variant: 'special'
+  eyebrow: string
+  title: string
+  banks: VatBankNote[]
+  rightLabel: string
+  minCommTitle: string
+  minCommDesc: string
+  minCommCalc: string
+  minCommConclusion: string
+  whereNote: string
+}
+
+export interface VatFaqItem {
+  q: string
+  a: string
+}
+
+export interface VatFaqContent {
+  variant: 'faq'
+  eyebrow: string
+  title: string
+  items: VatFaqItem[]
+}
+
+export type VatContent = VatDefinitionContent | VatLawContent | VatCalculationContent | VatSpecialContent | VatFaqContent
+
+// ── Requirements slides ───────────────────────────────────────
+export interface ReqTimelineItem {
+  icon: string
+  text: string
+}
+
+export interface ReqOutcome {
+  label: string
+  type: 'starter' | 'final'
+  title: string
+  desc: string
+}
+
+export interface ReqIntroContent {
+  variant: 'req-intro'
+  eyebrow: string
+  title: string
+  timelineItems: ReqTimelineItem[]
+  outcomesLabel: string
+  outcomes: ReqOutcome[]
+  note: string
+}
+
+export interface ReqStatus {
+  key: 'active' | 'revision' | 'recheck' | 'archived' | 'blocked'
+  name: string
+  desc: string
+  action: string
+}
+
+export interface ReqStatusesContent {
+  variant: 'req-statuses'
+  eyebrow: string
+  title: string
+  statuses: ReqStatus[]
+}
+
+export interface ReqTechCard {
+  icon: string
+  title: string
+  desc: string
+}
+
+export interface ReqSiteContent {
+  variant: 'req-site'
+  eyebrow: string
+  title: string
+  checklist: string[]
+  rightLabel: string
+  techCards: ReqTechCard[]
+  note: string
+}
+
+export interface ReqPortalRow {
+  icon: string
+  text: string
+  badge?: string
+  badgeVariant?: 'ru' | 'money' | 'both'
+}
+
+export interface ReqPortal {
+  badgeLabel: string
+  badgeVariant: 'ru' | 'money'
+  url: string
+  tagline: string
+  rows: ReqPortalRow[]
+}
+
+export interface ReqPortalsContent {
+  variant: 'req-portals'
+  eyebrow: string
+  title: string
+  portals: [ReqPortal, ReqPortal]
+}
+
+export interface ReqProhibitedContent {
+  variant: 'req-prohibited'
+  eyebrow: string
+  title: string
+  items: string[]
+}
+
+export type ReqContent = ReqIntroContent | ReqStatusesContent | ReqSiteContent | ReqPortalsContent | ReqProhibitedContent
+
+// ── UnitChecks (ЮнитЧеки) slides ─────────────────────────────
+export interface UnitChecksIntroContent {
+  variant: 'uc-intro'
+  eyebrow: string
+  title: string
+  warn: string
+  checklistLabel: string
+  checklist: string[]
+  image: string
+}
+
+export interface UnitChecksLawCard {
+  title: string
+  text: string
+}
+
+export interface UnitChecksReqItem {
+  icon: string
+  text: string
+}
+
+export interface UnitChecksFineRow {
+  name: string
+  ip: string
+  ur: string
+  ipClass?: 'red' | 'orange'
+  urClass?: 'red' | 'orange'
+}
+
+export interface UnitChecksLawContent {
+  variant: 'uc-law'
+  eyebrow: string
+  title: string
+  lawCard: UnitChecksLawCard
+  reqItems: UnitChecksReqItem[]
+  rightLabel: string
+  fines: UnitChecksFineRow[]
+  alert: string
+}
+
+export interface UnitChecksSchemeNode {
+  icon: string
+  title: string
+  role: string
+  desc: string
+  variant: 'merchant' | 'buyer' | 'unitpay' | 'ofd' | 'fns'
+}
+
+export interface UnitChecksSchemeContent {
+  variant: 'uc-scheme'
+  eyebrow: string
+  title: string
+  nodes: UnitChecksSchemeNode[]
+}
+
+export interface UnitChecksDataBlock {
+  color: 'blue' | 'purple' | 'green'
+  title: string
+  tags?: string[]
+  note?: string
+  text?: string
+}
+
+export interface UnitChecksDataContent {
+  variant: 'uc-data'
+  eyebrow: string
+  title: string
+  leftBlocks: UnitChecksDataBlock[]
+  rightLabel: string
+  vatRates: string[]
+  vatNote: string
+  partnersBlock: UnitChecksDataBlock
+}
+
+export interface UnitChecksFaqItem {
+  q: string
+  a: string
+}
+
+export interface UnitChecksFaqContent {
+  variant: 'uc-faq'
+  eyebrow: string
+  title: string
+  items: UnitChecksFaqItem[]
+}
+
+export type UnitChecksContent =
+  | UnitChecksIntroContent
+  | UnitChecksLawContent
+  | UnitChecksSchemeContent
+  | UnitChecksDataContent
+  | UnitChecksFaqContent

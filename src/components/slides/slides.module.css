@@ -3465,6 +3465,7 @@
   color: #374151;
   line-height: 1.65;
   margin-bottom: 26px;
+  white-space: pre-line;
 }
 
 .recurringFacts {
@@ -3796,3 +3797,1138 @@
 
 .helpPortalCtaBlue { background: #2563eb; color: #fff; }
 .helpPortalCtaPurple { background: #7c3aed; color: #fff; }
+
+/* ── VAT Slides ──────────────────────────────────────────────── */
+.vatEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #22c55e;
+  margin-bottom: 12px;
+}
+
+.vatAlert {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-left: 3px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #92400e;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.vatNote {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid #22c55e;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #166534;
+  line-height: 1.55;
+}
+
+.vatDesc {
+  font-size: 16px;
+  color: #374151;
+  line-height: 1.65;
+}
+
+/* Compare cards (slide 1) */
+.vatCompareCard {
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.vatCompareCardReceipt {
+  border-left: 3px solid #94a3b8;
+  background: #f8fafc;
+}
+
+.vatCompareCardTxn {
+  border-left: 3px solid #22c55e;
+  background: #f0fdf4;
+}
+
+.vatCardLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.vatCardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.vatCardDesc {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+.vatCardBadge {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.vatCardBadgeGrey { background: #f1f5f9; color: #64748b; }
+.vatCardBadgeGreen { background: #dcfce7; color: #16a34a; }
+
+/* Law card (slide 2) */
+.vatLawCard {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.vatLawTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin-bottom: 4px;
+}
+
+.vatLawText {
+  font-size: 13px;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+/* Operations (slide 2) */
+.vatOpsPair {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.vatOpsCol { flex: 1; }
+
+.vatOpsHeader {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.vatOpsHeaderRed { background: #fef2f2; color: #dc2626; }
+.vatOpsHeaderGreen { background: #f0fdf4; color: #16a34a; }
+
+.vatOpsItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #374151;
+  padding: 7px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.vatOpsItem:last-child { border-bottom: none; }
+
+/* Calculation slide (slide 3) */
+.vatCalcFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.vatCalcHeader {
+  padding: 44px 60px 0;
+  flex-shrink: 0;
+}
+
+.vatCalcTitle {
+  font-family: 'IgraSans', sans-serif;
+  font-size: 38px;
+  font-weight: normal;
+  color: #111827;
+  line-height: 1.1;
+  margin-bottom: 0;
+}
+
+.vatCalcSubtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin-top: 10px;
+}
+
+.vatCalcBody {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 60px 44px;
+  gap: 16px;
+}
+
+.vatFormula {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  flex: 0 0 auto;
+  min-width: 220px;
+}
+
+.vatFormulaLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.vatFormulaEq {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+
+.vatFormulaSub {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.vatFormulaNote {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.vatTariffCards {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  align-self: stretch;
+  align-items: center;
+}
+
+.vatTariffCard {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.vatTariffCardHighlight {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.vatTariffTier {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.vatTariffVolume {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.vatTariffRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #374151;
+  padding: 5px 0;
+  border-bottom: 1px dashed #f3f4f6;
+}
+
+.vatTariffTotal {
+  border-bottom: none !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  font-size: 16px !important;
+}
+
+.vatTariffTotal span:last-child { color: #16a34a; }
+
+/* Special cases slide (slide 4) */
+.vatSpecialFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.vatSpecialLeft {
+  flex: 0 0 52%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e5e7eb;
+}
+
+.vatSpecialRight {
+  flex: 1;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.vatBankCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.vatBankCard:last-child { margin-bottom: 0; }
+.vatBankCardTochka { border-left: 3px solid #f59e0b; }
+.vatBankCardStandard { border-left: 3px solid #22c55e; }
+
+.vatBankName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.vatBankDesc {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.vatMinCard {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.vatMinTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 6px;
+}
+
+.vatMinRow {
+  font-size: 14px;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+.vatMinHighlight {
+  display: inline-block;
+  background: #fef3c7;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: 700;
+  color: #92400e;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* FAQ slide (slide 5) */
+.vatFaqFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.vatFaqHeader {
+  padding: 36px 60px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.vatFaqTitle {
+  font-family: 'IgraSans', sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.vatFaqGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.vatFaqItem {
+  padding: 18px 32px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vatFaqItem:nth-child(odd) { border-right: 1px solid #e5e7eb; }
+
+.vatFaqQ {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.vatFaqA {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+/* ── Requirements Slides ─────────────────────────────────────── */
+
+/* Intro slide — timeline rows */
+.reqTimelineRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.reqTimelineRow:last-child { margin-bottom: 0; }
+
+.reqTimelineIcon { font-size: 22px; flex-shrink: 0; }
+
+.reqTimelineText {
+  font-size: 19px;
+  color: #374151;
+  line-height: 1.55;
+}
+
+.reqTimelineText strong { color: #111827; }
+
+/* Intro slide — outcome cards */
+.reqOutcomePair {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.reqOutcomeCard {
+  flex: 1;
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.reqOutcomeStarter {
+  border-left: 3px solid #f59e0b;
+  background: #fffbeb;
+}
+
+.reqOutcomeFinal {
+  border-left: 3px solid #22c55e;
+  background: #f0fdf4;
+}
+
+.reqOutcomeLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.reqOutcomeStarter .reqOutcomeLabel { color: #d97706; }
+.reqOutcomeFinal   .reqOutcomeLabel { color: #16a34a; }
+
+.reqOutcomeTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.reqOutcomeDesc {
+  font-size: 17px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Statuses slide */
+.reqStatusFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reqStatusHeader {
+  padding: 40px 60px 0;
+  flex-shrink: 0;
+}
+
+.reqStatusBody {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 60px 40px;
+  gap: 10px;
+}
+
+.reqStatusCard {
+  flex: 1;
+  height: 160px;
+  border-radius: 12px;
+  padding: 16px 16px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reqStatus_active   { border-color: #22c55e; background: #f0fdf4; }
+.reqStatus_revision { border-color: #f59e0b; background: #fffbeb; }
+.reqStatus_recheck  { border-color: #3b82f6; background: #eff6ff; }
+.reqStatus_archived { border-color: #9ca3af; background: #f9fafb; }
+.reqStatus_blocked  { border-color: #ef4444; background: #fef2f2; }
+
+.reqStatusTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reqStatusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.reqStatusDot_active   { background: #22c55e; }
+.reqStatusDot_revision { background: #f59e0b; }
+.reqStatusDot_recheck  { background: #3b82f6; }
+.reqStatusDot_archived { background: #9ca3af; }
+.reqStatusDot_blocked  { background: #ef4444; }
+
+.reqStatusName {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.reqStatusDesc {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.reqStatusAction {
+  font-size: 13px;
+  font-weight: 700;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* Site requirements slide */
+.reqChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reqCheckItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 19px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.reqCheckIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.reqTechCards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.reqTechCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.reqTechTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.reqTechDesc {
+  font-size: 17px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Portals compare slide */
+.reqPortalsFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reqPortalsHeader {
+  padding: 36px 60px 0;
+  flex-shrink: 0;
+}
+
+.reqPortalsCols {
+  flex: 1;
+  display: flex;
+  padding: 16px 60px 32px;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.reqPortalCol {
+  flex: 1;
+  border-radius: 14px;
+  padding: 18px 20px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reqPortalColRu    { border-color: #2563eb; background: #eff6ff; }
+.reqPortalColMoney { border-color: #7c3aed; background: #faf5ff; }
+
+.reqPortalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.reqPortalBadgeRu    { background: #dbeafe; color: #1d4ed8; }
+.reqPortalBadgeMoney { background: #ede9fe; color: #6d28d9; }
+
+.reqPortalUrl {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 8px;
+  margin-bottom: 2px;
+}
+
+.reqPortalTagline {
+  font-size: 17px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.reqPortalTagline em {
+  font-style: italic;
+  color: #9ca3af;
+}
+
+.reqPortalRows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reqPortalRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 18px;
+  color: #374151;
+  line-height: 1.45;
+  flex-wrap: wrap;
+}
+
+.reqPortalRowIcon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.reqPortalRowText { flex: 1; }
+
+.reqDiffBadge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.reqDiffBadgeRu    { background: #dbeafe; color: #1d4ed8; }
+.reqDiffBadgeMoney { background: #ede9fe; color: #6d28d9; }
+.reqDiffBadgeBoth  { background: #dcfce7; color: #16a34a; }
+
+/* Prohibited slide */
+.reqProhibFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reqProhibHeader {
+  padding: 36px 60px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.reqProhibBody {
+  flex: 1;
+  display: flex;
+  padding: 16px 60px 24px;
+  gap: 0;
+  overflow: hidden;
+}
+
+.reqProhibCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.reqProhibCol:first-child {
+  border-right: 1px solid #f3f4f6;
+  padding-right: 32px;
+}
+
+.reqProhibCol:last-child {
+  padding-left: 32px;
+}
+
+.reqProhibItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  color: #374151;
+  padding: 9px 0;
+  border-bottom: 1px solid #f3f4f6;
+  line-height: 1.4;
+}
+
+.reqProhibItem:last-child { border-bottom: none; }
+
+.reqProhibX {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fef2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #ef4444;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+/* ── UnitChecks (ЮнитЧеки) slides ─────────────────────────── */
+
+/* Slide 1: Intro */
+.ucWarn {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-left: 3px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 19px;
+  color: #92400e;
+  line-height: 1.55;
+}
+
+.ucSectionLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.ucChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ucCheckItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  font-size: 20px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.ucCheckIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ucReceiptImg {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f9fafb;
+}
+
+.ucReceiptImg img {
+  max-height: 88%;
+  max-width: 88%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* Slide 2: Law */
+.ucLawCard {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+.ucLawTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin-bottom: 4px;
+}
+
+.ucLawText {
+  font-size: 17px;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+.ucReqList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ucReqItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  color: #374151;
+  padding: 7px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.ucReqItem:last-child { border-bottom: none; }
+
+.ucFinesTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.ucFinesTable th {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 700;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ucFinesTable td {
+  padding: 8px 10px;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.ucFinesTable tr:last-child td { border-bottom: none; }
+
+.ucFinesName {
+  font-weight: 600;
+  color: #111827;
+}
+
+.ucFineRed {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.ucFineOrange {
+  color: #d97706;
+  font-weight: 700;
+}
+
+.ucAlert {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 3px solid #ef4444;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 17px;
+  color: #7f1d1d;
+  line-height: 1.55;
+}
+
+/* Slide 3: Scheme */
+.ucSchemeFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ucSchemeHeader {
+  padding: 36px 56px 0;
+  flex-shrink: 0;
+}
+
+.ucSchemeTitle {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin-top: 8px;
+}
+
+.ucSchemeBody {
+  flex: 1;
+  display: flex;
+  padding: 20px 40px 32px;
+  gap: 12px;
+  align-items: center;
+}
+
+.ucSchemeNode {
+  flex: 1;
+  border-radius: 12px;
+  padding: 16px 14px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ucNode_unitpay { border-color: #22c55e; background: #f0fdf4; }
+.ucNode_merchant { border-color: #3b82f6; background: #eff6ff; }
+.ucNode_buyer    { border-color: #8b5cf6; background: #faf5ff; }
+.ucNode_ofd      { border-color: #f59e0b; background: #fffbeb; }
+.ucNode_fns      { border-color: #6b7280; background: #f9fafb; }
+
+.ucNodeIcon  { font-size: 28px; margin-bottom: 2px; }
+.ucNodeTitle { font-size: 15px; font-weight: 800; color: #111827; text-transform: uppercase; letter-spacing: .04em; }
+.ucNodeRole  { font-size: 13px; font-weight: 600; color: #6b7280; margin-bottom: 2px; }
+.ucNodeDesc  { font-size: 14px; color: #6b7280; line-height: 1.5; }
+
+.ucArrow {
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* Slide 4: Data */
+.ucDataBlock {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.ucDataBlock + .ucDataBlock { margin-top: 10px; }
+
+.ucDataBlock_blue   { border-left: 3px solid #3b82f6; background: #f8faff; }
+.ucDataBlock_green  { border-left: 3px solid #22c55e; background: #f0fdf4; }
+.ucDataBlock_purple { border-left: 3px solid #8b5cf6; background: #faf5ff; }
+
+.ucDataBlockTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.ucDataTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ucDataTag {
+  font-size: 14px;
+  color: #374151;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+.ucDataBlockNote {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #6b7280;
+}
+
+.ucDataBlockText {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.ucVatRates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ucVatRate {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.ucNote {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid #22c55e;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 17px;
+  color: #166534;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+/* Slide 5: FAQ */
+.ucFaqFull {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ucFaqHeader {
+  padding: 36px 56px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.ucFaqTitle {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin-top: 8px;
+}
+
+.ucFaqGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.ucFaqItem {
+  padding: 16px 28px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ucFaqItem:nth-child(odd) { border-right: 1px solid #e5e7eb; }
+
+.ucFaqQ {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ucFaqA {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.55;
+}

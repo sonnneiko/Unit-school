@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Требования к проектам — прототип слайдов</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #e8e8e8;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #888; margin-bottom: 8px;
+}
+.slide {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  aspect-ratio: 16/9; background: #fff;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  display: flex;
+}
+
+/* shared */
+.col-left {
+  flex: 0 0 55%; display: flex; flex-direction: column;
+  border-right: 1px solid #e5e7eb;
+}
+.col-right {
+  flex: 1; background: #f9fafb; display: flex; flex-direction: column;
+}
+.top { padding: 44px 44px 0 56px; }
+.top-r { padding: 44px 36px 0 36px; }
+.body {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; padding: 0 44px 44px 56px;
+}
+.body-r {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; padding: 0 36px 44px 36px; gap: 12px;
+}
+
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #22c55e; margin-bottom: 12px;
+}
+.title {
+  font-size: 38px; font-weight: 800; color: #111827;
+  line-height: 1.1; letter-spacing: -.02em;
+}
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #9ca3af; margin-bottom: 12px;
+}
+.desc { font-size: 16px; color: #374151; line-height: 1.65; }
+
+/* note / alert */
+.note {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-left: 3px solid #22c55e;
+  border-radius: 8px; padding: 12px 16px;
+  font-size: 14px; color: #166534; line-height: 1.55;
+}
+.alert {
+  background: #fef3c7; border: 1px solid #fde68a;
+  border-left: 3px solid #f59e0b;
+  border-radius: 8px; padding: 12px 16px;
+  font-size: 14px; color: #92400e; line-height: 1.55;
+}
+
+/* ── SLIDE 1: Intro ── */
+.timeline-row {
+  display: flex; align-items: center; gap: 10px;
+  background: #f9fafb; border: 1px solid #e5e7eb;
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 16px;
+}
+.timeline-icon { font-size: 22px; flex-shrink: 0; }
+.timeline-text { font-size: 14px; color: #374151; line-height: 1.5; }
+.timeline-text strong { color: #111827; }
+
+.outcome-pair { display: flex; gap: 10px; }
+.outcome-card {
+  flex: 1; border-radius: 10px; padding: 14px 16px; border: 1px solid #e5e7eb;
+}
+.outcome-card.starter { border-left: 3px solid #f59e0b; background: #fffbeb; }
+.outcome-card.final   { border-left: 3px solid #22c55e; background: #f0fdf4; }
+.oc-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+.outcome-card.starter .oc-label { color: #d97706; }
+.outcome-card.final   .oc-label { color: #16a34a; }
+.oc-title { font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+.oc-desc  { font-size: 12px; color: #6b7280; line-height: 1.5; }
+
+/* ── SLIDE 2: Statuses ── */
+.statuses-full { flex-direction: column; }
+.statuses-header { padding: 36px 56px 0; flex-shrink: 0; }
+.statuses-body {
+  flex: 1; display: flex; align-items: center;
+  padding: 20px 56px 36px; gap: 10px;
+}
+.status-card {
+  flex: 1; border-radius: 12px; padding: 14px 16px;
+  border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 6px;
+}
+.status-card.active   { border-color: #22c55e; background: #f0fdf4; }
+.status-card.revision { border-color: #f59e0b; background: #fffbeb; }
+.status-card.recheck  { border-color: #3b82f6; background: #eff6ff; }
+.status-card.archived { border-color: #9ca3af; background: #f9fafb; }
+.status-card.blocked  { border-color: #ef4444; background: #fef2f2; }
+
+.status-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.active .status-dot   { background: #22c55e; }
+.revision .status-dot { background: #f59e0b; }
+.recheck .status-dot  { background: #3b82f6; }
+.archived .status-dot { background: #9ca3af; }
+.blocked .status-dot  { background: #ef4444; }
+
+.status-header { display: flex; align-items: center; gap: 8px; }
+.status-name { font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #111827; }
+.status-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+.status-action { font-size: 11px; font-weight: 700; color: #9ca3af; margin-top: 2px; }
+
+/* ── SLIDE 3: Site requirements ── */
+.checklist { display: flex; flex-direction: column; gap: 8px; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; color: #374151; line-height: 1.5;
+}
+.check-icon {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #dcfce7; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0; margin-top: 1px;
+}
+.tech-cards { display: flex; flex-direction: column; gap: 10px; }
+.tech-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 12px 16px;
+}
+.tech-card-title { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+.tech-card-desc  { font-size: 12px; color: #6b7280; line-height: 1.5; }
+
+/* ── SLIDE 4: .ru vs .money ── */
+.compare-full { flex-direction: column; }
+.compare-header { padding: 36px 56px 0; flex-shrink: 0; }
+.compare-cols {
+  flex: 1; display: flex; padding: 20px 56px 36px; gap: 20px; align-items: stretch;
+}
+.compare-col {
+  flex: 1; border-radius: 14px; padding: 20px 22px;
+  border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 12px;
+}
+.compare-col.ru     { border-color: #2563eb; background: #eff6ff; }
+.compare-col.money  { border-color: #7c3aed; background: #faf5ff; }
+
+.compare-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 20px; width: fit-content;
+}
+.compare-badge.ru    { background: #dbeafe; color: #1d4ed8; }
+.compare-badge.money { background: #ede9fe; color: #6d28d9; }
+
+.compare-url { font-size: 16px; font-weight: 800; color: #111827; }
+.compare-tagline { font-size: 13px; color: #6b7280; line-height: 1.5; }
+
+.compare-rows { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.compare-row {
+  display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #374151; line-height: 1.45;
+}
+.compare-row-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+.diff-badge {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px;
+  border-radius: 4px; margin-top: 4px;
+}
+.diff-only-ru    { background: #dbeafe; color: #1d4ed8; }
+.diff-only-money { background: #ede9fe; color: #6d28d9; }
+.diff-both       { background: #dcfce7; color: #16a34a; }
+
+/* ── SLIDE 5: Prohibited ── */
+.prohib-full { flex-direction: column; }
+.prohib-header { padding: 36px 56px 20px; border-bottom: 1px solid #e5e7eb; flex-shrink: 0; }
+.prohib-body {
+  flex: 1; display: flex; padding: 20px 56px 30px; gap: 20px; align-items: flex-start;
+}
+.prohib-col { flex: 1; display: flex; flex-direction: column; gap: 0; }
+.prohib-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: #374151; padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6; line-height: 1.4;
+}
+.prohib-item:last-child { border-bottom: none; }
+.prohib-x {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fef2f2; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #ef4444; flex-shrink: 0; font-weight: 700;
+}
+.prohib-note {
+  background: #fff7ed; border: 1px solid #fed7aa;
+  border-left: 3px solid #f97316;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 13px; color: #9a3412; line-height: 1.5;
+  margin-top: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="label">Слайд 1 — Что такое модерация и как она работает</div>
+<div class="slide">
+  <div class="col-left">
+    <div class="top">
+      <div class="eyebrow">✅ Требования к проектам</div>
+      <div class="title">Перед приёмом платежей —<br>модерация проекта</div>
+    </div>
+    <div class="body">
+      <div class="timeline-row">
+        <div class="timeline-icon">🕐</div>
+        <div class="timeline-text"><strong>Рабочие часы:</strong> 10:00–18:00, будни. Максимум 24 часа</div>
+      </div>
+      <div class="timeline-row" style="margin-bottom:0">
+        <div class="timeline-icon">🔍</div>
+        <div class="timeline-text"><strong>Что проверяют:</strong> работу сайта, актуальность информации, описания товаров/услуг, политику возвратов, контакты</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="top-r">
+      <div class="section-label">Два исхода модерации</div>
+    </div>
+    <div class="body-r">
+      <div class="outcome-pair">
+        <div class="outcome-card starter">
+          <div class="oc-label">Starter</div>
+          <div class="oc-title">Первичная проверка пройдена</div>
+          <div class="oc-desc">Есть замечания от службы безопасности. 14 дней на исправление, после — кнопка «Исправлено»</div>
+        </div>
+        <div class="outcome-card final">
+          <div class="oc-label">Финальная категория</div>
+          <div class="oc-title">Проект полностью прошёл</div>
+          <div class="oc-desc">Статус «Активен», назначена категория: «Продажа услуг», «Онлайн-игры» и т.д.</div>
+        </div>
+      </div>
+      <div class="note">Пока проект не прошёл модерацию — приём платежей недоступен. Следи за статусом в личном кабинете.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="label">Слайд 2 — Статусы проекта</div>
+<div class="slide statuses-full">
+  <div class="statuses-header">
+    <div class="eyebrow">📋 Статусы проекта</div>
+    <div class="title" style="font-size:32px">Что означает каждый статус</div>
+  </div>
+  <div class="statuses-body">
+    <div class="status-card active">
+      <div class="status-header">
+        <div class="status-dot"></div>
+        <div class="status-name">Активен</div>
+      </div>
+      <div class="status-desc">Модерация пройдена. Приём платежей доступен после подачи документов.</div>
+      <div class="status-action">→ Можно работать</div>
+    </div>
+    <div class="status-card revision">
+      <div class="status-header">
+        <div class="status-dot"></div>
+        <div class="status-name">На доработке</div>
+      </div>
+      <div class="status-desc">Некритичные замечания. 14 дней на исправление. Детали — в уведомлениях.</div>
+      <div class="status-action">→ Внести правки → «Исправлено»</div>
+    </div>
+    <div class="status-card recheck">
+      <div class="status-header">
+        <div class="status-dot"></div>
+        <div class="status-name">На проверке</div>
+      </div>
+      <div class="status-desc">Мерч нажал «Исправлено». Повторная проверка: до 72 часов.</div>
+      <div class="status-action">→ Ждём результат</div>
+    </div>
+    <div class="status-card archived">
+      <div class="status-header">
+        <div class="status-dot"></div>
+        <div class="status-name">Архив</div>
+      </div>
+      <div class="status-desc">Платежи недоступны. Либо архивирован вручную, либо не исправили за 14 дней.</div>
+      <div class="status-action">→ Нужна повторная подача</div>
+    </div>
+    <div class="status-card blocked">
+      <div class="status-header">
+        <div class="status-dot"></div>
+        <div class="status-name">Заблокирован</div>
+      </div>
+      <div class="status-desc">Служба безопасности отклонила проект. Работа с проектом невозможна.</div>
+      <div class="status-action">→ Уточнять у СБ</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="label">Слайд 3 — Требования к сайту</div>
+<div class="slide">
+  <div class="col-left">
+    <div class="top">
+      <div class="eyebrow">📄 Документы и страницы</div>
+      <div class="title">Что должно быть<br>на сайте мерча</div>
+    </div>
+    <div class="body">
+      <div class="checklist">
+        <div class="check-item"><div class="check-icon">✓</div>Пользовательское соглашение</div>
+        <div class="check-item"><div class="check-icon">✓</div>Политика конфиденциальности</div>
+        <div class="check-item"><div class="check-icon">✓</div>Условия возврата и обмена</div>
+        <div class="check-item"><div class="check-icon">✓</div>Описание товаров / услуг с ценами</div>
+        <div class="check-item"><div class="check-icon">✓</div>Реквизиты компании (ИНН, ОГРН, адрес)</div>
+        <div class="check-item"><div class="check-icon">✓</div>Логотип платёжной системы UnitPay</div>
+        <div class="check-item"><div class="check-icon">✓</div>Контактные данные и форма обратной связи</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="top-r">
+      <div class="section-label">Технические требования</div>
+    </div>
+    <div class="body-r">
+      <div class="tech-cards">
+        <div class="tech-card">
+          <div class="tech-card-title">🌐 Хостинг и IP</div>
+          <div class="tech-card-desc">Сайт должен быть на платном хостинге со статическим IP-адресом</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-title">🔗 Ссылки</div>
+          <div class="tech-card-desc">Все внутренние ссылки должны работать — нет «404» и «страница в разработке»</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-title">📋 Актуальность</div>
+          <div class="tech-card-desc">Информация на всех разделах должна быть актуальной на момент подачи</div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:4px">Все документы должны быть в открытом доступе — без регистрации и авторизации</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="label">Слайд 4 — help.unitpay.ru vs help.unitpay.money</div>
+<div class="slide compare-full">
+  <div class="compare-header">
+    <div class="eyebrow">🔍 Два портала — разные аудитории</div>
+    <div class="title" style="font-size:30px">Чем отличается добавление проекта на .ru и .money</div>
+  </div>
+  <div class="compare-cols">
+    <div class="compare-col ru">
+      <div>
+        <span class="compare-badge ru">🇷🇺 Для ЮЛ и ИП</span>
+        <div class="compare-url" style="margin-top:8px">help.unitpay.ru</div>
+        <div class="compare-tagline">Российские мерчанты — ООО, ИП, физлица</div>
+      </div>
+      <div class="compare-rows">
+        <div class="compare-row"><span class="compare-row-icon">🌐</span>Сайты — все требования по документам и техническим условиям</div>
+        <div class="compare-row"><span class="compare-row-icon">💙</span>ВКонтакте — сообщество должно быть активным, с описанием и прайсом
+          <span class="diff-badge diff-only-ru">только .ru</span>
+        </div>
+        <div class="compare-row"><span class="compare-row-icon">✈️</span>Telegram — публичный канал, бот с правами администратора
+          <span class="diff-badge diff-only-ru">только .ru</span>
+        </div>
+        <div class="compare-row"><span class="compare-row-icon">📄</span>Реквизиты организации обязательны (ИНН, ОГРН)
+          <span class="diff-badge diff-only-ru">только .ru</span>
+        </div>
+      </div>
+    </div>
+    <div class="compare-col money">
+      <div>
+        <span class="compare-badge money">🌍 Русский + English</span>
+        <div class="compare-url" style="margin-top:8px">help.unitpay.money</div>
+        <div class="compare-tagline">Международные мерчанты, зарубежные партнёры, физические лица <span style="color:#9ca3af;font-style:italic">(но об этом не сообщаем)</span></div>
+      </div>
+      <div class="compare-rows">
+        <div class="compare-row"><span class="compare-row-icon">🌐</span>Сайты — те же требования по документам и технике</div>
+        <div class="compare-row"><span class="compare-row-icon">💙</span>ВКонтакте и Telegram — поддерживаются, требования мягче чем на .ru
+          <span class="diff-badge diff-only-money">менее строго</span>
+        </div>
+        <div class="compare-row"><span class="compare-row-icon">🌍</span>Документация на двух языках — удобно для зарубежных партнёров</div>
+        <div class="compare-row"><span class="compare-row-icon">✅</span>Те же статусы и сроки модерации
+          <span class="diff-badge diff-both">одинаково</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="label">Слайд 5 — Запрещённые категории</div>
+<div class="slide prohib-full">
+  <div class="prohib-header">
+    <div class="eyebrow">🚫 Запрещённые категории</div>
+    <div class="title" style="font-size:30px">С какими проектами UnitPay не работает</div>
+  </div>
+  <div class="prohib-body">
+    <div class="prohib-col">
+      <div class="prohib-item"><div class="prohib-x">✕</div>Нелегальные азартные игры и казино без лицензии</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Оружие, взрывчатые вещества, боеприпасы</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Наркотики, психотропные вещества, прекурсоры</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Рецептурные лекарства без лицензии</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Финансовые пирамиды и HYIP-схемы</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Контрафактные и поддельные товары</div>
+    </div>
+    <div class="prohib-col">
+      <div class="prohib-item"><div class="prohib-x">✕</div>Эскорт и услуги сексуального характера</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Материалы, нарушающие авторские права</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Персональные данные и базы данных</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Продажа аккаунтов, читов и взломов для игр</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Обменники криптовалют без лицензии</div>
+      <div class="prohib-item"><div class="prohib-x">✕</div>Контент, запрещённый законодательством РФ</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

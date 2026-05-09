@@ -78,8 +78,9 @@ export const LEVELS: CourseLevel[] = [
         icon: '🔍',
         title: 'UnitPay: Все детали',
         topics: [
-          { id: 'recurring', icon: '🔁', title: 'Рекуррентные платежи',     lessonId: 'details-recurring' },
-          { id: 'help',      icon: '📖', title: 'Знакомство с help.unitpay', lessonId: 'details-help' },
+          { id: 'recurring',   icon: '🔁', title: 'Рекуррентные платежи',     lessonId: 'details-recurring' },
+          { id: 'help',        icon: '📖', title: 'Знакомство с help.unitpay', lessonId: 'details-help' },
+          { id: 'unitchecks',  icon: '🧾', title: 'ЮнитЧеки',                 lessonId: 'details-unitchecks' },
         ],
       },
       {
@@ -87,23 +88,19 @@ export const LEVELS: CourseLevel[] = [
         icon: '💰',
         title: 'Основы финансов и расчётов',
         topics: [
-          { id: 'reconcile',  icon: '📊', title: 'Сверки',                   lessonId: 'finance-reconcile' },
-          { id: 'commission', icon: '💹', title: 'Расчет комиссий',           lessonId: 'finance-commission' },
-          { id: 'vat',        icon: '🧮', title: 'НДС в транзакциях UnitPay', lessonId: 'finance-vat' },
+          { id: 'vat', icon: '🧮', title: 'НДС в транзакциях UnitPay', lessonId: 'finance-vat' },
         ],
-        comingSoon: true,
       },
       {
         id: 'unitpay-security',
         icon: '🛡️',
         title: 'Безопасность и документооборот',
         topics: [
+          { id: 'requirements', icon: '✅', title: 'Требования к проектам', lessonId: 'security-requirements' },
           { id: 'chargebacks',  icon: '↩️', title: 'Чарджбеки',            lessonId: 'security-chargebacks' },
           { id: 'blacklist',    icon: '🚫', title: 'Черный список',         lessonId: 'security-blacklist' },
           { id: 'docs',         icon: '📄', title: 'Документооборот',       lessonId: 'security-docs' },
-          { id: 'requirements', icon: '✅', title: 'Требования к проектам', lessonId: 'security-requirements' },
         ],
-        comingSoon: true,
       },
       {
         id: 'unitpay-technical',

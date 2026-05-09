@@ -18,6 +18,10 @@
   gap: 8px;
   margin-bottom: 28px;
   padding: 0 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
 }
 
 .logoText {
