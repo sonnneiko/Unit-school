@@ -93,7 +93,7 @@ export function Slide({ slide, onNext, nextLesson, onLastTab, initialTab }: Prop
     case 'unitchecks':
       return <UnitChecksSlide content={slide.content as UnitChecksContent} />
     case 'kanban':
-      return <KanbanSlide content={slide.content as KanbanIntroContent | KanbanBoardContent | KanbanRulesContent | KanbanCommunicationContent} />
+      return <KanbanSlide content={slide.content as KanbanIntroContent | KanbanBoardContent | KanbanRulesContent | KanbanCommunicationContent} onLastTab={onLastTab} />
     default:
       return <div>Неизвестный тип слайда</div>
   }

@@ -50,7 +50,7 @@ export function CoursesPage() {
     } else {
       statusMap.set(section.id, 'locked')
     }
-    prevComplete = complete
+    prevComplete = import.meta.env.DEV ? true : complete
   }
 
   return (

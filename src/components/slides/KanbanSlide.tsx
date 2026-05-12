@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type {
   KanbanIntroContent,
   KanbanBoardContent,
@@ -9,11 +9,12 @@ import styles from './slides.module.css'
 
 type Props = {
   content: KanbanIntroContent | KanbanBoardContent | KanbanRulesContent | KanbanCommunicationContent
+  onLastTab?: (isLast: boolean) => void
 }
 
-export function KanbanSlide({ content }: Props) {
+export function KanbanSlide({ content, onLastTab }: Props) {
   if (content.variant === 'intro') return <KanbanIntro content={content} />
-  if (content.variant === 'board') return <KanbanBoard content={content} />
+  if (content.variant === 'board') return <KanbanBoard content={content} onLastTab={onLastTab} />
   if (content.variant === 'rules') return <KanbanRules content={content} />
   return <KanbanCommunication content={content} />
 }
@@ -65,9 +66,13 @@ const BADGE_CLASS: Record<string, string> = {
   purple: styles.kanbanBadgePurple,
 }
 
-function KanbanBoard({ content }: { content: KanbanBoardContent }) {
+function KanbanBoard({ content, onLastTab }: { content: KanbanBoardContent; onLastTab?: (v: boolean) => void }) {
   const [activeId, setActiveId] = useState<string>(content.columns[0]?.id ?? '')
   const activeCol = content.columns.find(c => c.id === activeId)
+
+  useEffect(() => {
+    onLastTab?.(activeId === 'processed')
+  }, [activeId])
 
   return (
     <div className={styles.kanbanFull}>
@@ -107,6 +112,15 @@ function KanbanBoard({ content }: { content: KanbanBoardContent }) {
             </div>
           ))}
         </div>
+        <div className={styles.kanbanBoardHint}>
+          <div className={styles.kanbanBoardHintIcon}>↑</div>
+          <div className={styles.kanbanBoardHintText}>Нажимай на колонки, чтобы изучить каждый этап доски</div>
+          <div className={styles.kanbanBoardHintSub}>
+            {activeId === 'processed'
+              ? 'Отлично! Ты изучил все этапы — можно двигаться дальше →'
+              : 'Дойди до колонки «Обработано аккаунтингом», чтобы продолжить'}
+          </div>
+        </div>
       </div>
 
       <div className={styles.kanbanDetail}>
@@ -145,37 +159,33 @@ function KanbanBoard({ content }: { content: KanbanBoardContent }) {
 
 function KanbanRules({ content }: { content: KanbanRulesContent }) {
   return (
-    <div className={styles.recurringFull}>
-      <div className={styles.recurringLeft}>
-        <div className={styles.recurringTop}>
-          <h1 className={styles.recurringTitle}>{content.title}</h1>
-        </div>
-        <div className={styles.recurringBody}>
-          <p className={styles.recurringDesc}>
-            <strong>{content.formatLabel}:</strong> {content.formatExample}
-          </p>
-          <div className={styles.kanbanExamples}>
-            {content.examples.map((ex, i) => (
-              <div key={i} className={styles.kanbanExampleItem}>{ex}</div>
-            ))}
-          </div>
+    <div className={styles.kanbanRulesFull}>
+      <div className={styles.kanbanRulesTopLeft}>
+        <h1 className={styles.recurringTitle}>{content.title}</h1>
+      </div>
+      <div className={styles.kanbanRulesTopRight}>
+        <div className={styles.recurringRightHeading}>Тело карточки</div>
+      </div>
+      <div className={styles.kanbanRulesBodyLeft}>
+        <p className={styles.recurringDesc}>
+          <strong>{content.formatLabel}:</strong> {content.formatExample}
+        </p>
+        <div className={styles.kanbanExamples}>
+          {content.examples.map((ex, i) => (
+            <div key={i} className={styles.kanbanExampleItem}>{ex}</div>
+          ))}
         </div>
       </div>
-      <div className={styles.recurringRight}>
-        <div className={styles.recurringTop}>
-          <div className={styles.recurringRightHeading}>Тело карточки</div>
-        </div>
-        <div className={styles.recurringBody}>
-          <ul className={styles.recurringFacts}>
-            {content.bodyRules.map((rule, i) => (
-              <li key={i} className={styles.recurringFact}>
-                <span className={styles.recurringDot} />
-                {rule}
-              </li>
-            ))}
-          </ul>
-          <div className={styles.kanbanWarning}>⚠️ {content.warning}</div>
-        </div>
+      <div className={styles.kanbanRulesBodyRight}>
+        <ul className={styles.recurringFacts}>
+          {content.bodyRules.map((rule, i) => (
+            <li key={i} className={styles.recurringFact}>
+              <span className={styles.recurringDot} />
+              {rule}
+            </li>
+          ))}
+        </ul>
+        <div className={styles.kanbanWarning}>⚠️ {content.warning}</div>
       </div>
     </div>
   )
@@ -183,54 +193,50 @@ function KanbanRules({ content }: { content: KanbanRulesContent }) {
 
 function KanbanCommunication({ content }: { content: KanbanCommunicationContent }) {
   return (
-    <div className={styles.recurringFull}>
-      <div className={styles.recurringLeft}>
-        <div className={styles.recurringTop}>
-          <h1 className={styles.recurringTitle}>{content.title}</h1>
-        </div>
-        <div className={styles.recurringBody}>
-          <div className={styles.recurringRightHeading} style={{ marginBottom: 12 }}>
-            Срочный вопрос
-          </div>
-          <div className={styles.kanbanUrgentBlock}>
-            <div className={styles.kanbanUrgentIcon}>⚡</div>
-            <div className={styles.kanbanUrgentText}>{content.urgentText}</div>
-          </div>
-          <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '16px 0' }} />
-          <div className={styles.recurringRightHeading} style={{ marginBottom: 12 }}>
-            Личные сообщения
-          </div>
-          {content.dmAllowed.map((text, i) => (
-            <div key={i} className={styles.kanbanDmRule}>
-              <span className={styles.kanbanDmOk}>✓</span>
-              <span>{text}</span>
-            </div>
-          ))}
-          {content.dmForbidden.map((text, i) => (
-            <div key={i} className={styles.kanbanDmRule}>
-              <span className={styles.kanbanDmNo}>✗</span>
-              <span>{text}</span>
-            </div>
-          ))}
-        </div>
+    <div className={styles.kanbanRulesFull}>
+      <div className={styles.kanbanRulesTopLeft}>
+        <h1 className={styles.recurringTitle}>{content.title}</h1>
       </div>
-      <div className={styles.recurringRight}>
-        <div className={styles.recurringTop}>
-          <div className={styles.recurringRightHeading}>Пример сообщения в чат</div>
+      <div className={styles.kanbanRulesTopRight}>
+        <div className={styles.recurringRightHeading}>Пример сообщения в чат</div>
+      </div>
+      <div className={styles.kanbanRulesBodyLeft}>
+        <div className={styles.recurringRightHeading} style={{ marginBottom: 12 }}>
+          Срочный вопрос
         </div>
-        <div className={styles.recurringBody}>
-          <div className={styles.kanbanTgMock}>
-            <div className={styles.kanbanTgMockTitle}>{content.urgentChat}</div>
-            {content.exampleMessages.map((msg, i) => (
-              <div key={i} className={styles.kanbanTgMessage}>
-                {msg.text.split(/(@\S+)/g).map((part, j) =>
-                  part.startsWith('@')
-                    ? <span key={j} className={styles.kanbanTgTag}>{part}</span>
-                    : part
-                )}
-              </div>
-            ))}
+        <div className={styles.kanbanUrgentBlock}>
+          <div className={styles.kanbanUrgentIcon}>⚡</div>
+          <div className={styles.kanbanUrgentText}>{content.urgentText}</div>
+        </div>
+        <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '16px 0' }} />
+        <div className={styles.recurringRightHeading} style={{ marginBottom: 12 }}>
+          Личные сообщения
+        </div>
+        {content.dmAllowed.map((text, i) => (
+          <div key={i} className={styles.kanbanDmRule}>
+            <span className={styles.kanbanDmOk}>✓</span>
+            <span>{text}</span>
           </div>
+        ))}
+        {content.dmForbidden.map((text, i) => (
+          <div key={i} className={styles.kanbanDmRule}>
+            <span className={styles.kanbanDmNo}>✗</span>
+            <span>{text}</span>
+          </div>
+        ))}
+      </div>
+      <div className={styles.kanbanRulesBodyRight}>
+        <div className={styles.kanbanTgMock}>
+          <div className={styles.kanbanTgMockTitle}>{content.urgentChat}</div>
+          {content.exampleMessages.map((msg, i) => (
+            <div key={i} className={styles.kanbanTgMessage}>
+              {msg.text.split(/(@\S+)/g).map((part, j) =>
+                part.startsWith('@')
+                  ? <span key={j} className={styles.kanbanTgTag}>{part}</span>
+                  : part
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

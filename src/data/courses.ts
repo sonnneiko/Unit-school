@@ -96,10 +96,11 @@ export const LEVELS: CourseLevel[] = [
         icon: '🛡️',
         title: 'Безопасность и документооборот',
         topics: [
-          { id: 'requirements', icon: '✅', title: 'Требования к проектам', lessonId: 'security-requirements' },
-          { id: 'chargebacks',  icon: '↩️', title: 'Чарджбеки',            lessonId: 'security-chargebacks' },
-          { id: 'blacklist',    icon: '🚫', title: 'Черный список',         lessonId: 'security-blacklist' },
-          { id: 'docs',         icon: '📄', title: 'Документооборот',       lessonId: 'security-docs' },
+          { id: 'security-sb',  icon: '🛡️', title: 'Взаимодействие со службой безопасности', lessonId: 'security-sb' },
+          { id: 'requirements', icon: '✅', title: 'Требования к проектам',        lessonId: 'security-requirements' },
+          { id: 'chargebacks',  icon: '↩️', title: 'Чарджбеки',                  lessonId: 'security-chargebacks' },
+          { id: 'blacklist',    icon: '🚫', title: 'Черный список',               lessonId: 'security-blacklist' },
+          { id: 'docs',         icon: '📄', title: 'Документооборот',             lessonId: 'security-docs' },
         ],
       },
       {
@@ -112,7 +113,6 @@ export const LEVELS: CourseLevel[] = [
           { id: 'processor',   icon: '⚙️', title: 'Обработчик платежей',                  lessonId: 'technical-processor' },
           { id: 'integration', icon: '🔌', title: 'Интеграция',                            lessonId: 'technical-integration' },
         ],
-        comingSoon: true,
       },
     ],
   },
