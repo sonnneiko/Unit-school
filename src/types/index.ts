@@ -29,13 +29,13 @@ export interface Lesson {
   slides: Slide[]
 }
 
-export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring' | 'helpdocs' | 'vat' | 'requirements' | 'unitchecks'
+export type SlideType = 'welcome' | 'tabs' | 'info' | 'feature' | 'methods' | 'flowchart' | 'diagram' | 'cheatsheet' | 'merchant' | 'compare' | 'kassa' | 'acquiring' | 'vendors' | 'entities' | 'finish' | 'tools' | 'tgchats' | 'search' | 'niches' | 'funnel' | 'objections' | 'kstati' | 'recurring' | 'helpdocs' | 'vat' | 'requirements' | 'unitchecks' | 'kanban'
 
 export interface Slide {
   id: string // unique within lesson only
   type: SlideType
   hasInternalNav?: boolean
-  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent | HelpIntroContent | HelpPortalsContent | VatContent | ReqContent | UnitChecksContent
+  content: WelcomeContent | TabsContent | InfoContent | FeatureContent | MethodsContent | FlowchartContent | DiagramContent | CheatsheetContent | MerchantContent | CompareContent | KassaContent | AcquiringContent | VendorsSlideContent | EntitiesContent | FinishContent | ToolsContent | TgChatsContent | SearchContent | NichesContent | FunnelContent | ObjectionsContent | KstatiContent | RecurringOverviewContent | RecurringRequirementsContent | HelpIntroContent | HelpPortalsContent | VatContent | ReqContent | UnitChecksContent | KanbanIntroContent | KanbanBoardContent | KanbanRulesContent | KanbanCommunicationContent
 }
 
 export interface MethodItem {
@@ -685,3 +685,49 @@ export type UnitChecksContent =
   | UnitChecksSchemeContent
   | UnitChecksDataContent
   | UnitChecksFaqContent
+
+export type KanbanColumn = {
+  id: string
+  badge: string
+  badgeColor: 'red' | 'blue' | 'yellow' | 'green' | 'teal' | 'gray' | 'purple'
+  step: number | null
+  who: string
+  desc: string
+  hint: string
+  cards?: Array<{ title: string; assignee: string; assigneeColor: string }>
+}
+
+export type KanbanIntroContent = {
+  variant: 'intro'
+  eyebrow: string
+  title: string
+  description: string
+  bullets: string[]
+  checklist: Array<{ step: number; text: string }>
+}
+
+export type KanbanBoardContent = {
+  variant: 'board'
+  boardTitle: string
+  columns: KanbanColumn[]
+}
+
+export type KanbanRulesContent = {
+  variant: 'rules'
+  title: string
+  formatLabel: string
+  formatExample: string
+  examples: string[]
+  bodyRules: string[]
+  warning: string
+}
+
+export type KanbanCommunicationContent = {
+  variant: 'communication'
+  title: string
+  urgentText: string
+  urgentChat: string
+  dmAllowed: string[]
+  dmForbidden: string[]
+  exampleMessages: Array<{ sender: string; text: string }>
+}
