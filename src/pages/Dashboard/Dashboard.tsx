@@ -208,11 +208,9 @@ export function DashboardPage() {
             </>
           )}
         </div>
-        {allComplete && (
-          <div className={styles.heroCat}>
-            <img src={catImg} alt="Юнит" />
-          </div>
-        )}
+        <div className={styles.heroCat}>
+          <img src={catImg} alt="Юнит" />
+        </div>
       </div>
 
       {/* Growth path */}
