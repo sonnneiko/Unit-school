@@ -1,4 +1,4 @@
-import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent, KstatiContent, RecurringOverviewContent, RecurringRequirementsContent, HelpIntroContent, HelpPortalsContent, VatContent, ReqContent, UnitChecksContent } from '../../types'
+import type { Slide as SlideType, Lesson, WelcomeContent, InfoContent, FeatureContent, MethodsContent, FlowchartContent, DiagramContent, CheatsheetContent, TabsContent, MerchantContent, CompareContent, KassaContent, AcquiringContent, VendorsSlideContent, EntitiesContent, FinishContent, ToolsContent, TgChatsContent, SearchContent, NichesContent, FunnelContent, ObjectionsContent, KstatiContent, RecurringOverviewContent, RecurringRequirementsContent, HelpIntroContent, HelpPortalsContent, VatContent, ReqContent, UnitChecksContent, KanbanIntroContent, KanbanBoardContent, KanbanRulesContent, KanbanCommunicationContent } from '../../types'
 import { WelcomeSlide } from './WelcomeSlide'
 import { InfoSlide } from './InfoSlide'
 import { FeatureSlide } from './FeatureSlide'
@@ -26,6 +26,7 @@ import { HelpDocsSlide } from './HelpDocsSlide'
 import { VatSlide } from './VatSlide'
 import { RequirementsSlide } from './RequirementsSlide'
 import { UnitChecksSlide } from './UnitChecksSlide'
+import { KanbanSlide } from './KanbanSlide'
 
 interface Props {
   slide: SlideType
@@ -91,6 +92,8 @@ export function Slide({ slide, onNext, nextLesson, onLastTab, initialTab }: Prop
       return <RequirementsSlide content={slide.content as ReqContent} />
     case 'unitchecks':
       return <UnitChecksSlide content={slide.content as UnitChecksContent} />
+    case 'kanban':
+      return <KanbanSlide content={slide.content as KanbanIntroContent | KanbanBoardContent | KanbanRulesContent | KanbanCommunicationContent} />
     default:
       return <div>Неизвестный тип слайда</div>
   }
