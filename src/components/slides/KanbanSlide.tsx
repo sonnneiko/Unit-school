@@ -21,36 +21,32 @@ export function KanbanSlide({ content, onLastTab }: Props) {
 
 function KanbanIntro({ content }: { content: KanbanIntroContent }) {
   return (
-    <div className={styles.recurringFull}>
-      <div className={styles.recurringLeft}>
-        <div className={styles.recurringTop}>
-          <div className={styles.recurringEyebrow}>{content.eyebrow}</div>
-          <h1 className={styles.recurringTitle}>{content.title}</h1>
-        </div>
-        <div className={styles.recurringBody}>
-          <p className={styles.recurringDesc}>{content.description}</p>
-          <ul className={styles.recurringFacts}>
-            {content.bullets.map((b, i) => (
-              <li key={i} className={styles.recurringFact}>
-                <span className={styles.recurringDot} />
-                {b}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <div className={styles.kanbanRulesFull}>
+      <div className={styles.kanbanRulesTopLeft}>
+        <div className={styles.recurringEyebrow}>{content.eyebrow}</div>
+        <h1 className={styles.recurringTitle}>{content.title}</h1>
       </div>
-      <div className={styles.recurringRight}>
-        <div className={styles.recurringTop}>
-          <div className={styles.recurringRightHeading}>Перед созданием карточки</div>
-        </div>
-        <div className={styles.recurringBody}>
-          {content.checklist.map((item) => (
-            <div key={item.step} className={styles.kanbanCheckCard}>
-              <div className={styles.kanbanCheckNum}>{item.step}</div>
-              <div className={styles.kanbanCheckText}>{item.text}</div>
-            </div>
+      <div className={styles.kanbanRulesTopRight}>
+        <div className={styles.recurringRightHeading}>Перед созданием карточки</div>
+      </div>
+      <div className={styles.kanbanRulesBodyLeft}>
+        <p className={styles.recurringDesc}>{content.description}</p>
+        <ul className={styles.recurringFacts}>
+          {content.bullets.map((b, i) => (
+            <li key={i} className={styles.recurringFact}>
+              <span className={styles.recurringDot} />
+              {b}
+            </li>
           ))}
-        </div>
+        </ul>
+      </div>
+      <div className={styles.kanbanRulesBodyRight}>
+        {content.checklist.map((item) => (
+          <div key={item.step} className={styles.kanbanCheckCard}>
+            <div className={styles.kanbanCheckNum}>{item.step}</div>
+            <div className={styles.kanbanCheckText}>{item.text}</div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -69,9 +65,11 @@ const BADGE_CLASS: Record<string, string> = {
 function KanbanBoard({ content, onLastTab }: { content: KanbanBoardContent; onLastTab?: (v: boolean) => void }) {
   const [activeId, setActiveId] = useState<string>(content.columns[0]?.id ?? '')
   const activeCol = content.columns.find(c => c.id === activeId)
+  const lastColId = content.columns[content.columns.length - 1]?.id ?? ''
+  const lastColName = content.columns[content.columns.length - 1]?.badge ?? ''
 
   useEffect(() => {
-    onLastTab?.(activeId === 'processed')
+    onLastTab?.(activeId === lastColId)
   }, [activeId])
 
   return (
@@ -79,9 +77,9 @@ function KanbanBoard({ content, onLastTab }: { content: KanbanBoardContent; onLa
       <div className={styles.kanbanBoard}>
         <div className={styles.kanbanBoardHeader}>
           <div className={styles.kanbanBoardTitle}>{content.boardTitle}</div>
-          <div className={styles.kanbanBoardSubtitle}>Account + PM · Таблица</div>
+          <div className={styles.kanbanBoardSubtitle}>{content.boardSubtitle ?? 'Account + PM · Таблица'}</div>
         </div>
-        <div className={styles.kanbanCols}>
+        <div className={content.twoRows ? styles.kanbanColsTwoRows : styles.kanbanCols}>
           {content.columns.map(col => (
             <div
               key={col.id}
@@ -116,9 +114,9 @@ function KanbanBoard({ content, onLastTab }: { content: KanbanBoardContent; onLa
           <div className={styles.kanbanBoardHintIcon}>↑</div>
           <div className={styles.kanbanBoardHintText}>Нажимай на колонки, чтобы изучить каждый этап доски</div>
           <div className={styles.kanbanBoardHintSub}>
-            {activeId === 'processed'
+            {activeId === lastColId
               ? 'Отлично! Ты изучил все этапы — можно двигаться дальше →'
-              : 'Дойди до колонки «Обработано аккаунтингом», чтобы продолжить'}
+              : `Дойди до колонки «${lastColName}», чтобы продолжить`}
           </div>
         </div>
       </div>
@@ -185,7 +183,7 @@ function KanbanRules({ content }: { content: KanbanRulesContent }) {
             </li>
           ))}
         </ul>
-        <div className={styles.kanbanWarning}>⚠️ {content.warning}</div>
+        {content.warning && <div className={styles.kanbanWarning}>⚠️ {content.warning}</div>}
       </div>
     </div>
   )

@@ -709,7 +709,9 @@ export type KanbanIntroContent = {
 export type KanbanBoardContent = {
   variant: 'board'
   boardTitle: string
+  boardSubtitle?: string
   columns: KanbanColumn[]
+  twoRows?: boolean
 }
 
 export type KanbanRulesContent = {
@@ -719,7 +721,7 @@ export type KanbanRulesContent = {
   formatExample: string
   examples: string[]
   bodyRules: string[]
-  warning: string
+  warning?: string
 }
 
 export type KanbanCommunicationContent = {
